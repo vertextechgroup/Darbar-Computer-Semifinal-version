@@ -1,0 +1,62 @@
+export const SITE_CONFIG = {
+  name: "DarbarTech",
+  shortName: "DarbarTech",
+  tagline: "GROUP OF TECHNOLOGY",
+  description: "DarbarTech Group of Technology - Professional computer training institute in Nepal. 37 courses across 15 categories: programming, web dev, AI, design, accounting, hardware, digital marketing, and more with certified trainers and live projects.",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+  locale: "en",
+  phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || "+977-XX-XXXXXXX",
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@darbarcomputer.edu.np",
+  address: process.env.NEXT_PUBLIC_ADDRESS || "[PLACEHOLDER Address - Kathmandu, Nepal]",
+  ogImage: "/opengraph-image.png",
+  twitter: {
+    handle: "@darbarcomputer",
+    site: "@darbarcomputer",
+  },
+} as const;
+
+export const COURSE_CATEGORIES = [
+  "Basic Computer",
+  "Office & Productivity",
+  "Programming",
+  "Web Development",
+  "AI & Automation",
+  "Data Science",
+  "Cloud & DevOps",
+  "Graphic Design",
+  "Video Production",
+  "Business & Accounting",
+  "Networking",
+  "Cyber Security",
+  "Digital Marketing",
+  "Career Programs",
+  "Professional Diploma",
+] as const;
+
+export const COURSE_LEVELS = [
+  "Beginner",
+  "Beginner to Intermediate",
+  "Intermediate",
+  "Advanced",
+] as const;
+
+export const NAV_LINKS = [
+  { href: "/", label: "Home" },
+  { href: "/courses", label: "Courses" },
+  { href: "/about", label: "About" },
+  { href: "/blog", label: "Blog" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/events", label: "Events" },
+  { href: "/contact", label: "Contact" },
+] as const;
+
+export const EVERY_COURSE_INCLUDES = [
+  "Live Projects",
+  "Portfolio Building",
+  "Internship Support",
+  "Job Interview Preparation",
+  "Career Counseling",
+  "LMS Access",
+  "Lifetime Notes",
+  "AI-Assisted Learning",
+] as const;

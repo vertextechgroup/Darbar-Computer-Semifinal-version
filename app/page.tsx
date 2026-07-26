@@ -1,65 +1,139 @@
+import Link from "next/link";
 import Image from "next/image";
+import { Hero } from "@/components/sections/Hero";
+import { StatsStrip } from "@/components/sections/StatsStrip";
+import { CourseGrid } from "@/components/sections/CourseGrid";
+import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
+import { HowItWorks } from "@/components/sections/HowItWorks";
+import { TestimonialCarousel } from "@/components/sections/TestimonialCarousel";
+import { CTABanner } from "@/components/sections/CTABanner";
+import { FAQAccordion } from "@/components/sections/FAQAccordion";
+import { Container } from "@/components/common/Container";
+import { SectionHeading } from "@/components/common/SectionHeading";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/common/Badge";
+import { getFeaturedCourses } from "@/content/courses";
+import { getUpcomingEvents } from "@/content/events";
+import { buildMetadata } from "@/lib/seo";
+import { CalendarDays, Clock, MapPin, ArrowRight } from "lucide-react";
+import Script from "next/script";
+import { orgJsonLd } from "@/lib/seo";
 
-export default function Home() {
+export const metadata = buildMetadata({
+  title: "Home",
+  path: "/",
+  description:
+    "Darbar Computer Training Institute — Professional computer courses in Nepal: programming, design, accounting, hardware, MS Office. Small classes, certified trainers, real projects.",
+});
+
+export default function HomePage() {
+  const featuredCourses = getFeaturedCourses(6);
+  const upcomingEvents = getUpcomingEvents().slice(0, 3);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <Script
+        id="ld-home-org"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd()) }}
+      />
+      <Hero />
+      <StatsStrip />
+      <CourseGrid
+        courses={featuredCourses}
+        eyebrow="Popular Courses"
+        title="Our Most-Loved Courses"
+        description="Hand-picked programs our students enroll in the most — entry-level foundations to flagship career paths."
+      />
+      <WhyChooseUs />
+      <HowItWorks />
+
+      {upcomingEvents.length > 0 && (
+        <section aria-labelledby="events-heading" className="section-padding">
+          <Container size="xl">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 sm:mb-12">
+              <SectionHeading
+                eyebrow="Upcoming"
+                title="Events & Workshops"
+                description="Free workshops, open houses, info sessions — join us in person or online."
+                align="left"
+                className="mx-0"
+              />
+              <Link href="/events" className="mx-auto sm:mx-0 shrink-0">
+                <Button variant="outline" size="lg">
+                  View All Events
+                  <ArrowRight className="size-4" />
+                </Button>
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {upcomingEvents.map((evt) => (
+                <Card key={evt.id} className="overflow-hidden group flex flex-col">
+                  <Link
+                    href={`/events/${evt.slug}`}
+                    className="relative block overflow-hidden aspect-[16/9] bg-neutral-100"
+                    aria-label={`${evt.title} — view details`}
+                  >
+                    <Image
+                      src={evt.image}
+                      alt={evt.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 pointer-events-none" aria-hidden="true" />
+                    <div className="absolute top-3 left-3 flex flex-wrap items-center gap-2">
+                      <Badge variant="secondary" className="shadow-sm">{evt.category}</Badge>
+                      <Badge variant="success" className="shadow-sm">Upcoming</Badge>
+                    </div>
+                  </Link>
+                  <div className="p-5 sm:p-6 flex-1 flex flex-col">
+                  <h3 className="font-semibold text-lg tracking-tight text-neutral-900 leading-snug group-hover:text-primary transition-colors">
+                    <Link href={`/events/${evt.slug}`}>{evt.title}</Link>
+                  </h3>
+                  <p className="mt-2 text-sm text-neutral-600 leading-relaxed line-clamp-2">
+                    {evt.shortDescription}
+                  </p>
+                  <div className="mt-4 space-y-1.5 text-xs text-neutral-500">
+                    <div className="flex items-center gap-1.5">
+                      <CalendarDays className="size-3.5 text-primary" />
+                      <time dateTime={evt.date}>
+                        {new Date(evt.date).toLocaleDateString("en-US", {
+                          weekday: "short",
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                        })}
+                      </time>
+                      <span className="mx-1">·</span>
+                      <Clock className="size-3.5 text-primary" />
+                      {evt.time}
+                    </div>
+                    <div className="flex items-start gap-1.5">
+                      <MapPin className="size-3.5 text-primary mt-0.5 shrink-0" />
+                      <span className="line-clamp-1">{evt.location}</span>
+                    </div>
+                  </div>
+                  <div className="mt-5">
+                    <Link href={`/events/${evt.slug}`}>
+                      <Button variant="outline" size="sm" className="w-full">
+                        View Details
+                      </Button>
+                    </Link>
+                  </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </Container>
+        </section>
+      )}
+
+      <TestimonialCarousel />
+      <FAQAccordion compact />
+      <CTABanner />
+    </>
   );
 }
