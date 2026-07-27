@@ -6,7 +6,6 @@ import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/common/Badge";
 import { AdmissionInquiryForm } from "@/components/forms/AdmissionInquiryForm";
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { CTABanner } from "@/components/sections/CTABanner";
 import {

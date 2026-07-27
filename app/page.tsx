@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Hero } from "@/components/sections/Hero";
-import { StatsStrip } from "@/components/sections/StatsStrip";
 import { CategoryDirectory } from "@/components/sections/CategoryDirectory";
 import { CourseGrid } from "@/components/sections/CourseGrid";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
@@ -11,7 +10,7 @@ import { CTABanner } from "@/components/sections/CTABanner";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
 import { Container } from "@/components/common/Container";
 import { SectionHeading } from "@/components/common/SectionHeading";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/common/Badge";
 import { getFeaturedCourses } from "@/content/courses";
@@ -19,6 +18,7 @@ import { getUpcomingEvents } from "@/content/events";
 import { buildMetadata } from "@/lib/seo";
 import { CalendarDays, Clock, MapPin, ArrowRight } from "lucide-react";
 import { orgJsonLd } from "@/lib/seo";
+import { StatsStrip } from "@/components/sections/StatsStrip";
 
 export const metadata = buildMetadata({
   title: "Home",
@@ -38,7 +38,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd()) }}
       />
       <Hero />
-      <StatsStrip />
+      <StatsStrip/>
       <CategoryDirectory />
       <CourseGrid
         courses={featuredCourses}

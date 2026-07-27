@@ -49,12 +49,13 @@ export function Sheet({ open: controlled, defaultOpen, onOpenChange, children }:
 export function SheetTrigger({ children }: { children: React.ReactElement }) {
   const { setOpen } = useSheetCtx("SheetTrigger");
   if (React.isValidElement(children)) {
-    return React.cloneElement(children, {
+    const child = children as React.ReactElement<{ onClick?: (e: React.MouseEvent) => void }>;
+    return React.cloneElement(child, {
       onClick: (e: React.MouseEvent) => {
-        (children.props as any).onClick?.(e);
+        child.props.onClick?.(e);
         setOpen(true);
       },
-    } as any);
+    });
   }
   return <span onClick={() => setOpen(true)}>{children}</span>;
 }
@@ -73,7 +74,7 @@ export function SheetContent({
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
-    setMounted(true);
+    queueMicrotask(() => setMounted(true));
   }, []);
 
   if (!open || !mounted) return null;

@@ -24,7 +24,7 @@ export default function NotFound() {
           Page not found
         </h1>
         <p className="mt-4 text-base sm:text-lg text-neutral-600 max-w-lg mx-auto leading-relaxed">
-          Sorry, we couldn't find the page you were looking for. It may have been moved or no longer exists.
+          Sorry, we couldn&apos;t find the page you were looking for. It may have been moved or no longer exists.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link href="/">

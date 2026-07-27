@@ -6,7 +6,7 @@ const icons = [Award, Users, BookOpenCheck, GraduationCap];
 
 export function StatsStrip() {
   return (
-    <section aria-labelledby="stats-heading" className="py-10 sm:py-12 bg-neutral-50 border-y border-neutral-200">
+    <section aria-labelledby="stats-heading" className="py-10 sm:py-12 bg-neutral-50 border-b border-neutral-200">
       <Container size="xl">
         <h2 id="stats-heading" className="sr-only">
           Institute at a Glance

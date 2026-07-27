@@ -375,7 +375,7 @@ function CoursesClientPage() {
               </div>
               <h3 className="text-xl font-semibold text-neutral-900">No courses found</h3>
               <p className="mt-2 text-neutral-600 max-w-md mx-auto leading-relaxed">
-                Try clearing some filters or search with a different keyword (try "Python", "design", or "freelancing").
+                Try clearing some filters or search with a different keyword (try &ldquo;Python&rdquo;, &ldquo;design&rdquo;, or &ldquo;freelancing&rdquo;).
               </p>
               <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <Button onClick={clearFilters}>Clear Filters</Button>

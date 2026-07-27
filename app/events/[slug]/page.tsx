@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Script from "next/script";
 import {
   CalendarDays,
   Clock,
@@ -14,7 +13,6 @@ import {
 } from "lucide-react";
 import { Container } from "@/components/common/Container";
 import { Breadcrumbs } from "@/components/common/Breadcrumbs";
-import { SectionHeading } from "@/components/common/SectionHeading";
 import { Badge } from "@/components/common/Badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -251,7 +249,7 @@ export default async function EventDetailPage({
                           </Button>
                         </Link>
                         <p className="text-[11px] text-neutral-500 leading-relaxed text-center pt-1">
-                          Send us an inquiry mentioning this event — we'll reserve your spot.
+                          Send us an inquiry mentioning this event — we&apos;ll reserve your spot.
                         </p>
                       </div>
                     ) : (

@@ -134,7 +134,7 @@ export function AdmissionInquiryForm() {
             Thank you for your inquiry!
           </h3>
           <p className="mt-3 text-neutral-700 max-w-lg mx-auto leading-relaxed">
-            We've received your admission inquiry. Our counselor will reach out to you by phone or email within 1 business day to schedule your free counseling and demo class.
+            We&apos;ve received your admission inquiry. Our counselor will reach out to you by phone or email within 1 business day to schedule your free counseling and demo class.
           </p>
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Button variant="outline" onClick={() => { setSubmitted(false); reset(); }}>

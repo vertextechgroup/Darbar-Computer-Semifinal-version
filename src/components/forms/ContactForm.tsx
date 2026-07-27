@@ -99,7 +99,7 @@ export function ContactForm() {
             Thank you — message received!
           </h3>
           <p className="mt-3 text-neutral-700 max-w-lg mx-auto leading-relaxed">
-            Your message has been sent to our team. We'll read it carefully and reply by email within 1 business day.
+            Your message has been sent to our team. We&apos;ll read it carefully and reply by email within 1 business day.
           </p>
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Button variant="outline" onClick={() => { setSubmitted(false); reset(); }}>

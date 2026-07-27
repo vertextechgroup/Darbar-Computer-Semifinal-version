@@ -30,7 +30,7 @@ export function WhyChooseUs() {
         />
 
         <div className="mt-8 sm:mt-12 grid grid-cols-1 gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {instituteInfo.whyChooseUs.map((item, i) => {
+          {instituteInfo.whyChooseUs.map((item) => {
             const Icon = iconMap[item.icon] ?? Award;
             return (
               <div

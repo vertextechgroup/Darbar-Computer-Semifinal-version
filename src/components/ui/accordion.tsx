@@ -70,7 +70,7 @@ const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(
       {...props}
     >
       {React.Children.map(children, (child) =>
-        React.isValidElement(child) ? React.cloneElement(child as React.ReactElement<any>, { _itemValue: value }) : child
+        React.isValidElement(child) ? React.cloneElement(child as React.ReactElement<{ _itemValue?: string }>, { _itemValue: value }) : child
       )}
     </div>
   )

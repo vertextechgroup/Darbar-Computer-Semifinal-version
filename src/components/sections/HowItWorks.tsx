@@ -45,7 +45,7 @@ export function HowItWorks() {
             aria-hidden="true"
           />
           <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-4">
-            {steps.map((s, i) => {
+            {steps.map((s) => {
               const Icon = s.icon;
               return (
                 <li key={s.title} className="relative flex flex-col items-center text-center">

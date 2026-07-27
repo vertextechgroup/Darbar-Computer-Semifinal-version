@@ -157,7 +157,7 @@ export default function ContactPage() {
                     Send us a Message
                   </h2>
                   <p className="text-sm text-neutral-600 mb-6">
-                    Fill out the form and we'll get back to you within one business day.
+                    Fill out the form and we&apos;ll get back to you within one business day.
                   </p>
                   <Suspense fallback={<div className="py-12 text-center text-neutral-500">Loading form...</div>}>
                     <ContactForm />

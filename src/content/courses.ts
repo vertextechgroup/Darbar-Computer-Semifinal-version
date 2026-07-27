@@ -4,7 +4,8 @@
 
 import type { Course } from "@/types/course";
 
-function img(cat: string, _n: number) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function img(cat: string, _index: number) {
   const categoryMap: Record<string, string> = {
     basic: "https://images.pexels.com/photos/10638075/pexels-photo-10638075.jpeg?auto=compress&cs=tinysrgb&w=1000",
     office: "https://images.pexels.com/photos/18471480/pexels-photo-18471480.jpeg?auto=compress&cs=tinysrgb&w=1000",

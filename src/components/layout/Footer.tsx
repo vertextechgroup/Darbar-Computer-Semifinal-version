@@ -10,16 +10,10 @@ import {
   PlayCircle,
   ArrowRight,
   MessageCircle,
-  GraduationCap,
-  Users2,
-  BookOpen,
-  Award,
 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { instituteInfo } from "@/content/institute";
 import { NAV_LINKS, SITE_CONFIG } from "@/lib/constants";
-import { Badge } from "@/components/common/Badge";
-import { NewsletterSignup } from "@/components/sections/NewsletterSignup";
 import { DarbarTechLogo } from "@/components/common/DarbarTechLogo";
 import { getFeaturedCourses } from "@/content/courses";
 import { cn } from "@/lib/utils";
@@ -31,34 +25,6 @@ const socialIconMap: Record<string, React.ComponentType<{ className?: string }>>
   linkedin: Briefcase,
   whatsapp: MessageCircle,
 };
-
-function StatTile({
-  icon: Icon,
-  value,
-  label,
-}: {
-  icon: React.ComponentType<{ className?: string }>;
-  value: string;
-  label: string;
-}) {
-  return (
-    <div className="group/tile relative flex flex-col items-start gap-1 rounded-xl border border-white/8 bg-white/[0.03] px-4 py-4 sm:px-5 sm:py-5 transition-all duration-200 ease-out hover:border-primary/40 hover:bg-white/[0.05]">
-      <div className="flex items-center gap-3">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/15 text-primary ring-1 ring-primary/25">
-          <Icon className="size-[18px]" aria-hidden="true" />
-        </div>
-        <div>
-          <div className="font-semibold text-white text-lg leading-none tracking-tight sm:text-xl">
-            {value}
-          </div>
-        </div>
-      </div>
-      <div className="pl-0 sm:pl-12 pt-1 text-[12px] leading-snug text-neutral-400 sm:text-[13px]">
-        {label}
-      </div>
-    </div>
-  );
-}
 
 function FooterColumnHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -84,14 +50,13 @@ function FooterLink({
 }) {
   const classes = cn(
     "group/link relative inline-flex w-fit items-center min-h-[34px] py-0.5 text-[13.5px] text-neutral-400 transition-all duration-200 ease-out",
-    "hover:text-white",
-    className
+    "hover:text-white"
   );
   const inner = (
     <>
       <span className="relative z-10 flex items-center gap-1.5">
         <span
-          className="pointer-events-none absolute left-0 top-1/2 block h-1.5 w-0 -translate-y-1/2 rounded-full bg-primary/40 transition-all duration-200 ease-out group-hover/link:w-full"
+          className="pointer-events-none absolute left-0 top-1/2 block h-1.5 w-0 -translate-y-1/2 rounded-full  transition-all duration-200 ease-out group-hover/link:w-full"
           aria-hidden="true"
         />
         <span className="relative z-10">{children}</span>
@@ -128,12 +93,6 @@ export function Footer() {
     { href: "/faq", label: "FAQ" },
   ];
   const featuredCourses = getFeaturedCourses(4);
-  const stats = [
-    { icon: GraduationCap, value: instituteInfo.stats[0].value, label: instituteInfo.stats[0].label },
-    { icon: Users2, value: instituteInfo.stats[1].value, label: instituteInfo.stats[1].label },
-    { icon: BookOpen, value: instituteInfo.stats[2].value, label: instituteInfo.stats[2].label },
-    { icon: Award, value: instituteInfo.stats[3].value, label: instituteInfo.stats[3].label },
-  ];
 
   return (
     <footer
@@ -176,10 +135,10 @@ export function Footer() {
                   <MapPin className="size-4" aria-hidden="true" />
                 </div>
                 <div className="pt-1">
-                  <div className="text-[11px] font-semibold uppercase tracking-widest text-neutral-500 mb-0.5">
+                  <div className="text-[11px] font-semibold uppercase tracking-widest text-neutral-500 mb-1">
                     Campus
                   </div>
-                  <div className="text-[13.5px] text-neutral-300 leading-relaxed">
+                  <div className="text-[13.5px] leading-relaxed text-neutral-300">
                     {instituteInfo.contact.address}
                   </div>
                 </div>
@@ -190,12 +149,12 @@ export function Footer() {
                     <Phone className="size-4" aria-hidden="true" />
                   </div>
                   <div className="pt-1 min-w-0">
-                    <div className="text-[11px] font-semibold uppercase tracking-widest text-neutral-500 mb-0.5">
+                    <div className="text-[11px] font-semibold uppercase tracking-widest text-neutral-500 mb-1">
                       Call
                     </div>
                     <a
                       href={`tel:${SITE_CONFIG.phone.replace(/[^0-9+]/g, "")}`}
-                      className="text-[13.5px] text-neutral-300 hover:text-white min-h-[28px] inline-flex items-center transition-colors duration-200"
+                      className="text-[13.5px] text-neutral-300 hover:text-white/90 min-h-[28px] inline-flex items-center transition-colors duration-200"
                     >
                       {instituteInfo.contact.phone}
                     </a>
@@ -206,12 +165,12 @@ export function Footer() {
                     <Mail className="size-4" aria-hidden="true" />
                   </div>
                   <div className="pt-1 min-w-0">
-                    <div className="text-[11px] font-semibold uppercase tracking-widest text-neutral-500 mb-0.5">
+                    <div className="text-[11px] font-semibold uppercase tracking-widest text-neutral-500 mb-1">
                       Email
                     </div>
                     <a
                       href={`mailto:${instituteInfo.contact.email}`}
-                      className="text-[13.5px] text-neutral-300 hover:text-white break-all min-h-[28px] inline-flex items-center transition-colors duration-200"
+                      className="text-[13.5px] text-neutral-300 hover:text-white/90 break-all min-h-[28px] inline-flex items-center transition-colors duration-200"
                     >
                       {instituteInfo.contact.email}
                     </a>
@@ -226,13 +185,13 @@ export function Footer() {
                   <div className="text-[11px] font-semibold uppercase tracking-widest text-neutral-500 mb-1.5">
                     Office Hours
                   </div>
-                  <ul className="space-y-1">
+                  <ul className="space-y-1.5">
                     {instituteInfo.hours.map((h, i) => (
                       <li
                         key={i}
-                        className="flex items-baseline justify-between gap-3 text-[13px]"
+                        className="flex flex-wrap items-center justify-between gap-2 text-[13px]"
                       >
-                        <span className="font-medium text-neutral-300 shrink-0">{h.day}</span>
+                        <span className="font-medium text-neutral-300">{h.day}</span>
                         <span className="text-neutral-500 text-right">{h.time}</span>
                       </li>
                     ))}
@@ -255,7 +214,7 @@ export function Footer() {
                       target="_blank"
                       rel="noopener noreferrer nofollow"
                       aria-label={`${SITE_CONFIG.name} on ${s.name}`}
-                      className="group/social flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-neutral-400 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/50 hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/25"
+                      className="group/social flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-neutral-400 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/40 hover:text-white"
                     >
                       <Icon className="size-[17px]" aria-hidden="true" />
                     </a>
@@ -300,18 +259,6 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 sm:mt-14 lg:mt-16">
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-            {stats.map((s, i) => (
-              <StatTile key={i} icon={s.icon} value={s.value} label={s.label} />
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-10 sm:mt-12 lg:mt-14">
-          <NewsletterSignup />
-        </div>
-
         <Separator className="my-7 sm:my-9 border-white/8" />
 
         <div className="flex flex-col-reverse items-start gap-5 sm:gap-6 sm:flex-row sm:items-center sm:justify-between">
@@ -346,12 +293,6 @@ export function Footer() {
           </div>
           <div className="text-[12px] text-neutral-500 leading-relaxed flex flex-wrap items-center gap-2">
             © {year} {SITE_CONFIG.name}. All rights reserved.
-            <Badge
-              variant="outline"
-              className="border-white/10 text-neutral-400 bg-white/[0.02] text-[10px]"
-            >
-              [DRAFT / PLACEHOLDER CONTENT]
-            </Badge>
           </div>
         </div>
       </div>

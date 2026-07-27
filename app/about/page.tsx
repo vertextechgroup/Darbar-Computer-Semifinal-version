@@ -6,13 +6,11 @@ import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/common/Badge";
-import { Separator } from "@/components/ui/separator";
 import {
   Target,
   Eye,
   CheckCircle2,
   UserCircle,
-  Sparkles,
   ArrowRight,
   Award,
   Monitor,

@@ -62,7 +62,7 @@ export default function FAQPage() {
               Still have questions?
             </h2>
             <p className="mt-3 text-neutral-700 max-w-xl mx-auto leading-relaxed">
-              Can't find an answer above? Our team is happy to help. Reach out directly or send us a message anytime.
+              Can&apos;t find an answer above? Our team is happy to help. Reach out directly or send us a message anytime.
             </p>
             <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link href="/contact">

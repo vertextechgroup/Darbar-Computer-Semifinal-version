@@ -5,7 +5,6 @@ import { Star, Quote, ChevronLeft, ChevronRight, UserCircle, CheckCircle2 } from
 import { Card, CardContent } from "@/components/ui/card";
 import { Container } from "@/components/common/Container";
 import { SectionHeading } from "@/components/common/SectionHeading";
-import { Reveal } from "@/components/common/Reveal";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/common/Badge";
 import { cn } from "@/lib/utils";
@@ -38,11 +37,13 @@ export function TestimonialCarousel() {
   const perView = isMobile ? 1 : count >= 3 ? 3 : count >= 2 ? 2 : 1;
   const maxIndex = Math.max(0, count - perView);
 
-  const next = () => setIndex((i) => (i >= maxIndex ? 0 : i + 1));
-  const prev = () => setIndex((i) => (i <= 0 ? maxIndex : i - 1));
+  const next = React.useCallback(() => setIndex((i) => (i >= maxIndex ? 0 : i + 1)), [maxIndex]);
+  const prev = React.useCallback(() => setIndex((i) => (i <= 0 ? maxIndex : i - 1)), [maxIndex]);
 
   React.useEffect(() => {
-    const id = setInterval(next, 6000);
+    const id = setInterval(() => {
+      setIndex((i) => (i >= maxIndex ? 0 : i + 1));
+    }, 6000);
     return () => clearInterval(id);
   }, [maxIndex]);
 
@@ -111,7 +112,7 @@ export function TestimonialCarousel() {
                       ))}
                     </div>
                     <blockquote className="text-neutral-800 leading-relaxed text-sm sm:text-[15px] text-pretty">
-                      "{t.quote}"
+                      &ldquo;{t.quote}&rdquo;
                     </blockquote>
                     <div className="mt-4 sm:mt-5 pt-4 sm:pt-5 border-t border-neutral-100 flex items-center justify-between gap-3">
                       <div className="flex items-center gap-3 min-w-0">
