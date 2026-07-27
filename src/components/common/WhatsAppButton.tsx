@@ -8,13 +8,34 @@ import { cn } from "@/lib/utils";
 export function WhatsAppButton() {
   const [visible, setVisible] = React.useState(false);
   const [open, setOpen] = React.useState(false);
+  const [isMobileViewport, setIsMobileViewport] = React.useState<boolean>(() =>
+    typeof window !== "undefined" ? window.innerWidth < 640 : false
+  );
 
   React.useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 200);
+    let rafId: number | null = null;
+    const onResize = () => {
+      if (rafId !== null) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = null;
+        setIsMobileViewport(window.innerWidth < 640);
+      });
+    };
+    onResize();
+    window.addEventListener("resize", onResize, { passive: true });
+    return () => {
+      window.removeEventListener("resize", onResize);
+      if (rafId !== null) window.cancelAnimationFrame(rafId);
+    };
+  }, []);
+
+  React.useEffect(() => {
+    const threshold = isMobileViewport ? 350 : 200;
+    const onScroll = () => setVisible(window.scrollY > threshold);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isMobileViewport]);
 
   const rawWhatsApp = instituteInfo.contact.whatsapp.replace(/[^0-9+]/g, "");
   const waNumber = rawWhatsApp.replace(/^\+/, "");
@@ -30,13 +51,17 @@ export function WhatsAppButton() {
     <>
       <div
         className={cn(
-          "fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-3 pointer-events-none transition-all duration-500 ease-out",
+          "fixed z-40 flex flex-col items-end gap-3 pointer-events-none transition-all duration-500 ease-out",
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
         )}
+        style={{
+          right: "max(1.25rem, env(safe-area-inset-right))",
+          bottom: "max(1.25rem, env(safe-area-inset-bottom))",
+        }}
       >
         <div
           className={cn(
-            "pointer-events-auto max-w-[320px] sm:max-w-[340px] bg-white rounded-2xl shadow-2xl shadow-neutral-900/10 border border-neutral-200 overflow-hidden transition-all duration-300 ease-out origin-bottom-right",
+            "pointer-events-auto max-w-[320px] sm:max-w-[340px] bg-white rounded-2xl shadow-2xl shadow-neutral-900/10 border border-neutral-200 overflow-hidden transition-all duration-300 ease-out origin-bottom-right hidden sm:block",
             open ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-2 pointer-events-none"
           )}
         >
@@ -72,26 +97,36 @@ export function WhatsAppButton() {
           </div>
         </div>
 
-        <button
-          type="button"
-          onClick={() => setOpen((o) => !o)}
-          aria-label={open ? "Close WhatsApp chat" : "Open WhatsApp chat"}
-          aria-expanded={open}
+        <a
+          href={isMobileViewport ? waLink : "#"}
+          target={isMobileViewport ? "_blank" : undefined}
+          rel={isMobileViewport ? "noopener noreferrer" : undefined}
+          onClick={(e) => {
+            if (!isMobileViewport) {
+              e.preventDefault();
+              setOpen((o) => !o);
+            }
+          }}
+          aria-label={open ? "Close WhatsApp chat" : isMobileViewport ? "Chat on WhatsApp" : "Open WhatsApp chat"}
+          aria-expanded={isMobileViewport ? undefined : open}
           className={cn(
             "pointer-events-auto relative flex items-center justify-center rounded-full text-white shadow-xl shadow-[#25D366]/30 transition-all duration-300 ease-out hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/30",
-            open
-              ? "w-12 h-12 bg-neutral-800 hover:bg-neutral-700 shadow-neutral-900/30"
-              : "w-14 h-14 bg-[#25D366] hover:bg-[#128C7E]"
+            "h-12 w-12 sm:h-14 sm:w-14",
+            open && !isMobileViewport
+              ? "bg-neutral-800 hover:bg-neutral-700 shadow-neutral-900/30"
+              : "bg-[#25D366] hover:bg-[#128C7E]"
           )}
         >
-          <span
-            className={cn(
-              "absolute inset-0 rounded-full animate-ping opacity-30",
-              open ? "bg-neutral-500" : "bg-[#25D366]"
-            )}
-            aria-hidden="true"
-          />
-          {open ? (
+          {!isMobileViewport && (
+            <span
+              className={cn(
+                "absolute inset-0 rounded-full animate-ping opacity-30",
+                open ? "bg-neutral-500" : "bg-[#25D366]"
+              )}
+              aria-hidden="true"
+            />
+          )}
+          {open && !isMobileViewport ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="22"
@@ -108,9 +143,9 @@ export function WhatsAppButton() {
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           ) : (
-            <MessageCircle className="size-7 relative" aria-hidden="true" />
+            <MessageCircle className={cn("relative", isMobileViewport ? "size-6" : "size-7")} aria-hidden="true" />
           )}
-        </button>
+        </a>
       </div>
     </>
   );

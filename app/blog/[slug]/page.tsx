@@ -219,7 +219,7 @@ export default async function BlogPostPage({
               </div>
             </div>
 
-            <aside className="lg:sticky lg:top-24 space-y-6 self-start">
+            <aside className="lg:sticky lg:top-[calc(var(--header-h)+2rem)] space-y-6 self-start">
               <Card>
                 <CardContent className="p-5">
                   <h3 className="font-semibold text-neutral-900 mb-2">Tags</h3>

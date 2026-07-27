@@ -158,11 +158,11 @@ export default async function CourseDetailPage({
               </div>
 
               <Tabs defaultValue="overview">
-                <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 sm:w-auto sm:inline-flex">
-                  <TabsTrigger value="overview">Overview</TabsTrigger>
-                  <TabsTrigger value="skills">Skills &amp; Tools</TabsTrigger>
-                  <TabsTrigger value="portfolio">Portfolio &amp; Career</TabsTrigger>
-                  <TabsTrigger value="fees">Fees &amp; Batches</TabsTrigger>
+                <TabsList className="flex w-full overflow-x-auto no-scrollbar gap-2 snap-x snap-mandatory sm:w-auto sm:grid sm:grid-cols-4 sm:overflow-visible sm:gap-0">
+                  <TabsTrigger value="overview" className="snap-start shrink-0 whitespace-nowrap">Overview</TabsTrigger>
+                  <TabsTrigger value="skills" className="snap-start shrink-0 whitespace-nowrap">Skills &amp; Tools</TabsTrigger>
+                  <TabsTrigger value="portfolio" className="snap-start shrink-0 whitespace-nowrap">Portfolio &amp; Career</TabsTrigger>
+                  <TabsTrigger value="fees" className="snap-start shrink-0 whitespace-nowrap">Fees &amp; Batches</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="overview">
@@ -401,7 +401,7 @@ export default async function CourseDetailPage({
             </div>
 
             <aside className="lg:col-span-1">
-              <div className="lg:sticky lg:top-24 space-y-5">
+              <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)] space-y-5">
                 <Card className="shadow-md overflow-hidden">
                   <div className="h-1.5 gradient-primary w-full" />
                   <CardContent className="p-6 space-y-5">

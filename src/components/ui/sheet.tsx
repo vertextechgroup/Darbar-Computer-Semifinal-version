@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -69,7 +70,13 @@ export function SheetContent({
   ...props
 }: SheetContentProps) {
   const { open, setOpen } = useSheetCtx("SheetContent");
-  if (!open) return null;
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!open || !mounted) return null;
 
   const sideClasses = {
     left: "left-0 top-0 h-full w-3/4 max-w-sm border-r",
@@ -78,8 +85,8 @@ export function SheetContent({
     bottom: "bottom-0 left-0 w-full max-h-[90vh] border-t",
   };
 
-  return (
-    <div role="dialog" aria-modal="true" className="fixed inset-0 z-50">
+  const dialog = (
+    <div role="dialog" aria-modal="true" className="fixed inset-0 z-[90]">
       <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200"
         onClick={() => setOpen(false)}
@@ -106,6 +113,8 @@ export function SheetContent({
       </div>
     </div>
   );
+
+  return createPortal(dialog, document.body);
 }
 
 export function SheetHeader({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {

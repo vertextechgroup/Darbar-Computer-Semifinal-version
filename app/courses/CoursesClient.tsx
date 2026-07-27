@@ -117,6 +117,8 @@ function CoursesClientPage() {
   }, [search, category, level]);
 
   const hasActiveFilters = category !== "All" || level !== "All" || search !== "";
+  const activeFilterCount =
+    (category !== "All" ? 1 : 0) + (level !== "All" ? 1 : 0) + (search !== "" ? 1 : 0);
   const clearFilters = () => {
     setSearch("");
     setCategory("All");
@@ -167,7 +169,7 @@ function CoursesClientPage() {
 
       <section className="py-8 sm:py-10">
         <Container size="xl">
-          <div className="sticky top-[73px] z-20 -mx-4 px-4 pb-4 bg-gradient-to-b from-background via-background to-transparent">
+          <div className="sticky top-[var(--header-h)] z-20 -mx-4 px-4 pb-4 bg-gradient-to-b from-background via-background to-transparent">
             <div className="rounded-xl border border-neutral-200 bg-white/95 backdrop-blur-sm shadow-sm">
               <div className="flex flex-col gap-3 p-3 sm:p-4">
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3">
@@ -218,18 +220,71 @@ function CoursesClientPage() {
 
                   <Sheet open={filtersOpen} onOpenChange={setFiltersOpen}>
                     <SheetTrigger>
-                      <Button variant="outline" className="md:hidden w-full">
+                      <Button variant="outline" className="md:hidden w-full relative">
                         <SlidersHorizontal className="size-4" />
                         Filters
+                        {activeFilterCount > 0 && (
+                          <span className="ml-1.5 inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full bg-primary text-[11px] font-bold text-primary-foreground">
+                            {activeFilterCount}
+                          </span>
+                        )}
                       </Button>
                     </SheetTrigger>
                     <SheetContent side="bottom" className="h-[80vh] rounded-t-2xl">
                       <SheetHeader>
-                        <SheetTitle>Course Filters</SheetTitle>
+                        <SheetTitle className="flex items-center justify-between">
+                          <span>Course Filters</span>
+                          {activeFilterCount > 0 && (
+                            <span className="inline-flex items-center justify-center min-w-[24px] h-6 px-2 rounded-full bg-primary/10 text-xs font-bold text-primary">
+                              {activeFilterCount} active
+                            </span>
+                          )}
+                        </SheetTitle>
                       </SheetHeader>
-                      <div className="p-4 space-y-5">
+                      <div className="p-4 pb-6 space-y-5 overflow-y-auto">
+                        {hasActiveFilters && (
+                          <div className="flex flex-wrap gap-1.5 p-3 rounded-xl bg-neutral-50 border border-neutral-100">
+                            {category !== "All" && (
+                              <Badge variant="outline" className="gap-1.5 text-xs">
+                                {category}
+                                <button
+                                  onClick={() => updateCategory("All")}
+                                  aria-label={`Remove ${category} filter`}
+                                  className="ml-0.5 hover:text-destructive"
+                                >
+                                  <X className="size-3" />
+                                </button>
+                              </Badge>
+                            )}
+                            {level !== "All" && (
+                              <Badge variant="outline" className="gap-1.5 text-xs">
+                                {level}
+                                <button
+                                  onClick={() => updateLevel("All")}
+                                  aria-label={`Remove ${level} filter`}
+                                  className="ml-0.5 hover:text-destructive"
+                                >
+                                  <X className="size-3" />
+                                </button>
+                              </Badge>
+                            )}
+                            {search !== "" && (
+                              <Badge variant="outline" className="gap-1.5 text-xs max-w-[160px]">
+                                <Search className="size-3 shrink-0" />
+                                <span className="truncate">{search.slice(0, 16)}{search.length > 16 ? "…" : ""}</span>
+                                <button
+                                  onClick={() => updateSearch("")}
+                                  aria-label="Clear search filter"
+                                  className="ml-0.5 shrink-0 hover:text-destructive"
+                                >
+                                  <X className="size-3" />
+                                </button>
+                              </Badge>
+                            )}
+                          </div>
+                        )}
                         <div className="space-y-2">
-                          <label className="text-sm font-medium">Category</label>
+                          <label className="text-sm font-semibold text-neutral-900">Category</label>
                           <Select
                             value={category}
                             onChange={(e) => updateCategory(e.target.value)}
@@ -237,26 +292,34 @@ function CoursesClientPage() {
                           />
                         </div>
                         <div className="space-y-2">
-                          <label className="text-sm font-medium">Level</label>
+                          <label className="text-sm font-semibold text-neutral-900">Level</label>
                           <Select
                             value={level}
                             onChange={(e) => updateLevel(e.target.value)}
                             options={allLevels.map((l) => ({ value: l, label: l }))}
                           />
                         </div>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-neutral-200 bg-white flex flex-col sm:flex-row gap-2.5">
                         {hasActiveFilters && (
                           <Button
                             variant="outline"
-                            className="w-full"
                             onClick={() => {
                               clearFilters();
-                              setFiltersOpen(false);
                             }}
+                            className="w-full sm:w-auto h-12"
                           >
                             <X className="size-4" />
-                            Clear All Filters
+                            Clear All
                           </Button>
                         )}
+                        <Button
+                          onClick={() => setFiltersOpen(false)}
+                          className={`flex-1 h-12 ${!hasActiveFilters ? "sm:w-full" : ""}`}
+                        >
+                          <CheckCircle2 className="size-4" />
+                          Show {filtered.length} Results
+                        </Button>
                       </div>
                     </SheetContent>
                   </Sheet>

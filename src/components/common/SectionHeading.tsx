@@ -62,7 +62,7 @@ export function SectionHeading({
       <h2
         style={{ transitionDelay: eyebrow ? "200ms" : "100ms", opacity: inView ? 1 : 0 }}
         className={cn(
-          "text-2xl sm:text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-[-0.02em] text-balance leading-[1.12] sm:leading-[1.08] transition-all duration-500 ease-out",
+          "text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-[-0.02em] text-balance leading-[1.12] sm:leading-[1.08] transition-all duration-500 ease-out",
           isDark
             ? "bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/70"
             : "bg-clip-text text-transparent bg-gradient-to-br from-secondary via-[#0F3D5E] to-primary"
@@ -74,7 +74,7 @@ export function SectionHeading({
         <p
           style={{ transitionDelay: eyebrow ? "320ms" : "220ms", opacity: inView ? 1 : 0 }}
           className={cn(
-            "text-[15px] sm:text-base sm:text-lg text-pretty leading-7 sm:leading-relaxed transition-opacity duration-500 ease-out max-w-2xl",
+            "text-[15px] sm:text-lg text-pretty leading-7 sm:leading-relaxed transition-opacity duration-500 ease-out max-w-2xl",
             align === "center" && "mx-auto",
             isDark ? "text-neutral-300" : "text-neutral-600"
           )}

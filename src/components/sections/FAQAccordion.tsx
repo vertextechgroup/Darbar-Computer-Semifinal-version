@@ -34,7 +34,7 @@ export function FAQAccordion({ compact = false }: FAQAccordionProps) {
                 <h3 className="text-sm font-semibold text-primary mb-2.5 sm:mb-3 uppercase tracking-wider">
                   {cat.category}
                 </h3>
-                <Accordion type="single" className="rounded-2xl border border-neutral-200 bg-white p-1.5 sm:p-2 sm:p-3 shadow-sm transition-all duration-300 hover:shadow-md">
+                <Accordion type="single" className="rounded-2xl border border-neutral-200 bg-white p-1.5 sm:p-3 shadow-sm transition-all duration-300 hover:shadow-md">
                   {cat.items.map((item) => (
                     <AccordionItem key={item.id} value={item.id}>
                       <AccordionTrigger className="text-[14px] sm:text-[15px] font-medium text-neutral-900 py-3 sm:py-3.5 px-2.5 sm:px-3 transition-colors duration-200 hover:text-primary text-left leading-snug">

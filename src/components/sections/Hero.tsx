@@ -46,7 +46,7 @@ export function Hero() {
 
             <h1
               id="hero-heading"
-              className="text-[34px] sm:text-4xl sm:text-[44px] lg:text-[62px] xl:text-[68px] font-extrabold tracking-[-0.025em] text-neutral-900 text-balance leading-[1.1] sm:leading-[1.06] lg:leading-[1.02]"
+              className="text-[34px] sm:text-[44px] lg:text-[62px] xl:text-[68px] font-extrabold tracking-[-0.025em] text-neutral-900 text-balance leading-[1.1] sm:leading-[1.06] lg:leading-[1.02]"
             >
               <span className="bg-clip-text text-transparent bg-gradient-to-br from-secondary via-[#0F3D5E] to-primary">
                 Advance Your Career
@@ -81,7 +81,7 @@ export function Hero() {
             </div>
 
             <div className="mt-8 sm:mt-10 space-y-4 sm:space-y-5">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-3">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                 <div className="flex -space-x-2 sm:-space-x-3">
                   {[
                     "https://images.pexels.com/photos/33261958/pexels-photo-33261958.jpeg?auto=compress&cs=tinysrgb&w=100",
@@ -119,10 +119,10 @@ export function Hero() {
               </div>
             </div>
 
-            <dl className="mt-8 sm:mt-10 grid grid-cols-2 gap-3 sm:gap-4 sm:gap-6 border-t border-neutral-100 pt-6 sm:pt-8">
+            <dl className="mt-8 sm:mt-10 grid grid-cols-2 gap-3 sm:gap-6 border-t border-neutral-100 pt-6 sm:pt-8">
               {instituteInfo.stats.slice(0, 4).map((s) => (
                 <div key={s.label} className="flex flex-col">
-                  <dd className="text-xl sm:text-2xl sm:text-3xl font-extrabold tracking-tight text-secondary">
+                  <dd className="text-xl sm:text-3xl font-extrabold tracking-tight text-secondary">
                     {s.value}
                     {s.isPlaceholder && <span className="text-xs align-super text-neutral-400">*</span>}
                   </dd>
@@ -149,7 +149,7 @@ export function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary/40 via-secondary/5 to-transparent" aria-hidden="true" />
               </div>
 
-              <div className="absolute -left-2 sm:-left-4 sm:-left-6 top-[12%] sm:top-16 sm:top-20 bg-white rounded-2xl shadow-xl shadow-neutral-900/10 border border-neutral-100 p-3.5 sm:p-4 sm:p-5 w-[190px] sm:w-[220px] sm:w-[260px] backdrop-blur-sm">
+              <div className="absolute -left-2 sm:-left-6 lg:-left-8 top-[12%] sm:top-[14%] lg:top-20 bg-white rounded-2xl shadow-xl shadow-neutral-900/10 border border-neutral-100 p-3.5 sm:p-5 backdrop-blur-sm w-[190px] sm:w-[260px]">
                 <div className="flex items-start gap-2.5 sm:gap-3">
                   <div className="shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-primary/10 flex items-center justify-center">
                     <Users className="size-4 sm:size-5 text-primary" aria-hidden="true" />
@@ -161,7 +161,7 @@ export function Hero() {
                 </div>
               </div>
 
-              <div className="absolute -right-2 sm:-right-4 sm:-right-6 bottom-[22%] sm:bottom-24 sm:bottom-28 bg-white rounded-2xl shadow-xl shadow-neutral-900/10 border border-neutral-100 p-3.5 sm:p-4 sm:p-5 w-[200px] sm:w-[230px] sm:w-[270px] backdrop-blur-sm">
+              <div className="absolute -right-2 sm:-right-6 lg:-right-8 bottom-[22%] sm:bottom-[18%] lg:bottom-28 bg-white rounded-2xl shadow-xl shadow-neutral-900/10 border border-neutral-100 p-3.5 sm:p-5 backdrop-blur-sm w-[200px] sm:w-[270px]">
                 <div className="flex items-start gap-2.5 sm:gap-3">
                   <div className="shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-secondary/10 flex items-center justify-center">
                     <Award className="size-4 sm:size-5 text-secondary" aria-hidden="true" />
@@ -173,8 +173,8 @@ export function Hero() {
                 </div>
               </div>
 
-              <div className="absolute -bottom-3 sm:-bottom-4 sm:-bottom-6 left-1/2 -translate-x-1/2 bg-white rounded-2xl shadow-xl shadow-neutral-900/10 border border-neutral-100 px-3.5 sm:px-4 sm:px-5 py-2.5 sm:py-3 sm:py-3.5 backdrop-blur-sm w-[92%] sm:w-auto">
-                <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 sm:gap-5">
+              <div className="absolute -bottom-3 sm:-bottom-6 left-1/2 -translate-x-1/2 bg-white rounded-2xl shadow-xl shadow-neutral-900/10 border border-neutral-100 px-3.5 sm:px-5 py-2.5 sm:py-3.5 backdrop-blur-sm w-[92%] sm:w-auto">
+                <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-5">
                   {courseIcons.map(({ icon: Icon, label, color }) => (
                     <div key={label} className="flex items-center gap-1.5 sm:gap-2">
                       <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl flex items-center justify-center ${color}`}>

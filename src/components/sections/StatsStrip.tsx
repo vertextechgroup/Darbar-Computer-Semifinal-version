@@ -11,18 +11,18 @@ export function StatsStrip() {
         <h2 id="stats-heading" className="sr-only">
           Institute at a Glance
         </h2>
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-8">
           {instituteInfo.stats.map((stat, i) => {
             const Icon = icons[i % icons.length];
             return (
               <div
                 key={stat.label}
-                className="group flex flex-col items-center text-center rounded-2xl bg-white p-4 sm:p-5 sm:p-6 shadow-sm border border-neutral-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-primary/20"
+                className="group flex flex-col items-center text-center rounded-2xl bg-white p-4 sm:p-6 shadow-sm border border-neutral-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-primary/20"
               >
                 <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300 mb-2 sm:mb-3">
                   <Icon className="size-5 sm:size-6" aria-hidden="true" />
                 </div>
-                <div className="text-2xl sm:text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900">
+                <div className="text-2xl sm:text-4xl font-extrabold tracking-tight text-neutral-900">
                   {stat.value}
                   {stat.isPlaceholder && <span className="text-xs sm:text-sm align-super text-neutral-400 ml-0.5">*</span>}
                 </div>

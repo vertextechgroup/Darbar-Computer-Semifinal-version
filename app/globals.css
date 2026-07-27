@@ -94,6 +94,35 @@
   --color-neutral-700: #3f3f46;
   --color-neutral-800: #27272a;
   --color-neutral-900: #18181b;
+
+  --text-hero-xs: 2.125rem;
+  --text-hero-sm: 2.75rem;
+  --text-hero-lg: 3.875rem;
+  --text-hero-xl: 4.25rem;
+
+  --text-h2-xs: 1.625rem;
+  --text-h2-sm: 2rem;
+  --text-h2-lg: 2.5rem;
+
+  --text-h3-xs: 1.25rem;
+  --text-h3-sm: 1.375rem;
+  --text-h3-lg: 1.5rem;
+
+  --text-body-xs: 0.9375rem;
+  --text-body-sm: 1rem;
+  --text-body-lg: 1rem;
+
+  --text-caption-xs: 0.75rem;
+  --text-caption-sm: 0.8125rem;
+  --text-caption-lg: 0.8125rem;
+
+  --space-section-xs: 4rem;
+  --space-section-md: 5rem;
+
+  --gap-tight: 0.75rem;
+  --gap-related: 1rem;
+  --gap-grid: 1.5rem;
+  --gap-major: 2.5rem;
 }
 
 @layer base {
@@ -118,6 +147,12 @@
     --input: #e4e4e7;
     --ring: #15678E;
     --radius: 0.5rem;
+    --header-h: 57px;
+  }
+  @media (min-width: 640px) {
+    :root {
+      --header-h: 65px;
+    }
   }
 
   * {
@@ -206,5 +241,12 @@
   .grid-pattern {
     background-image: radial-gradient(circle at 1px 1px, rgba(23,43,72,0.12) 1px, transparent 0);
     background-size: 24px 24px;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }

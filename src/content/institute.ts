@@ -18,7 +18,7 @@ export const instituteInfo = {
     email: "info@darbarcomputer.edu.np",
     address: "[PLACEHOLDER: Full Street Address, Kathmandu, Nepal]",
     mapEmbed:
-      '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.940!2d85.3!3d27.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sPLACEHOLDER!2sPLACEHOLDER!5e0!3m2!1sen!2snp!4vPLACEHOLDER" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
+      '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.940!2d85.3!3d27.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sPLACEHOLDER!2sPLACEHOLDER!5e0!3m2!1sen!2snp!4vPLACEHOLDER" class="h-full w-full absolute inset-0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
   },
   hours: [
     { day: "Sunday – Friday", time: "7:00 AM – 8:00 PM" },

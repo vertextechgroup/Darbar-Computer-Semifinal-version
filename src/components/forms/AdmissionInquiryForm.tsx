@@ -235,6 +235,7 @@ export function AdmissionInquiryForm() {
             id="email"
             type="email"
             autoComplete="email"
+            inputMode="email"
             placeholder="you@example.com"
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? "email-error" : undefined}

@@ -58,7 +58,7 @@ export function GalleryClient() {
             onValueChange={(v) => setActiveCategory(v as GalleryCategory)}
             className="w-full"
           >
-            <div className="sticky top-[73px] z-20 -mx-4 px-4 pb-4 bg-gradient-to-b from-background via-background to-transparent">
+            <div className="sticky top-[var(--header-h)] z-20 -mx-4 px-4 pb-4 bg-gradient-to-b from-background via-background to-transparent">
               <TabsList className="flex-wrap h-auto gap-1 p-2 min-h-[48px]">
                 {GALLERY_CATEGORIES.map((cat) => (
                   <TabsTrigger key={cat} value={cat}>

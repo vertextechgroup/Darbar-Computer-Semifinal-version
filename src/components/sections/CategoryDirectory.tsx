@@ -81,7 +81,7 @@ export function CategoryDirectory() {
           className="mb-10 sm:mb-12"
         />
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 sm:gap-3 sm:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 sm:gap-4">
           {COURSE_CATEGORIES.map((cat, i) => {
             const Icon = categoryIconMap[cat] ?? Monitor;
             const count = categoryCounts[cat] ?? 0;
@@ -92,7 +92,7 @@ export function CategoryDirectory() {
                 <Link
                   href={`/courses?category=${encodeURIComponent(cat)}`}
                   className={cn(
-                    "group relative flex flex-col items-start gap-2.5 sm:gap-3 rounded-2xl border border-neutral-200/80 bg-white p-3 sm:p-4 sm:p-5 shadow-sm h-full min-h-[120px] sm:min-h-[140px]",
+                    "group relative flex flex-col items-start gap-2.5 sm:gap-3 rounded-2xl border border-neutral-200/80 bg-white p-3 sm:p-5 shadow-sm h-full min-h-[120px] sm:min-h-[140px]",
                     "hover:shadow-lg hover:shadow-primary/5 hover:border-primary/30 hover:-translate-y-0.5",
                     "transition-all duration-300 ease-out"
                   )}

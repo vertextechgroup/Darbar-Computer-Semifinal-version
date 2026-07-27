@@ -14,13 +14,25 @@ import { testimonials } from "@/content/testimonials";
 export function TestimonialCarousel() {
   const [index, setIndex] = React.useState(0);
   const count = testimonials.length;
-  const [isMobile, setIsMobile] = React.useState(false);
+  const [isMobile, setIsMobile] = React.useState<boolean>(() =>
+    typeof window !== "undefined" ? window.innerWidth < 768 : false
+  );
 
   React.useEffect(() => {
-    const onResize = () => setIsMobile(window.innerWidth < 768);
+    let rafId: number | null = null;
+    const onResize = () => {
+      if (rafId !== null) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = null;
+        setIsMobile(window.innerWidth < 768);
+      });
+    };
     onResize();
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+    window.addEventListener("resize", onResize, { passive: true });
+    return () => {
+      window.removeEventListener("resize", onResize);
+      if (rafId !== null) window.cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const perView = isMobile ? 1 : count >= 3 ? 3 : count >= 2 ? 2 : 1;
@@ -37,7 +49,7 @@ export function TestimonialCarousel() {
   return (
     <section aria-labelledby="testimonial-heading" className="section-padding bg-secondary">
       <Container size="xl">
-        <div className="flex flex-col sm:flex-row items-center gap-4 sm:justify-between mb-8 sm:mb-10 sm:mb-12">
+        <div className="flex flex-col sm:flex-row items-center gap-4 sm:justify-between mb-8 sm:mb-12">
           <div className="flex-1">
             <SectionHeading
               eyebrow="Student Stories"
@@ -79,12 +91,12 @@ export function TestimonialCarousel() {
               <div
                 key={t.id}
                 className={cn(
-                  "shrink-0 px-1.5 sm:px-2 sm:px-3 py-1",
+                  "shrink-0 px-1.5 sm:px-3 py-1",
                   isMobile ? "w-full" : perView === 3 ? "w-1/3" : "w-1/2"
                 )}
               >
                 <Card className="h-full border-white/10 bg-white/95">
-                  <CardContent className="p-5 sm:p-6 sm:p-7">
+                  <CardContent className="p-5 sm:p-7">
                     <Quote className="size-7 sm:size-8 text-primary/40 mb-3 sm:mb-4" aria-hidden="true" />
                     <div className="flex gap-0.5 mb-2.5 sm:mb-3" aria-label={`Rated ${t.rating} out of 5 stars`}>
                       {Array.from({ length: 5 }).map((_, i) => (

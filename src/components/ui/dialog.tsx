@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -73,13 +74,19 @@ export function DialogContent({
   children,
 }: React.HTMLAttributes<HTMLDivElement>) {
   const { open, setOpen } = useDialogCtx("DialogContent");
-  if (!open) return null;
+  const [mounted, setMounted] = React.useState(false);
 
-  return (
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!open || !mounted) return null;
+
+  const dialog = (
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 flex items-center justify-center"
+      className="fixed inset-0 z-[90] flex items-center justify-center"
     >
       <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200"
@@ -106,6 +113,8 @@ export function DialogContent({
       </div>
     </div>
   );
+
+  return createPortal(dialog, document.body);
 }
 
 export function DialogHeader({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {

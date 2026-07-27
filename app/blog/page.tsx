@@ -36,7 +36,7 @@ export default function BlogPage() {
       </div>
 
       {tags.length > 0 && (
-        <section className="py-6 border-b border-neutral-200 bg-white sticky top-[73px] z-20">
+        <section className="py-6 border-b border-neutral-200 bg-white sticky top-[var(--header-h)] z-20">
           <Container size="xl">
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="default" className="cursor-default">

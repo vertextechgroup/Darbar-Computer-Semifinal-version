@@ -6,9 +6,9 @@ import { SITE_CONFIG } from "@/lib/constants";
 
 export function CTABanner() {
   return (
-    <section aria-labelledby="cta-heading" className="py-10 sm:py-12 sm:py-16 bg-white">
+    <section aria-labelledby="cta-heading" className="py-10 sm:py-16 bg-white">
       <Container size="xl">
-        <div className="relative isolate overflow-hidden rounded-2xl sm:rounded-3xl gradient-primary px-5 sm:px-6 sm:px-10 py-10 sm:py-12 sm:py-16 lg:px-16 text-white shadow-xl shadow-primary/20">
+        <div className="relative isolate overflow-hidden rounded-2xl sm:rounded-3xl gradient-primary px-5 sm:px-10 py-10 sm:py-16 lg:px-16 text-white shadow-xl shadow-primary/20">
           <div className="absolute inset-0 grid-pattern opacity-20" aria-hidden="true" />
           <div
             className="absolute -top-24 -right-24 h-48 w-48 sm:h-64 sm:w-64 rounded-full bg-secondary/20 blur-3xl"
@@ -22,11 +22,11 @@ export function CTABanner() {
             <div>
               <h2
                 id="cta-heading"
-                className="text-2xl sm:text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-balance"
+                className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-balance"
               >
                 Ready to Start Your Course?
               </h2>
-              <p className="mt-3 sm:mt-4 text-sm sm:text-base sm:text-lg text-white/85 leading-relaxed max-w-xl">
+              <p className="mt-3 sm:mt-4 text-sm sm:text-lg text-white/85 leading-relaxed max-w-xl">
                 Enrollment is open for upcoming batches. Book a free demo or talk to our counselor today — no commitments, just guidance.
               </p>
             </div>

@@ -37,7 +37,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 w-full border-b border-neutral-200/70 bg-white/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/60 transition-all duration-200",
+        "sticky top-0 z-[80] w-full border-b border-neutral-200/70 bg-white/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/60 transition-all duration-200",
         scrolled && "shadow-sm"
       )}
       role="banner"

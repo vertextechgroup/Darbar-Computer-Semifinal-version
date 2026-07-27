@@ -175,7 +175,7 @@ export default async function EventDetailPage({
             </div>
 
             <aside className="lg:col-span-1">
-              <div className="lg:sticky lg:top-24 space-y-5">
+              <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)] space-y-5">
                 <Card className="shadow-md overflow-hidden">
                   <div className="h-1.5 gradient-primary w-full" />
                   <CardContent className="p-6 space-y-5">

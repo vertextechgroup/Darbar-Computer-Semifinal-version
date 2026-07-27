@@ -2,12 +2,11 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Clock, CalendarDays, ArrowUpRight, Wallet, Users, Award, Briefcase, Monitor } from "lucide-react";
+import { Clock, CalendarDays, ArrowUpRight, Users, Award, Briefcase, Monitor } from "lucide-react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/common/Badge";
 import { Button } from "@/components/ui/button";
 import type { Course } from "@/types/course";
-import { formatFee } from "@/content/courses";
 import { cn } from "@/lib/utils";
 
 const courseIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -122,14 +121,13 @@ export function CourseCard({ course }: { course: Course }) {
       </CardContent>
 
       <CardFooter className="pt-2 pb-5 flex items-center justify-between gap-3 border-t border-neutral-100 mt-2">
-        <div className="flex flex-col min-w-0">
-          <div className="flex items-baseline gap-1.5">
-            <Wallet className="size-3.5 text-neutral-400" aria-hidden="true" />
-            <span className="text-lg font-bold text-neutral-900">{formatFee(course.feeNPR)}</span>
-          </div>
-          {course.feeNote && (
-            <span className="text-[11px] text-neutral-500">{course.feeNote}</span>
-          )}
+        <div className="flex flex-col min-w-0 mr-2">
+          <span className="text-[11px] font-semibold uppercase tracking-wider text-neutral-400 mb-0.5">
+            Next Batch
+          </span>
+          <span className="text-sm font-semibold text-neutral-900 line-clamp-1">
+            {course.newBatch}
+          </span>
         </div>
         <Link href={`/courses/${course.slug}`} className="shrink-0 group/btn">
           <Button size="sm" className="w-full">

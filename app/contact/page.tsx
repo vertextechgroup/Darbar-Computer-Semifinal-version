@@ -122,27 +122,29 @@ export default function ContactPage() {
           </div>
 
           <div className="rounded-2xl border border-neutral-200 overflow-hidden mb-10">
-            <div className="bg-neutral-100 min-h-[360px] flex items-center justify-center relative">
+            <div className="bg-neutral-100 relative aspect-[4/3] sm:aspect-[16/9]">
               <div
                 className="absolute inset-0"
                 dangerouslySetInnerHTML={{
                   __html: instituteInfo.contact.mapEmbed,
                 }}
               />
-              <div className="relative z-10 text-center p-6 rounded-xl bg-white/90 backdrop-blur-sm">
-                <Badge variant="outline" className="mb-3">PLACEHOLDER MAP EMBED</Badge>
-                <p className="text-sm font-medium text-neutral-900">
-                  {instituteInfo.contact.address}
-                </p>
-                <a
-                  href="https://www.google.com/maps"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center gap-1 text-sm text-primary hover:underline font-medium"
-                >
-                  Open in Google Maps
-                  <ArrowRight className="size-3.5" />
-                </a>
+              <div className="absolute inset-0 z-10 flex items-center justify-center p-4 sm:p-6">
+                <div className="text-center p-5 sm:p-6 rounded-xl bg-white/90 backdrop-blur-sm max-w-md">
+                  <Badge variant="outline" className="mb-3">PLACEHOLDER MAP EMBED</Badge>
+                  <p className="text-sm font-medium text-neutral-900 leading-relaxed">
+                    {instituteInfo.contact.address}
+                  </p>
+                  <a
+                    href="https://www.google.com/maps"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex items-center gap-1 text-sm text-primary hover:underline font-medium"
+                  >
+                    Open in Google Maps
+                    <ArrowRight className="size-3.5" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

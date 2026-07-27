@@ -55,7 +55,7 @@ export default function AboutPage() {
     <section className="py-14 sm:py-20">
       <Container size="xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-          <div className="lg:sticky lg:top-24">
+          <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
             <div className="relative rounded-2xl border border-neutral-200 bg-neutral-100 aspect-[4/3] overflow-hidden">
               <Image
                 src="https://images.pexels.com/photos/10127241/pexels-photo-10127241.jpeg?auto=compress&cs=tinysrgb&w=1400"

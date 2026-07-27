@@ -35,7 +35,7 @@ export function WhyChooseUs() {
             return (
               <div
                 key={item.title}
-                className="group relative rounded-2xl border border-neutral-200 bg-white p-5 sm:p-6 sm:p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5"
+                className="group relative rounded-2xl border border-neutral-200 bg-white p-5 sm:p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5"
               >
                 <div
                   className="absolute top-0 left-0 h-1 w-0 rounded-tr-full bg-gradient-to-r from-primary to-secondary transition-all duration-300 group-hover:w-full"

@@ -152,6 +152,7 @@ export function ContactForm() {
             id="email"
             type="email"
             autoComplete="email"
+            inputMode="email"
             placeholder="you@example.com"
             aria-invalid={!!errors.email}
             className={cn(errors.email && "border-destructive focus-visible:ring-destructive/30")}
@@ -169,6 +170,7 @@ export function ContactForm() {
             id="phone"
             type="tel"
             autoComplete="tel"
+            inputMode="tel"
             placeholder="+977-XX-XXXXXXX"
             aria-invalid={!!errors.phone}
             {...register("phone")}
@@ -183,6 +185,7 @@ export function ContactForm() {
           </Label>
           <Input
             id="organization"
+            autoComplete="organization"
             placeholder="Company, school, or 'Individual'"
             aria-invalid={!!errors.organization}
             {...register("organization")}
