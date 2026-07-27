@@ -4,8 +4,8 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SITE_CONFIG } from "@/lib/constants";
-import Script from "next/script";
 import { ToastProvider } from "@/components/ui/toast";
+import { WhatsAppButton } from "@/components/common/WhatsAppButton";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,7 +16,7 @@ const inter = Inter({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0F70A8",
+  themeColor: "#15678E",
 };
 
 export const metadata: Metadata = {
@@ -101,13 +101,11 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} data-scroll-behavior="smooth">
       <body className="min-h-dvh flex flex-col bg-background antialiased">
         <ToastProvider>
-          <Script
-            id="ld-json-org"
+          <script
             type="application/ld+json"
-            strategy="beforeInteractive"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
           <a
@@ -121,6 +119,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <WhatsAppButton />
         </ToastProvider>
       </body>
     </html>

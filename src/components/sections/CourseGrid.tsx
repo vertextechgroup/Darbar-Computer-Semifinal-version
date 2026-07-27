@@ -1,5 +1,8 @@
+"use client";
+import * as React from "react";
 import { Container } from "@/components/common/Container";
 import { SectionHeading } from "@/components/common/SectionHeading";
+import { Reveal } from "@/components/common/Reveal";
 import { CourseCard } from "./CourseCard";
 import type { Course } from "@/types/course";
 import Link from "next/link";
@@ -27,7 +30,7 @@ export function CourseGrid({
     "Hands-on courses taught by certified trainers with real industry experience. Small batches, lab-heavy, project-based.";
 
   return (
-    <section aria-labelledby="courses-heading" className="section-padding">
+    <section aria-labelledby="courses-heading" className="section-padding bg-white">
       <Container size="xl">
         <div className="flex flex-col gap-4 mb-10 sm:mb-12">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
@@ -40,9 +43,9 @@ export function CourseGrid({
             />
             {showViewAllButton && (
               <Link href="/courses" className="sm:shrink-0 mx-auto sm:mx-0 mt-2 sm:mt-0">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                <Button variant="outline" size="lg" className="w-full sm:w-auto group/btn">
                   View All Courses
-                  <ArrowRight className="size-4" aria-hidden="true" />
+                  <ArrowRight className="size-4 transition-transform duration-200 group-hover/btn:translate-x-0.5" aria-hidden="true" />
                 </Button>
               </Link>
             )}
@@ -55,8 +58,10 @@ export function CourseGrid({
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {courses.map((course) => (
-              <CourseCard key={course.id} course={course} />
+            {courses.map((course, i) => (
+              <Reveal key={course.id} delay={Math.min(i * 80, 400)} y={20}>
+                <CourseCard course={course} />
+              </Reveal>
             ))}
           </div>
         )}

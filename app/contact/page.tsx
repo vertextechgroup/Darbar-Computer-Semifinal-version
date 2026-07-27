@@ -43,8 +43,7 @@ export default function ContactPage() {
             eyebrow="Get in Touch"
             title="We'd Love to Hear From You"
             description="Questions about courses, enrollment, corporate training, partnerships, or anything else? Reach out through any channel below — we respond within one business day."
-            align="left"
-            className="mx-0 mt-2"
+            className="mt-2"
           />
         </Container>
       </div>

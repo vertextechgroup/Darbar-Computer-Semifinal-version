@@ -4,79 +4,25 @@
 
 import type { Course } from "@/types/course";
 
-function img(cat: string, n: number) {
-  const prompts: Record<string, string[]> = {
-    basic: [
-      "Diverse group of young adult students learning computer basics in a bright modern classroom with desktop PCs, keyboards and monitors displaying Windows desktop, Nepal education institute aesthetic, warm lighting, photorealistic",
-      "Close-up hands typing on a computer keyboard in a typing lab, fingers on home row keys, monitor displaying typing practice software, modern computer lab Nepal, professional photography, shallow depth of field",
-      "Professional computer operator working at desk with dual monitors showing MS Office applications Excel spreadsheet Word document, clean modern office environment, professional lighting, business professional"
-    ],
-    office: [
-      "Professional business woman in office using Microsoft Excel on large monitor showing complex spreadsheets charts and data, modern bright office cubicle, professional attire, productivity software, photorealistic",
-      "Business analyst creating dashboard in Power BI with colorful charts and KPIs on screen, desktop with keyboard mouse notebook, modern office interior, business professional, warm natural lighting",
-      "Modern office administrator scheduling and managing emails on computer with AI assistant tools visible on screen, organized desk with calendar notepad, bright sunny office, professional photography"
-    ],
-    programming: [
-      "Software developer writing code on multiple monitors showing colorful syntax-highlighted C++ Python and Java source code in VS Code, dark IDE theme, programmer desk with mechanical keyboard, modern tech office, photorealistic",
-      "Competitive programmer solving algorithm problems on LeetCode whiteboard coding challenge, young Nepali student concentrating with laptop showing data structures visualization, campus study area, high quality photo",
-      "Python AI developer working on laptop showing OpenAI API integration and machine learning code, Jupyter notebook with pandas dataframes, modern development setup, warm desk lighting, photorealistic"
-    ],
-    web: [
-      "Modern web developer workstation with React Next.js code on screen showing beautiful website in progress, designer using Figma on second monitor, Tailwind CSS browser developer tools open, clean minimal desk, aesthetic lighting, photorealistic",
-      "Backend programmer coding Node.js Express REST API with MySQL database schema visible on monitor, server terminal logs scrolling, Laravel PHP documentation open second tab, professional development environment",
-      "Full stack MERN developer showcasing deployed ecommerce platform on dual monitors React frontend Node backend MongoDB compass, Docker containers Kubernetes dashboard visible, modern startup office, photorealistic",
-      "Web designer building responsive marketing website in Next.js with WordPress CMS admin panel open, Elementor page builder showing landing page, hosting cPanel dashboard, modern laptop workstation",
-      "Mobile app developer testing Flutter application on physical Android and iOS devices side by side with emulator showing React Native food delivery app, Firebase console open, mobile development workstation"
-    ],
-    ai: [
-      "Prompt engineer using ChatGPT Claude and Gemini browser tabs on large monitor showing detailed prompt engineering techniques with AI response examples, modern desk with notepad for prompts, professional tech aesthetic, photorealistic",
-      "AI automation engineer building LangChain agent workflow diagram, vector database Pinecone dashboard showing embeddings, Zapier n8n automation flows on second screen, modern AI lab, blue accent lighting",
-      "Machine learning engineer developing RAG system with MCP protocol, Chroma vector database UI, Claude API playground showing retrieval augmented generation architecture, modern developer workstation",
-      "Advanced AI software engineering diploma student working on full stack AI SaaS product with OpenAI API integration AWS deployment dashboard Docker containers, capstone project demo, modern campus lab"
-    ],
-    data: [
-      "Data scientist training deep learning neural network model in PyTorch TensorFlow with Jupyter notebook showing model architecture loss curves training metrics, GPUs visible background, data science lab, photorealistic",
-      "Business data analyst creating interactive Power BI dashboard with colorful DAX charts KPIs sales metrics visualization on wide monitor, SQL Server Management Studio query open, analytics office",
-      "Big data engineer building ETL pipeline with Apache Spark Airflow DAG showing streaming data dashboard, AWS Redshift cloud data warehouse console, enterprise data infrastructure, professional photo"
-    ],
-    cloud: [
-      "Cloud DevOps engineer monitoring AWS Azure console dashboards showing EC2 instances Kubernetes cluster metrics Docker container orchestration, CI CD Jenkins pipeline running on screen, modern server room visible background, professional"
-    ],
-    design: [
-      "Creative graphic designer working in Adobe Photoshop Illustrator designing professional logo brand identity with stylus pen on Wacom tablet, color swatches design brief notebook, creative studio warm lighting, photorealistic",
-      "Brand identity designer creating product packaging mockup with Illustrator InDesign label designs, brand style guide book open, premium print samples, creative agency studio, natural lighting",
-      "Senior UI UX designer designing mobile app prototype in Figma with wireframes user flows design system components, user testing report, modern minimalist design studio workspace, aesthetic photography"
-    ],
-    video: [
-      "Professional video editor working in Adobe Premiere Pro After Effects timeline with multi-track editing, DaVinci Resolve color grading panel visible on second monitor, cinematic short-form content for Reels TikTok, creative studio lighting"
-    ],
-    business: [
-      "Professional accountant working in Tally Prime software showing GST invoice entries inventory management, Excel ledger spreadsheet, organized bills invoices calculator on desk, modern accounting office, professional attire, photorealistic"
-    ],
-    network: [
-      "Network engineer configuring Cisco MikroTik router switches in server rack lab with Ethernet cables patch panel, Packet Tracer CCNA lab on monitor, VMware virtualization lab, network racks LEDs blinking, professional network lab lighting"
-    ],
-    cyber: [
-      "Ethical hacker performing penetration test in Kali Linux with Metasploit Wireshark Burp Suite tools open on multiple monitors, cybersecurity SOC monitoring dashboard with security alerts, blue team red team cyber lab, dark ambient lighting",
-      "SOC analyst monitoring Splunk security information event dashboard AWS Security Hub cloud security alerts with CEH certification study material, bug bounty platform Shodan OSINT tools open, cybersecurity operations center"
-    ],
-    marketing: [
-      "Digital marketing specialist analyzing Google Ads Meta Ads Manager campaign performance dashboards, Google Analytics 4 showing traffic metrics SEO audit report Canva social media creatives, marketing agency desk, natural lighting",
-      "Growth marketing expert running multi-channel campaign TikTok Ads YouTube Ads email marketing automation Mailchimp HubSpot workflow customer journey, advanced analytics attribution dashboard, modern marketing office"
-    ],
-    career: [
-      "Freelancer working on Upwork Fiverr platforms from home office sending winning client proposals, building portfolio website, Google Workspace invoicing documents, modern coworking aesthetic, natural window lighting",
-      "Professional CAD draftsman in AutoCAD SketchUp designing 3D building floor plan structural model, architecture drawing sheets scale rulers blueprint, civil engineering design office, photorealistic",
-      "Happy young children kids coding robotics class using Scratch programming on colorful laptops building simple Arduino robot projects, teacher guiding classroom, modern STEM kids education Nepal, bright cheerful classroom",
-      "AI automation specialist business consultant presenting automation suite portfolio AI agent workflow demonstration to client, meeting room projector showing automation ROI dashboard, professional consulting office"
-    ],
-    diploma: [
-      "Professional computer diploma student in comprehensive IT training lab with computer fundamentals typing practice MS Office applications IT support troubleshooting practice, campus classroom Nepal, diverse students, modern computing lab"
-    ]
+function img(cat: string, _n: number) {
+  const categoryMap: Record<string, string> = {
+    basic: "https://images.pexels.com/photos/10638075/pexels-photo-10638075.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    office: "https://images.pexels.com/photos/18471480/pexels-photo-18471480.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    programming: "https://images.pexels.com/photos/6424590/pexels-photo-6424590.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    web: "https://images.pexels.com/photos/574069/pexels-photo-574069.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    ai: "https://images.pexels.com/photos/6424590/pexels-photo-6424590.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    data: "https://images.pexels.com/photos/6424590/pexels-photo-6424590.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    cloud: "https://images.pexels.com/photos/6424590/pexels-photo-6424590.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    design: "https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    video: "https://images.pexels.com/photos/6424590/pexels-photo-6424590.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    business: "https://images.pexels.com/photos/8296990/pexels-photo-8296990.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    network: "https://images.pexels.com/photos/442154/pexels-photo-442154.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    cyber: "https://images.pexels.com/photos/6424590/pexels-photo-6424590.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    marketing: "https://images.pexels.com/photos/6424590/pexels-photo-6424590.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    career: "https://images.pexels.com/photos/17258012/pexels-photo-17258012.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    diploma: "https://images.pexels.com/photos/17258012/pexels-photo-17258012.jpeg?auto=compress&cs=tinysrgb&w=1000",
   };
-  const prompt = prompts[cat]?.[n - 1] || `computer education ${cat} course ${n}, professional training institute Nepal, HD photography`;
-  const size = "landscape_16_9";
-  return `https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=${encodeURIComponent(prompt)}&image_size=${size}`;
+  return categoryMap[cat] ?? categoryMap.programming;
 }
 
 export const courses: Course[] = [

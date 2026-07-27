@@ -57,8 +57,7 @@ export default function AdmissionInquiryPage() {
             eyebrow="Admissions"
             title="Start Your Journey — Send an Inquiry"
             description="Tell us about your goals and we'll match you with the right course. Free counseling, free demo, no enrollment pressure."
-            align="left"
-            className="mx-0 mt-2"
+            className="mt-2"
           />
         </Container>
       </div>

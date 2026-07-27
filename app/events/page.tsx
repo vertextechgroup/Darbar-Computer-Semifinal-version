@@ -128,8 +128,7 @@ export default function EventsPage() {
             eyebrow="What's Happening"
             title="Events at Darbar Computer"
             description="Workshops, open houses, free seminars, certification ceremonies, and info sessions. Join us on campus or online."
-            align="left"
-            className="mx-0 mt-2"
+            className="mt-2"
           />
         </Container>
       </div>

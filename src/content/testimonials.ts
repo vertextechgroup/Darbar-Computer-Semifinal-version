@@ -3,8 +3,13 @@
 
 import type { Testimonial } from "@/types/testimonial";
 
-const tm = (p: string) =>
-  `https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=${encodeURIComponent(p)}&image_size=square_hd`;
+const portraitUrls = [
+  "https://images.pexels.com/photos/33261955/pexels-photo-33261955.jpeg?auto=compress&cs=tinysrgb&w=300",
+  "https://images.pexels.com/photos/33261958/pexels-photo-33261958.jpeg?auto=compress&cs=tinysrgb&w=300",
+  "https://images.pexels.com/photos/33261951/pexels-photo-33261951.jpeg?auto=compress&cs=tinysrgb&w=300",
+  "https://images.pexels.com/photos/33261956/pexels-photo-33261956.jpeg?auto=compress&cs=tinysrgb&w=300",
+  "https://images.pexels.com/photos/34381970/pexels-photo-34381970.jpeg?auto=compress&cs=tinysrgb&w=300",
+];
 
 export const testimonials: Testimonial[] = [
   {
@@ -14,7 +19,7 @@ export const testimonials: Testimonial[] = [
     quote: "The Full-Stack Web Development course gave me the confidence and portfolio to land my first developer job.",
     rating: 5,
     isPlaceholder: true,
-    image: tm("Professional headshot portrait of happy young Nepali male software developer graduate, smart casual collared shirt, warm friendly smile, modern tech office background with laptop showing code blurred, professional headshot HD photorealistic"),
+    image: portraitUrls[0],
   },
   {
     id: "t2",
@@ -23,7 +28,7 @@ export const testimonials: Testimonial[] = [
     quote: "I started with zero computer knowledge and left able to handle a full office job.",
     rating: 5,
     isPlaceholder: true,
-    image: tm("Professional headshot portrait of smiling young Nepali woman office administrator graduate, modest professional blouse, warm confident expression, bright modern office background with MS Excel on desktop blurred, professional headshot HD photorealistic"),
+    image: portraitUrls[4],
   },
   {
     id: "t3",
@@ -32,7 +37,7 @@ export const testimonials: Testimonial[] = [
     quote: "The trainers were patient and the lab time made all the difference for hardware troubleshooting.",
     rating: 5,
     isPlaceholder: true,
-    image: tm("Professional headshot portrait of confident young Nepali male hardware network technician graduate, technician polo shirt, background with network rack routers cables blurred, technical trustworthy expression, HD portrait photorealistic"),
+    image: portraitUrls[1],
   },
   {
     id: "t4",
@@ -41,7 +46,7 @@ export const testimonials: Testimonial[] = [
     quote: "The branding project we built in class became the centerpiece of my design portfolio.",
     rating: 4,
     isPlaceholder: true,
-    image: tm("Creative headshot portrait of artistic young Nepali woman graphic designer graduate, stylish top with colorful accents, creative studio background Wacom tablet Illustrator screen blurred, vibrant friendly smile, HD portrait photorealistic"),
+    image: portraitUrls[3],
   },
   {
     id: "t5",
@@ -50,7 +55,7 @@ export const testimonials: Testimonial[] = [
     quote: "Practical, campaign-focused learning. I ran my first real ad within a month of finishing.",
     rating: 5,
     isPlaceholder: true,
-    image: tm("Professional headshot portrait of driven young Nepali male digital marketing specialist graduate, smart business casual shirt, background with Google Analytics dashboard blurred on monitor, ambitious confident expression, HD portrait photorealistic"),
+    image: portraitUrls[2],
   },
   {
     id: "t6",
@@ -59,6 +64,6 @@ export const testimonials: Testimonial[] = [
     quote: "The dashboards module directly helped me get promoted at my office job.",
     rating: 5,
     isPlaceholder: true,
-    image: tm("Professional headshot portrait of cheerful young Nepali woman accountant data analyst graduate, professional office outfit, background with Power BI dashboard Excel spreadsheets blurred on monitor, proud accomplished smile, HD portrait photorealistic"),
+    image: portraitUrls[4],
   },
 ];

@@ -14,7 +14,6 @@ import {
   getRelatedPosts,
 } from "@/content/blog-posts";
 import { buildMetadata, blogPostJsonLd } from "@/lib/seo";
-import Script from "next/script";
 
 export async function generateStaticParams() {
   return getAllBlogSlugs();
@@ -139,10 +138,8 @@ export default async function BlogPostPage({
 
   return (
     <>
-      <Script
-        id={`ld-json-blog-${post.slug}`}
+      <script
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostJsonLd(post)) }}
       />
       <div className="bg-neutral-50 border-b border-neutral-200">

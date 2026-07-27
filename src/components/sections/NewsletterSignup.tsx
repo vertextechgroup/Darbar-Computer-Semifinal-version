@@ -46,10 +46,10 @@ export function NewsletterSignup() {
   };
 
   return (
-    <div className="rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6 sm:p-8">
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-10 items-center">
+    <div className="rounded-2xl border border-neutral-800 bg-neutral-900/60 p-5 sm:p-6 sm:p-8">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-5 sm:gap-6 md:gap-10 items-center">
         <div className="md:col-span-2">
-          <h4 className="text-white font-semibold text-lg mb-1.5">
+          <h4 className="text-white font-semibold text-base sm:text-lg mb-1.5">
             Stay Updated
           </h4>
           <p className="text-sm text-neutral-400 leading-relaxed">
@@ -58,7 +58,7 @@ export function NewsletterSignup() {
         </div>
         <form onSubmit={onSubmit} className="md:col-span-3 w-full" noValidate>
           <label htmlFor="newsletter-email" className="sr-only">Email address</label>
-          <div className="flex flex-col sm:flex-row gap-3">
+          <div className="flex flex-col gap-3">
             <div className="relative flex-1">
               <Input
                 id="newsletter-email"
@@ -68,7 +68,7 @@ export function NewsletterSignup() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 aria-describedby={success ? "newsletter-success" : undefined}
-                className="h-11 bg-neutral-950 border-neutral-700 text-neutral-100 placeholder:text-neutral-500 focus:border-primary focus:ring-primary/30"
+                className="h-12 bg-neutral-950 border-neutral-700 text-neutral-100 placeholder:text-neutral-500 focus:border-primary focus:ring-primary/30 rounded-xl"
               />
               {success && (
                 <div
@@ -84,7 +84,7 @@ export function NewsletterSignup() {
               type="submit"
               size="lg"
               disabled={submitting}
-              className={cn("h-11 sm:w-auto w-full px-5", submitting && "opacity-80")}
+              className={cn("w-full sm:w-auto sm:min-w-[160px]", submitting && "opacity-80")}
             >
               {submitting ? (
                 "Subscribing..."

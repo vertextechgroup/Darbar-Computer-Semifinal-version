@@ -5,8 +5,9 @@ import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { Button } from "@/components/ui/button";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, faqJsonLd } from "@/lib/seo";
 import { MessageSquare } from "lucide-react";
+import { faqCategories } from "@/content/faq";
 
 function QuestionMark() {
   return (
@@ -24,21 +25,26 @@ export const metadata = buildMetadata({
 });
 
 export default function FAQPage() {
+  const allFaqs = faqCategories.flatMap((c) => c.items);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqJsonLd(allFaqs.map((f) => ({ question: f.question, answer: f.answer })))),
+        }}
+      />
       <div className="bg-neutral-50 border-b border-neutral-200">
         <Container size="xl" className="pt-4 pb-10 sm:pb-14">
           <Breadcrumbs items={[{ label: "FAQ" }]} />
-          <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <SectionHeading
-                eyebrow="Support"
-                title="Frequently Asked Questions"
-                description="Everything you want to know before enrolling — compiled from our most common student questions."
-                align="left"
-                className="mx-0 mt-2"
-              />
-            </div>
+          <div className="mt-4">
+            <SectionHeading
+              eyebrow="Support"
+              title="Frequently Asked Questions"
+              description="Everything you want to know before enrolling — compiled from our most common student questions."
+              className="mt-2"
+            />
           </div>
         </Container>
       </div>

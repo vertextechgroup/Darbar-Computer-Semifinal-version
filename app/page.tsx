@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Hero } from "@/components/sections/Hero";
 import { StatsStrip } from "@/components/sections/StatsStrip";
+import { CategoryDirectory } from "@/components/sections/CategoryDirectory";
 import { CourseGrid } from "@/components/sections/CourseGrid";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -17,7 +18,6 @@ import { getFeaturedCourses } from "@/content/courses";
 import { getUpcomingEvents } from "@/content/events";
 import { buildMetadata } from "@/lib/seo";
 import { CalendarDays, Clock, MapPin, ArrowRight } from "lucide-react";
-import Script from "next/script";
 import { orgJsonLd } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -33,14 +33,13 @@ export default function HomePage() {
 
   return (
     <>
-      <Script
-        id="ld-home-org"
+      <script
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd()) }}
       />
       <Hero />
       <StatsStrip />
+      <CategoryDirectory />
       <CourseGrid
         courses={featuredCourses}
         eyebrow="Popular Courses"
@@ -51,20 +50,18 @@ export default function HomePage() {
       <HowItWorks />
 
       {upcomingEvents.length > 0 && (
-        <section aria-labelledby="events-heading" className="section-padding">
+        <section aria-labelledby="events-heading" className="section-padding bg-neutral-50">
           <Container size="xl">
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 sm:mb-12">
+            <div className="flex flex-col items-center gap-4 mb-10 sm:mb-12">
               <SectionHeading
                 eyebrow="Upcoming"
                 title="Events & Workshops"
                 description="Free workshops, open houses, info sessions — join us in person or online."
-                align="left"
-                className="mx-0"
               />
-              <Link href="/events" className="mx-auto sm:mx-0 shrink-0">
-                <Button variant="outline" size="lg">
+              <Link href="/events" className="shrink-0">
+                <Button variant="outline" size="lg" className="group/btn">
                   View All Events
-                  <ArrowRight className="size-4" />
+                  <ArrowRight className="size-4 transition-transform duration-200 group-hover/btn:translate-x-0.5" />
                 </Button>
               </Link>
             </div>

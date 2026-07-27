@@ -12,6 +12,14 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/api/ide/v1/text_to_image**",
       },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
     ],
   },
   experimental: {

@@ -20,9 +20,7 @@ import {
   Users,
 } from "lucide-react";
 import { instituteInfo } from "@/content/institute";
-import { buildMetadata } from "@/lib/seo";
-import Script from "next/script";
-import { orgJsonLd } from "@/lib/seo";
+import { buildMetadata, orgJsonLd } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "About Us",
@@ -36,13 +34,11 @@ const facilityIcons = [Monitor, BookOpen, Award, Users];
 export default function AboutPage() {
   return (
     <>
-      <Script
-      id="ld-about-org"
-      type="application/ld+json"
-      strategy="afterInteractive"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd()) }}
-    />
-    <div className="bg-neutral-50 border-b border-neutral-200">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd()) }}
+      />
+      <div className="bg-neutral-50 border-b border-neutral-200">
       <Container size="xl" className="pt-4 pb-8 sm:pb-12">
         <Breadcrumbs
           items={[{ label: "About Us" }]}
@@ -51,8 +47,7 @@ export default function AboutPage() {
           eyebrow="About Us"
           title={instituteInfo.tagline}
           description={`Get to know ${instituteInfo.name}: our story, values, trainers, and the educational philosophy that guides every course we teach.`}
-          align="left"
-          className="mx-0 mt-2"
+          className="mt-2"
         />
       </Container>
     </div>
@@ -63,7 +58,7 @@ export default function AboutPage() {
           <div className="lg:sticky lg:top-24">
             <div className="relative rounded-2xl border border-neutral-200 bg-neutral-100 aspect-[4/3] overflow-hidden">
               <Image
-                src={`https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=${encodeURIComponent("Modern DarbarTech computer training institute campus building Nepal, welcoming entrance with glass doors reception area, modern interior design, students walking in hallway with PC labs visible, professional architectural photography bright sunny day HD photorealistic 4K")}&image_size=landscape_4_3`}
+                src="https://images.pexels.com/photos/10127241/pexels-photo-10127241.jpeg?auto=compress&cs=tinysrgb&w=1400"
                 alt="DarbarTech Group of Technology campus building and student lounge"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

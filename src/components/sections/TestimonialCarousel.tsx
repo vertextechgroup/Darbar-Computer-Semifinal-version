@@ -1,10 +1,11 @@
 "use client";
 import * as React from "react";
 import Image from "next/image";
-import { Star, Quote, ChevronLeft, ChevronRight, UserCircle } from "lucide-react";
+import { Star, Quote, ChevronLeft, ChevronRight, UserCircle, CheckCircle2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Container } from "@/components/common/Container";
 import { SectionHeading } from "@/components/common/SectionHeading";
+import { Reveal } from "@/components/common/Reveal";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/common/Badge";
 import { cn } from "@/lib/utils";
@@ -34,22 +35,25 @@ export function TestimonialCarousel() {
   }, [maxIndex]);
 
   return (
-    <section aria-labelledby="testimonial-heading" className="section-padding bg-gradient-to-b from-neutral-50 to-white">
+    <section aria-labelledby="testimonial-heading" className="section-padding bg-secondary">
       <Container size="xl">
-        <div className="flex items-end justify-between gap-4 flex-col sm:flex-row mb-10 sm:mb-12">
-          <SectionHeading
-            eyebrow="Student Stories"
-            title="What Our Graduates Say"
-            description="Real feedback from students who've completed our courses and stepped into their first jobs or freelance work."
-            align="left"
-            className="mx-0"
-          />
-          <div className="flex items-center gap-2 shrink-0 mx-auto sm:mx-0">
+        <div className="flex flex-col sm:flex-row items-center gap-4 sm:justify-between mb-8 sm:mb-10 sm:mb-12">
+          <div className="flex-1">
+            <SectionHeading
+              eyebrow="Student Stories"
+              title="What Our Graduates Say"
+              description="Real feedback from students who've completed our courses and stepped into their first jobs or freelance work."
+              variant="dark"
+              align="left"
+            />
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
             <Button
               variant="outline"
               size="icon"
               onClick={prev}
               aria-label="Previous testimonials"
+              className="bg-white/10 border-white/20 text-white hover:bg-white/20 hover:text-white hover:border-white/30 h-11 w-11"
             >
               <ChevronLeft className="size-5" />
             </Button>
@@ -58,6 +62,7 @@ export function TestimonialCarousel() {
               size="icon"
               onClick={next}
               aria-label="Next testimonials"
+              className="bg-white/10 border-white/20 text-white hover:bg-white/20 hover:text-white hover:border-white/30 h-11 w-11"
             >
               <ChevronRight className="size-5" />
             </Button>
@@ -74,31 +79,31 @@ export function TestimonialCarousel() {
               <div
                 key={t.id}
                 className={cn(
-                  "shrink-0 px-2 sm:px-3 py-1",
+                  "shrink-0 px-1.5 sm:px-2 sm:px-3 py-1",
                   isMobile ? "w-full" : perView === 3 ? "w-1/3" : "w-1/2"
                 )}
               >
-                <Card className="h-full border-neutral-200 bg-white">
-                  <CardContent className="p-6 sm:p-7">
-                    <Quote className="size-8 text-secondary/40 mb-4" aria-hidden="true" />
-                    <div className="flex gap-0.5 mb-3" aria-label={`Rated ${t.rating} out of 5 stars`}>
+                <Card className="h-full border-white/10 bg-white/95">
+                  <CardContent className="p-5 sm:p-6 sm:p-7">
+                    <Quote className="size-7 sm:size-8 text-primary/40 mb-3 sm:mb-4" aria-hidden="true" />
+                    <div className="flex gap-0.5 mb-2.5 sm:mb-3" aria-label={`Rated ${t.rating} out of 5 stars`}>
                       {Array.from({ length: 5 }).map((_, i) => (
                         <Star
                           key={i}
                           className={cn(
                             "size-4",
-                            i < t.rating ? "text-secondary fill-secondary" : "text-neutral-200 fill-neutral-100"
+                            i < t.rating ? "text-primary fill-primary" : "text-neutral-200 fill-neutral-100"
                           )}
                           aria-hidden="true"
                         />
                       ))}
                     </div>
-                    <blockquote className="text-neutral-800 leading-relaxed text-[15px] text-pretty">
+                    <blockquote className="text-neutral-800 leading-relaxed text-sm sm:text-[15px] text-pretty">
                       "{t.quote}"
                     </blockquote>
-                    <div className="mt-5 pt-5 border-t border-neutral-100 flex items-center justify-between gap-3">
+                    <div className="mt-4 sm:mt-5 pt-4 sm:pt-5 border-t border-neutral-100 flex items-center justify-between gap-3">
                       <div className="flex items-center gap-3 min-w-0">
-                        <div className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary overflow-hidden ring-2 ring-white shadow-sm">
+                        <div className="relative flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary overflow-hidden ring-2 ring-white shadow-sm">
                           {t.image ? (
                             <Image
                               src={t.image}
@@ -115,13 +120,28 @@ export function TestimonialCarousel() {
                           {!t.image && <UserCircle className="size-6" aria-hidden="true" />}
                         </div>
                         <div className="min-w-0">
-                          <div className="font-semibold text-sm text-neutral-900 truncate">
-                            {t.name}
-                            {t.isPlaceholder && (
-                              <span className="sr-only"> (sample student)</span>
+                          <div className="flex items-center gap-1.5">
+                            <span className="font-semibold text-sm text-neutral-900 truncate">
+                              {t.name}
+                              {t.isPlaceholder && (
+                                <span className="sr-only"> (sample student)</span>
+                              )}
+                            </span>
+                            {!t.isPlaceholder && (
+                              <span className="inline-flex items-center gap-0.5 shrink-0" title="Verified Graduate">
+                                <CheckCircle2 className="size-3.5 text-primary fill-primary/10" aria-hidden="true" />
+                              </span>
                             )}
                           </div>
-                          <div className="text-xs text-neutral-500 truncate">{t.course} graduate</div>
+                          <div className="flex items-center gap-2 mt-0.5">
+                            <span className="text-xs text-neutral-500 truncate">{t.course} graduate</span>
+                            {!t.isPlaceholder && (
+                              <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-primary/90 bg-primary/10 rounded-full px-2 py-0.5">
+                                <CheckCircle2 className="size-2.5" aria-hidden="true" />
+                                Verified
+                              </span>
+                            )}
+                          </div>
                         </div>
                       </div>
                       {t.isPlaceholder && (
@@ -146,8 +166,8 @@ export function TestimonialCarousel() {
               aria-label={`Go to testimonial set ${i + 1}`}
               onClick={() => setIndex(i)}
               className={cn(
-                "h-1.5 rounded-full transition-all",
-                i === index ? "w-8 bg-primary" : "w-2 bg-neutral-300 hover:bg-neutral-400"
+                "h-1.5 rounded-full transition-all duration-200",
+                i === index ? "w-8 bg-accent" : "w-2 bg-white/30 hover:bg-white/50"
               )}
             />
           ))}

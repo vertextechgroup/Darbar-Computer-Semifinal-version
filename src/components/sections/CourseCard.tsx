@@ -1,16 +1,36 @@
 "use client";
+import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Clock, CalendarDays, ArrowUpRight, Wallet, Users, Award, Briefcase } from "lucide-react";
+import { Clock, CalendarDays, ArrowUpRight, Wallet, Users, Award, Briefcase, Monitor } from "lucide-react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/common/Badge";
 import { Button } from "@/components/ui/button";
 import type { Course } from "@/types/course";
 import { formatFee } from "@/content/courses";
+import { cn } from "@/lib/utils";
+
+const courseIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  "Web Development": Monitor,
+  "Programming": Monitor,
+  "Graphic Design": Monitor,
+  "Accounting": Monitor,
+  "Hardware": Monitor,
+  "Office Skills": Monitor,
+};
 
 export function CourseCard({ course }: { course: Course }) {
+  const FallbackIcon = courseIconMap[course.category] ?? Monitor;
+
   return (
-    <Card className="group h-full flex flex-col overflow-hidden">
+    <Card className="group relative h-full flex flex-col overflow-hidden">
+      <div
+        className={cn(
+          "absolute top-0 left-0 right-0 h-[3px] bg-primary origin-left scale-x-0 transition-transform duration-300 ease-out z-10",
+          "group-hover:scale-x-100"
+        )}
+        aria-hidden="true"
+      />
       <Link
         href={`/courses/${course.slug}`}
         className="relative block overflow-hidden aspect-[16/10] bg-neutral-100"
@@ -23,10 +43,21 @@ export function CourseCard({ course }: { course: Course }) {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           onError={(e) => {
-            const target = e.currentTarget as HTMLImageElement;
-            target.style.display = "none";
+            e.currentTarget.style.display = "none";
+            e.currentTarget.parentElement
+              ?.querySelector("[data-fallback]")
+              ?.classList.remove("hidden");
           }}
         />
+        <div
+          data-fallback
+          className="hidden absolute inset-0 flex flex-col items-center justify-center bg-secondary text-white"
+        >
+          <FallbackIcon className="size-12 text-primary/80 mb-2" aria-hidden="true" />
+          <span className="text-3xl font-bold tracking-tight opacity-90">
+            {course.category}
+          </span>
+        </div>
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 pointer-events-none" aria-hidden="true" />
         <div className="absolute inset-x-0 top-0 p-3 flex items-start justify-between gap-2">
           {course.featured && (
@@ -39,7 +70,7 @@ export function CourseCard({ course }: { course: Course }) {
           </Badge>
         </div>
         <div
-          className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+          className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
           aria-hidden="true"
         />
       </Link>
@@ -62,7 +93,7 @@ export function CourseCard({ course }: { course: Course }) {
         </div>
         <Link
           href={`/courses/${course.slug}`}
-          className="font-semibold text-[17px] tracking-tight text-neutral-900 hover:text-primary transition-colors line-clamp-2 leading-snug"
+          className="font-semibold text-xl tracking-tight text-neutral-900 hover:text-primary transition-colors duration-200 line-clamp-2 leading-snug"
         >
           {course.title}
         </Link>
@@ -103,7 +134,7 @@ export function CourseCard({ course }: { course: Course }) {
         <Link href={`/courses/${course.slug}`} className="shrink-0 group/btn">
           <Button size="sm" className="w-full">
             View Details
-            <ArrowUpRight className="size-3.5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" aria-hidden="true" />
+            <ArrowUpRight className="size-3.5 transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" aria-hidden="true" />
           </Button>
         </Link>
       </CardFooter>

@@ -45,8 +45,7 @@ export function GalleryClient() {
             eyebrow="Photo Gallery"
             title="Life at Darbar Computer"
             description="Glimpses of our campus, labs, classes, events, and the moments our students and graduates share."
-            align="left"
-            className="mx-0 mt-2"
+            className="mt-2"
           />
         </Container>
       </div>

@@ -15,20 +15,20 @@ export function DarbarTechLogo({ className = "", size = "md", showText = true, v
 
   const colors = variant === "dark"
     ? {
-        t: "#5B8FA8",
-        d: "#0F70A8",
+        t: "#4E8CAE",
+        d: "#ffffff",
         darbar: "#ffffff",
-        tech: "#0F70A8",
+        tech: "#4E8CAE",
         sub: "#a1a1aa",
         line: "#52525b",
       }
     : {
-        t: "#0F70A8",
-        d: "#163A5E",
-        darbar: "#163A5E",
-        tech: "#0F70A8",
-        sub: "#5B8FA8",
-        line: "#5B8FA8",
+        t: "#15678E",
+        d: "#172B48",
+        darbar: "#172B48",
+        tech: "#15678E",
+        sub: "#4E8CAE",
+        line: "#4E8CAE",
       };
 
   return (

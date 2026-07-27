@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Script from "next/script";
 import {
   CalendarDays,
   Clock,
@@ -70,10 +69,8 @@ export default async function CourseDetailPage({
 
   return (
     <>
-      <Script
-        id={`ld-course-${course.id}`}
+      <script
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="bg-neutral-50 border-b border-neutral-200">

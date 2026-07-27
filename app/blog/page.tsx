@@ -30,8 +30,7 @@ export default function BlogPage() {
             eyebrow="Insights & Stories"
             title="From Our Blog"
             description="Career guides, programming tutorials, student success stories, and updates from the Darbar Computer community."
-            align="left"
-            className="mx-0 mt-2"
+            className="mt-2"
           />
         </Container>
       </div>

@@ -2,7 +2,7 @@
 import * as React from "react";
 import { Suspense } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import {
   Search,
   X,
@@ -22,6 +22,7 @@ import { Container } from "@/components/common/Container";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import { CourseCard } from "@/components/sections/CourseCard";
+import { Reveal } from "@/components/common/Reveal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
@@ -46,6 +47,8 @@ const BENEFIT_ICONS: Record<string, React.ReactNode> = {
 
 function CoursesClientPage() {
   const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
   const initialCategory = searchParams.get("category") ?? "All";
   const initialLevel = searchParams.get("level") ?? "All";
   const initialSearch = searchParams.get("search") ?? "";
@@ -54,6 +57,39 @@ function CoursesClientPage() {
   const [category, setCategory] = React.useState(initialCategory);
   const [level, setLevel] = React.useState(initialLevel);
   const [filtersOpen, setFiltersOpen] = React.useState(false);
+
+  const syncToUrl = React.useCallback(
+    (nextSearch: string, nextCategory: string, nextLevel: string) => {
+      const params = new URLSearchParams();
+      if (nextSearch) params.set("search", nextSearch);
+      if (nextCategory && nextCategory !== "All") params.set("category", nextCategory);
+      if (nextLevel && nextLevel !== "All") params.set("level", nextLevel);
+      const query = params.toString();
+      const url = query ? `${pathname}?${query}` : pathname;
+      router.replace(url, { scroll: false });
+    },
+    [router, pathname]
+  );
+
+  const searchTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const updateSearch = (value: string) => {
+    setSearch(value);
+    if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current);
+    searchTimeoutRef.current = setTimeout(() => {
+      syncToUrl(value, category, level);
+    }, 350);
+  };
+
+  const updateCategory = (value: string) => {
+    setCategory(value);
+    syncToUrl(search, value, level);
+  };
+
+  const updateLevel = (value: string) => {
+    setLevel(value);
+    syncToUrl(search, category, value);
+  };
 
   const filtered = React.useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -85,6 +121,7 @@ function CoursesClientPage() {
     setSearch("");
     setCategory("All");
     setLevel("All");
+    syncToUrl("", "All", "All");
   };
 
   return (
@@ -96,8 +133,7 @@ function CoursesClientPage() {
             eyebrow="Course Catalog"
             title={`Browse ${courses.length} Professional Courses`}
             description="From beginner computer literacy to flagship advanced career paths. Filter by category, level, or search by name, skill, or career outcome."
-            align="left"
-            className="mx-0 mt-2"
+            className="mt-2"
           />
         </Container>
 
@@ -141,14 +177,14 @@ function CoursesClientPage() {
                       type="search"
                       placeholder="Search by course, skill, tool, or career…"
                       value={search}
-                      onChange={(e) => setSearch(e.target.value)}
+                      onChange={(e) => updateSearch(e.target.value)}
                       className="h-11 pl-10"
                       aria-label="Search courses"
                     />
                     {search && (
                         <button
                           type="button"
-                          onClick={() => setSearch("")}
+                          onClick={() => updateSearch("")}
                           aria-label="Clear search"
                           className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded hover:bg-neutral-100 text-neutral-400 hover:text-neutral-700"
                         >
@@ -161,14 +197,14 @@ function CoursesClientPage() {
                     <div className="flex-1">
                       <Select
                         value={category}
-                        onChange={(e) => setCategory(e.target.value)}
+                        onChange={(e) => updateCategory(e.target.value)}
                         options={allCategories.map((c) => ({ value: c, label: c }))}
                       />
                     </div>
                     <div className="flex-1">
                       <Select
                         value={level}
-                        onChange={(e) => setLevel(e.target.value)}
+                        onChange={(e) => updateLevel(e.target.value)}
                         options={allLevels.map((l) => ({ value: l, label: l }))}
                       />
                     </div>
@@ -196,7 +232,7 @@ function CoursesClientPage() {
                           <label className="text-sm font-medium">Category</label>
                           <Select
                             value={category}
-                            onChange={(e) => setCategory(e.target.value)}
+                            onChange={(e) => updateCategory(e.target.value)}
                             options={allCategories.map((c) => ({ value: c, label: c }))}
                           />
                         </div>
@@ -204,7 +240,7 @@ function CoursesClientPage() {
                           <label className="text-sm font-medium">Level</label>
                           <Select
                             value={level}
-                            onChange={(e) => setLevel(e.target.value)}
+                            onChange={(e) => updateLevel(e.target.value)}
                             options={allLevels.map((l) => ({ value: l, label: l }))}
                           />
                         </div>
@@ -241,7 +277,7 @@ function CoursesClientPage() {
                   <Badge variant="outline" className="gap-1.5">
                     {category}
                     <button
-                      onClick={() => setCategory("All")}
+                      onClick={() => updateCategory("All")}
                       aria-label={`Remove ${category} filter`}
                       className="ml-1 hover:text-destructive"
                     >
@@ -253,7 +289,7 @@ function CoursesClientPage() {
                   <Badge variant="outline" className="gap-1.5">
                     {level}
                     <button
-                      onClick={() => setLevel("All")}
+                      onClick={() => updateLevel("All")}
                       aria-label={`Remove ${level} filter`}
                       className="ml-1 hover:text-destructive"
                     >
@@ -287,8 +323,10 @@ function CoursesClientPage() {
             </div>
           ) : (
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {filtered.map((course) => (
-                <CourseCard key={course.id} course={course} />
+              {filtered.map((course, i) => (
+                <Reveal key={course.id} delay={Math.min(i * 70, 350)} y={18}>
+                  <CourseCard course={course} />
+                </Reveal>
               ))}
             </div>
           )}
