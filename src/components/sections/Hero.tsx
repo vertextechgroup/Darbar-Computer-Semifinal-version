@@ -438,14 +438,14 @@ export function Hero() {
       </div>
 
       <Container size="xl" className="relative w-full">
-        <div className="mx-auto grid min-h-[560px] sm:min-h-[580px] lg:min-h-[600px] grid-cols-1 items-center gap-8 sm:gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16 py-[64px] sm:py-[80px] lg:py-[96px] pb-16 sm:pb-20">
+        <div className="mx-auto grid min-h-[auto] grid-cols-1 items-center gap-8 py-[56px] sm:gap-10 sm:py-[72px] lg:min-h-[600px] lg:grid-cols-12 lg:gap-12 lg:py-[96px] xl:gap-16">
           {/* ===== LEFT — Content block: eyebrow + h1 + body + CTAs ===== */}
           <motion.div
             variants={fadeUp}
             initial="offscreen"
             animate={state}
             custom={0}
-            className="relative order-2 w-full max-w-full text-left lg:order-1 lg:col-span-6 xl:col-span-6 lg:pr-2 xl:pr-6"
+            className="relative order-1 w-full max-w-full text-left lg:order-1 lg:col-span-6 xl:col-span-6 lg:pr-2 xl:pr-6"
           >
             <motion.p
               variants={fadeUp}
@@ -459,12 +459,12 @@ export function Hero() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#22C7E8] opacity-60" />
                   <span className="relative inline-flex h-1.5 w-1.5 rounded-full" />
                 </span>
-                <span>
-                  The best{" "}
-                  <span className="relative font-semibold text-[#222F5D]">
-                    online learning
+                <span className="ml-3 text-[17px] sm:text-[18px] font-medium leading-[26px] text-[#222F5D]">
+                  Future-Ready {" "}
+                  <span className="relative font-semibold text-[#15678E]">
+                     Skills
                   </span>{" "}
-                  platform.
+                 for a Digital World
                 </span>
       
             </motion.p>
@@ -475,16 +475,16 @@ export function Hero() {
               initial="offscreen"
               animate={state}
               custom={STAGGER.heading}
-              className="text-[34px] sm:text-[40px] md:text-[48px] font-bold leading-[1.14] text-[#172B48] text-balance"
+              className="text-[34px] sm:text-[40px] md:text-[69px] font-bold leading-[1.14] text-[#172B48] text-balance"
             >
-              Raise the Bar
+              Master the 
               <br />
-              on Your{" "}
+             Art of{" "}
               <span className="bg-gradient-to-r from-[#22C7E8] to-[#15678E] bg-clip-text text-transparent">
-                e-Learning
+               Modern
               </span>
               <br />
-              Experience.
+              Technology.
             </motion.h1>
 
             <motion.p
@@ -494,8 +494,7 @@ export function Hero() {
               custom={STAGGER.body}
               className="mt-6 mb-8 w-full max-w-[100%] lg:max-w-[540px] text-[16px] sm:text-[17px] font-normal leading-[27px] text-[#4A5568] text-pretty"
             >
-              e-learning particularly beneficial for adult learners who may have
-              other commitments such as work or family responsibilities.
+             Gain hands-on expertise in AI, Data Science, Cybersecurity, Cloud Computing, and Software Development with industry-focused training designed for real-world success.
             </motion.p>
 
             <motion.div
@@ -503,11 +502,11 @@ export function Hero() {
               initial="offscreen"
               animate={state}
               custom={STAGGER.cta}
-              className="mt-0 flex flex-wrap items-center justify-start gap-4 sm:gap-5"
+              className="mt-0 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-start sm:gap-5"
             >
               <Link
                 href="/courses"
-                className="group/cta group/btn relative inline-flex h-11 sm:h-12 cursor-pointer items-center gap-2 overflow-hidden rounded-lg bg-gradient-to-r from-[#172B48] to-[#222F5D] px-6 sm:px-7 text-white shadow-[0_8px_24px_-10px_rgba(23,43,72,0.55)] ring-1 ring-[#222F5D]/80 transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[0_12px_32px_-10px_rgba(23,43,72,0.7)] active:translate-y-[1px]"
+                className="group/cta group/btn relative inline-flex h-11 w-full items-center justify-center gap-2 overflow-hidden rounded-lg bg-gradient-to-r from-[#172B48] to-[#222F5D] px-6 text-white shadow-[0_8px_24px_-10px_rgba(23,43,72,0.55)] ring-1 ring-[#222F5D]/80 transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[0_12px_32px_-10px_rgba(23,43,72,0.7)] active:translate-y-[1px] sm:h-12 sm:w-auto sm:justify-start sm:px-7"
               >
                 <span className="relative z-10 text-[13.5px] sm:text-[14px] font-semibold tracking-[0.01em]">
                   Enroll Now
@@ -534,7 +533,7 @@ export function Hero() {
               <button
                 type="button"
                 aria-label="Watch introduction video"
-                className="group/play inline-flex cursor-pointer items-center gap-3 bg-transparent transition-all duration-300 hover:bg-transparent"
+                className="group/play inline-flex w-full cursor-pointer items-center justify-center gap-3 rounded-lg bg-transparent px-2 py-2 transition-all duration-300 hover:bg-transparent sm:w-auto sm:justify-start sm:px-0"
               >
                 <span className="relative grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white text-[#22C7E8] shadow-[0_8px_24px_-8px_rgba(34,199,232,0.55)] ring-1 ring-[#22C7E8]/25 transition-all duration-300 group-hover/play:scale-105 group-hover/play:ring-[#22C7E8]/60">
                   <Play
@@ -562,9 +561,9 @@ export function Hero() {
             initial="offscreen"
             animate={state}
             custom={STAGGER.visual}
-            className="relative order-1 mx-auto w-full max-w-[440px] sm:max-w-[520px] lg:order-2 lg:col-span-6 xl:col-span-6 lg:max-w-none"
+            className="relative order-2 mx-auto w-full max-w-[440px] sm:max-w-[520px] lg:order-2 lg:col-span-6 xl:col-span-6 lg:max-w-none"
           >
-            <div className="relative mx-auto aspect-[425/440] w-full max-w-[440px] sm:max-w-[520px] max-h-[410px] sm:max-h-[430px] lg:max-h-[460px] lg:max-w-none">
+            <div className="relative mx-auto aspect-[425/440] w-full max-w-[440px] max-h-[320px] sm:max-h-[410px] sm:max-w-[520px] lg:max-h-[460px] lg:max-w-none">
               <Image
                 src={HERO_IMG}
                 alt="Hero image"
@@ -578,7 +577,7 @@ export function Hero() {
                 delay={STAGGER.popup2}
                 floatY={[-8, 10]}
                 floatSec={7}
-                className="absolute left-0 top-[37%] sm:top-[36%] lg:top-[37%] w-[35%] sm:w-[35%] h-[37%]"
+                className="absolute left-[2%] top-[30%] w-[32%] h-[28%] sm:left-[1%] sm:top-[34%] sm:w-[34%] sm:h-[30%] lg:top-[37%] lg:w-[35%] lg:h-[37%]"
               >
                 <Image
                   src={POPUP_STUDENTS}
@@ -593,7 +592,7 @@ export function Hero() {
                 delay={STAGGER.popup1}
                 floatY={[-10, 8]}
                 floatSec={5.5}
-                className="absolute right-0 sm:right-[2%] lg:right-[-1%] top-[28%] sm:top-[28%] lg:top-[29%] w-[41%] sm:w-[41%] h-[14%]"
+                className="absolute right-[2%] top-[22%] w-[38%] h-[12%] sm:right-[2%] sm:top-[24%] sm:w-[40%] sm:h-[13%] lg:right-[-1%] lg:top-[29%] lg:w-[41%] lg:h-[14%]"
               >
                 <Image
                   src={POPUP_COMPLETE}
@@ -608,7 +607,7 @@ export function Hero() {
                 delay={STAGGER.popup3}
                 floatY={[-5, 7]}
                 floatSec={5}
-                className="absolute right-[8%] sm:right-[10%] lg:right-[8%] bottom-[8%] sm:bottom-[7%] lg:bottom-[8%] w-[50%] sm:w-[50%] h-[13%]"
+                className="absolute right-[4%] bottom-[6%] w-[44%] h-[11%] sm:right-[8%] sm:bottom-[7%] sm:w-[48%] sm:h-[12%] lg:right-[8%] lg:bottom-[8%] lg:w-[50%] lg:h-[13%]"
               >
                 <Image
                   src={POPUP_MENTOR}
