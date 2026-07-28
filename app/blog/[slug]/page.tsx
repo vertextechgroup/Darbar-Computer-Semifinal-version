@@ -13,7 +13,8 @@ import {
   getBlogPostBySlug,
   getRelatedPosts,
 } from "@/content/blog-posts";
-import { buildMetadata, blogPostJsonLd } from "@/lib/seo";
+import { SITE_CONFIG } from "@/lib/constants";
+import { buildMetadata, blogPostJsonLd, breadcrumbListJsonLd } from "@/lib/seo";
 
 export async function generateStaticParams() {
   return getAllBlogSlugs();
@@ -135,12 +136,21 @@ export default async function BlogPostPage({
   }
 
   const related = getRelatedPosts(post, 3);
+  const breadcrumbJsonLd = breadcrumbListJsonLd([
+    { name: "Home", item: SITE_CONFIG.url },
+    { name: "Blog", item: `${SITE_CONFIG.url}/blog` },
+    { name: post.title },
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostJsonLd(post)) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <div className="bg-neutral-50 border-b border-neutral-200">
         <Container size="xl" className="pt-4 pb-8 sm:pb-12">

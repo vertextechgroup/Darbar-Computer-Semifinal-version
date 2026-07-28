@@ -10,9 +10,11 @@ import {
   type HTMLMotionProps,
 } from "framer-motion";
 import {
-  Play,
+  MessageCircle,
+  ArrowRight,
 } from "lucide-react";
 import { Container } from "@/components/common/Container";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const HERO_IMG =
@@ -70,8 +72,8 @@ function seededRandom(seed: number) {
   };
 }
 
-const COLUMN_COUNT = 22;
-const TOKENS_PER_COLUMN = 6;
+const COLUMN_COUNT = 10;
+const TOKENS_PER_COLUMN = 4;
 
 type CodeRainToken = {
   id: number;
@@ -460,11 +462,11 @@ export function Hero() {
                   <span className="relative inline-flex h-1.5 w-1.5 rounded-full" />
                 </span>
                 <span className="ml-3 text-[17px] sm:text-[18px] font-medium leading-[26px] text-[#222F5D]">
-                  Future-Ready {" "}
+                  37 Career-Focused Courses · Certified Trainers {" "}
                   <span className="relative font-semibold text-[#15678E]">
-                     Skills
+                    Skills
                   </span>{" "}
-                 for a Digital World
+                  for a Digital World
                 </span>
       
             </motion.p>
@@ -477,14 +479,11 @@ export function Hero() {
               custom={STAGGER.heading}
               className="text-[34px] sm:text-[40px] md:text-[69px] font-bold leading-[1.14] text-[#172B48] text-balance"
             >
-              Master the 
-              <br />
-             Art of{" "}
+              Learn the Digital Skills That {" "}
               <span className="bg-gradient-to-r from-[#22C7E8] to-[#15678E] bg-clip-text text-transparent">
-               Modern
+                Actually Get You Hired
               </span>
-              <br />
-              Technology.
+              {" "}— Right Here in Kathmandu
             </motion.h1>
 
             <motion.p
@@ -494,7 +493,7 @@ export function Hero() {
               custom={STAGGER.body}
               className="mt-6 mb-8 w-full max-w-[100%] lg:max-w-[540px] text-[16px] sm:text-[17px] font-normal leading-[27px] text-[#4A5568] text-pretty"
             >
-             Gain hands-on expertise in AI, Data Science, Cybersecurity, Cloud Computing, and Software Development with industry-focused training designed for real-world success.
+              From your first email account to building full AI-powered software, DarbarTech&rsquo;s hands-on training turns beginners into job-ready professionals — with small batches, flexible morning-to-evening timings, and trainers who&rsquo;ve actually worked in the field they teach.
             </motion.p>
 
             <motion.div
@@ -502,56 +501,26 @@ export function Hero() {
               initial="offscreen"
               animate={state}
               custom={STAGGER.cta}
-              className="mt-0 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-start sm:gap-5"
+              className="mt-0 flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-5"
             >
-              <Link
-                href="/courses"
-                className="group/cta group/btn relative inline-flex h-11 w-full items-center justify-center gap-2 overflow-hidden rounded-lg bg-gradient-to-r from-[#172B48] to-[#222F5D] px-6 text-white shadow-[0_8px_24px_-10px_rgba(23,43,72,0.55)] ring-1 ring-[#222F5D]/80 transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[0_12px_32px_-10px_rgba(23,43,72,0.7)] active:translate-y-[1px] sm:h-12 sm:w-auto sm:justify-start sm:px-7"
-              >
-                <span className="relative z-10 text-[13.5px] sm:text-[14px] font-semibold tracking-[0.01em]">
-                  Enroll Now
-                </span>
-                <svg
-                  aria-hidden="true"
-                  className="relative z-10 h-4 w-4 -mr-0.5 translate-x-0 transition-transform duration-300 group-hover/cta:translate-x-[2px]"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M5 12h14" />
-                  <path d="M13 6l6 6-6 6" />
-                </svg>
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/18 to-transparent transition-transform duration-700 ease-out group-hover/cta:translate-x-full"
-                />
+              <Link href="/courses" className="w-full sm:w-auto block">
+                <Button size="lg" className="w-full sm:w-auto group/btn shadow-[0_8px_24px_-10px_rgba(21,103,142,0.55)] hover:shadow-[0_12px_32px_-10px_rgba(21,103,142,0.7)]">
+                  Explore Courses
+                  <ArrowRight className="size-5 transition-transform duration-300 group-hover/btn:translate-x-0.5" aria-hidden="true" />
+                </Button>
               </Link>
 
-              <button
-                type="button"
-                aria-label="Watch introduction video"
-                className="group/play inline-flex w-full cursor-pointer items-center justify-center gap-3 rounded-lg bg-transparent px-2 py-2 transition-all duration-300 hover:bg-transparent sm:w-auto sm:justify-start sm:px-0"
-              >
-                <span className="relative grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white text-[#22C7E8] shadow-[0_8px_24px_-8px_rgba(34,199,232,0.55)] ring-1 ring-[#22C7E8]/25 transition-all duration-300 group-hover/play:scale-105 group-hover/play:ring-[#22C7E8]/60">
-                  <Play
-                    className="h-4 w-4 translate-x-[1px]"
-                    aria-hidden="true"
-                    fill="currentColor"
-                    strokeWidth={0}
-                  />
+              <div className="flex flex-col gap-2 w-full sm:w-auto">
+                <Link href="/contact" className="w-full sm:w-auto block">
+                  <Button variant="outline" size="lg" className="w-full sm:w-auto group/btn">
+                    <MessageCircle className="size-5" aria-hidden="true" />
+                    Book a Free Consultation
+                  </Button>
+                </Link>
+                <span className="text-[12px] font-normal text-[#64748B] text-center sm:text-left leading-none">
+                  5-min call · No pressure
                 </span>
-                <span className="flex flex-col items-start leading-tight">
-                  <span className="text-[13.5px] font-semibold text-[#172B48]">
-                    Watch Demo
-                  </span>
-                  <span className="text-[12px] font-normal text-[#64748B]">
-                    2-min intro · HD
-                  </span>
-                </span>
-              </button>
+              </div>
             </motion.div>
           </motion.div>
 

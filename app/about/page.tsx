@@ -21,10 +21,10 @@ import { instituteInfo } from "@/content/institute";
 import { buildMetadata, orgJsonLd } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "About Us",
+  title: "About DarbarTech — Kathmandu's Hands-On Tech Institute",
   path: "/about",
   description:
-    "Learn about Darbar Computer — our story, mission, certified trainers, modern labs, and student-first approach to computer education in Nepal.",
+    "Learn about DarbarTech's mission, training philosophy, and team behind Nepal's practical, career-focused computer courses.",
 });
 
 const facilityIcons = [Monitor, BookOpen, Award, Users];

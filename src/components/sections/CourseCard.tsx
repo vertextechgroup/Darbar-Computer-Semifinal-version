@@ -131,7 +131,7 @@ export function CourseCard({ course }: { course: Course }) {
         </div>
         <Link href={`/courses/${course.slug}`} className="shrink-0 group/btn">
           <Button size="sm" className="w-full">
-            View Details
+            {course.cta ?? "View Details"}
             <ArrowUpRight className="size-3.5 transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" aria-hidden="true" />
           </Button>
         </Link>

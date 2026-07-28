@@ -5,6 +5,7 @@ import {
   Clock,
   Wallet,
   CheckCircle2,
+  Users,
 } from "lucide-react";
 import { Container } from "@/components/common/Container";
 import { SectionHeading } from "@/components/common/SectionHeading";
@@ -17,6 +18,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   clock: Clock,
   wallet: Wallet,
   checkCircle: CheckCircle2,
+  users: Users,
 };
 
 export function WhyChooseUs() {
@@ -46,11 +48,6 @@ export function WhyChooseUs() {
                 </div>
                 <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 leading-snug flex items-start gap-2">
                   {item.title}
-                  {item.isPlaceholder && (
-                    <span className="text-[10px] font-medium uppercase tracking-wide text-neutral-400 align-super shrink-0">
-                      *verify
-                    </span>
-                  )}
                 </h3>
                 <p className="mt-2 text-sm text-neutral-600 leading-relaxed">
                   {item.description}

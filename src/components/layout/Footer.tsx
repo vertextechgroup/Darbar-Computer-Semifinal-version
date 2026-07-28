@@ -125,8 +125,7 @@ export function Footer() {
             </Link>
             <p className="text-[13.5px] leading-relaxed text-neutral-400 max-w-md mb-6 text-balance">
               <span className="font-semibold text-neutral-200">{instituteInfo.tagline}.</span>{" "}
-              Professional computer courses for students, job seekers, and professionals in Nepal —
-              hands-on training, certified instructors, and career support from day one.
+              DarbarTech Group of Technology is a Kathmandu-based computer training institute offering 37 hands-on courses across 15 career fields — from beginner computer literacy to advanced AI software engineering — with certified trainers, real lab time, and career support.
             </p>
 
             <div className="space-y-4 mb-7">

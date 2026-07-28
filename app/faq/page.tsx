@@ -18,10 +18,10 @@ function QuestionMark() {
 }
 
 export const metadata = buildMetadata({
-  title: "FAQ",
+  title: "Frequently Asked Questions",
   path: "/faq",
   description:
-    "Answers to common questions about Darbar Computer — admissions, fees, class schedules, certificates, and more.",
+    "Answers on admissions, fees, installments, certification, and batch scheduling at DarbarTech Kathmandu.",
 });
 
 export default function FAQPage() {

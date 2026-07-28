@@ -27,10 +27,10 @@ import { buildMetadata } from "@/lib/seo";
 const socialIcons = [Share2, MessageCircle, Video, Briefcase];
 
 export const metadata = buildMetadata({
-  title: "Contact Us",
+  title: "Contact DarbarTech — Book a Free Course Consultation",
   path: "/contact",
   description:
-    "Contact Darbar Computer by phone, email, or visit our campus. Business hours, map, and online inquiry form.",
+    "Questions about courses or batches? Contact DarbarTech's Kathmandu campus or book a free, no-obligation consultation.",
 });
 
 export default function ContactPage() {

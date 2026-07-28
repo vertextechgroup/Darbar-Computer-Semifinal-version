@@ -1,31 +1,31 @@
-import { MessageSquareText, Users, CreditCard, GraduationCap } from "lucide-react";
+import { MessageSquareText, Users, FolderKanban, GraduationCap } from "lucide-react";
 import { Container } from "@/components/common/Container";
 import { SectionHeading } from "@/components/common/SectionHeading";
 
 const steps = [
   {
     icon: MessageSquareText,
-    title: "1. Inquire",
+    title: "1. Talk to a Counselor",
     description:
-      "Browse our courses or get in touch with us. We'll match you to the right track based on your goals and background.",
+      "Tell us your goal (a job, a promotion, a business, a hobby) and we'll recommend the right course and batch for your schedule and background.",
   },
   {
     icon: Users,
-    title: "2. Free Counseling & Demo",
+    title: "2. Join a Small, Hands-On Batch",
     description:
-      "One-on-one career counseling and a free demo class so you can see the teaching style, meet the trainer, and be sure before enrolling.",
+      "Learn by doing in a real computer lab, with a trainer who checks your work and notices when you're stuck — small classes mean you don't get lost.",
   },
   {
-    icon: CreditCard,
-    title: "3. Enroll & Pay",
+    icon: FolderKanban,
+    title: "3. Build a Portfolio Project",
     description:
-      "Simple enrollment. Installment plans available for eligible courses. Your batch and schedule are confirmed on enrollment.",
+      "Every course ends with something real you can show an employer — a website, a design portfolio, an app, a campaign — not just a certificate.",
   },
   {
     icon: GraduationCap,
-    title: "4. Start Learning",
+    title: "4. Get Career Support",
     description:
-      "Join regular classes, hands-on labs, and complete real projects. Receive your certificate and career support after graduation.",
+      "Resume polishing, interview prep, and access to our employer network for eligible career-track and diploma programs after you graduate.",
   },
 ];
 

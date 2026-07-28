@@ -21,10 +21,20 @@ import { orgJsonLd } from "@/lib/seo";
 import { StatsStrip } from "@/components/sections/StatsStrip";
 
 export const metadata = buildMetadata({
-  title: "Home",
+  title: "Computer Training Institute in Kathmandu — 37 Courses",
   path: "/",
   description:
-    "Darbar Computer Training Institute — Professional computer courses in Nepal: programming, design, accounting, hardware, MS Office. Small classes, certified trainers, real projects.",
+    "Programming, web development, AI, design, networking & more. Certified trainers, small batches, real projects. Book a free consultation.",
+  keywords: [
+    "computer training",
+    "computer institute Nepal",
+    "programming courses",
+    "Darbar Computer",
+    "IT training Kathmandu",
+    "computer training institute Kathmandu",
+    "computer courses in Nepal",
+    "hands-on IT training",
+  ],
 });
 
 export default function HomePage() {

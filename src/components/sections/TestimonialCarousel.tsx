@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { testimonials } from "@/content/testimonials";
 
 export function TestimonialCarousel() {
+  if (testimonials.length === 0) return null;
   const [index, setIndex] = React.useState(0);
   const count = testimonials.length;
   const [isMobile, setIsMobile] = React.useState<boolean>(() =>

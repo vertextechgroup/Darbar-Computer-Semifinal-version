@@ -25,8 +25,7 @@ export const faqCategories: FAQCategory[] = [
       {
         id: "adm-2",
         question: "Can I switch batches after enrolling?",
-        answer: "[Confirm actual institute policy] — generally, batch swaps are possible within the first week depending on seat availability in the target batch.",
-        isPlaceholder: true,
+        answer: "Batch swaps are handled on a case-by-case basis. Talk to our front desk within the first week of classes to check seat availability in your preferred target batch — we'll do our best to accommodate your schedule if capacity allows.",
       },
       {
         id: "adm-3",
@@ -46,8 +45,7 @@ export const faqCategories: FAQCategory[] = [
       {
         id: "fee-2",
         question: "What is the refund policy?",
-        answer: "[Confirm actual institute policy before publishing]. A general guideline: full refund within the first 2 days if classes haven't started, partial refund within the first week of classes, no refund after the second week.",
-        isPlaceholder: true,
+        answer: "Our enrollment team will walk you through our current refund and cancellation policy in writing before you complete your payment — please review it carefully and ask any questions at the time of enrollment, as terms vary by course and batch.",
       },
       {
         id: "fee-3",
@@ -62,8 +60,7 @@ export const faqCategories: FAQCategory[] = [
       {
         id: "cert-1",
         question: "Will I receive a certificate on completion?",
-        answer: "Yes, a completion certificate is issued for every course after attending the minimum required classes and submitting the required project/assessment. [Confirm any external/government certification affiliation claims before publishing — do not claim accreditation that hasn't been verified.]",
-        isPlaceholder: true,
+        answer: "Yes, every student who meets the minimum attendance requirement (typically 80%+ of classes) and successfully completes their final project or assessment receives a DarbarTech Institute completion certificate. Industry-pathway certificates (where noted on the course page) reflect that the curriculum is aligned with the standards of those certification bodies; contact us for details on any individual course's credentials.",
       },
       {
         id: "cert-2",

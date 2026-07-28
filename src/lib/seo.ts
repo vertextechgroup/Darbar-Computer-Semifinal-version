@@ -118,3 +118,30 @@ export function faqJsonLd(items: { question: string; answer: string }[]) {
     })),
   };
 }
+
+export function breadcrumbListJsonLd(items: { name: string; item?: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((it, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: it.name,
+      ...(it.item ? { item: it.item } : {}),
+    })),
+  };
+}
+
+export function websiteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${SITE_CONFIG.url}/courses?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
+}

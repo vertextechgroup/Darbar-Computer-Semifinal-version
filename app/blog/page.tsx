@@ -11,10 +11,10 @@ import { getAllBlogPosts, getAllTags } from "@/content/blog-posts";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Blog",
+  title: "Career & Tech Guides for Nepal",
   path: "/blog",
   description:
-    "Articles, guides, and student success stories from Darbar Computer. Career tips, programming tutorials, and insights from Nepal's computer training experts.",
+    "Career guidance, course comparisons, and success stories to help you choose and grow your tech career in Nepal.",
 });
 
 export default function BlogPage() {

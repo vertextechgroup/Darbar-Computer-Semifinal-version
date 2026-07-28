@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { SITE_CONFIG } from "@/lib/constants";
 import { ToastProvider } from "@/components/ui/toast";
 import { WhatsAppButton } from "@/components/common/WhatsAppButton";
+import { websiteJsonLd, orgJsonLd } from "@/lib/seo";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -89,24 +90,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    name: SITE_CONFIG.name,
-    description: SITE_CONFIG.description,
-    url: SITE_CONFIG.url,
-    telephone: SITE_CONFIG.phone,
-    email: SITE_CONFIG.email,
-    address: SITE_CONFIG.address,
-  };
-
   return (
     <html lang="en" className={inter.variable} data-scroll-behavior="smooth">
       <body className="min-h-dvh flex flex-col bg-background antialiased">
         <ToastProvider>
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd()) }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }}
           />
           <a
             href="#main-content"

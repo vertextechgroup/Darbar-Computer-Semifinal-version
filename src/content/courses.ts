@@ -41,13 +41,16 @@ export const courses: Course[] = [
     timing: "Morning / Day / Evening",
     instituteCertificate: "Certificate",
     targetStudents: "SEE Students, +2 Students",
-    shortDescription: "Build essential computer, internet, and everyday AI skills for total beginners in just one month.",
     skillsGained: ["OS navigation", "File management", "Internet & email", "Everyday AI tools", "Digital safety"],
     softwareTools: ["Windows", "Google Workspace", "ChatGPT"],
     portfolioProjects: ["Personal Email Setup", "Basic Document Pack"],
     careerOpportunities: ["Office Assistant", "Data Entry Clerk"],
     image: img("basic", 1),
     feeNPR: 3000,
+    seoTitle: "Digital Literacy Course for Beginners in Nepal | DarbarTech",
+    seoDescription: "Learn everyday computer, internet, and AI skills in 4 weeks — built for absolute beginners.",
+    cta: "Start Your First Computer Course",
+    shortDescription: "Build essential computer, internet, and everyday AI skills for total beginners in just one month.",
   },
   {
     id: "c02",
@@ -69,6 +72,9 @@ export const courses: Course[] = [
     careerOpportunities: ["Data Entry Operator", "Office Assistant"],
     image: img("basic", 2),
     feeNPR: 3000,
+    seoTitle: "Speed Typing Course in Kathmandu (English & Nepali) | DarbarTech",
+    seoDescription: "Type faster and more accurately with certified speed tests — job and exam ready in 4 weeks.",
+    cta: "Book a Typing Assessment",
   },
   {
     id: "c03",
@@ -85,7 +91,6 @@ export const courses: Course[] = [
     industryCertification: "Microsoft",
     internship: "Optional Internship",
     targetStudents: "SEE Students, +2 Students, Job Seekers",
-    shortDescription: "A complete beginner-to-job-ready package combining typing, Office software, and internet skills for operator roles.",
     skillsGained: ["Typing", "MS Office", "Internet & email", "Data entry", "Basic troubleshooting", "Office etiquette"],
     softwareTools: ["MS Word", "Excel", "PowerPoint", "Google Workspace"],
     portfolioProjects: ["Office Records System", "Data Entry Portfolio"],
@@ -95,6 +100,13 @@ export const courses: Course[] = [
     feeNPR: 9000,
     feeNote: "Installments available",
     seats: "Limited seats",
+    seoTitle: "Professional Computer Operator Course in Kathmandu | DarbarTech",
+    seoDescription: "Become a job-ready computer operator in 12 weeks. Typing, MS Office, data entry, and troubleshooting — hands-on training with a Microsoft-aligned diploma.",
+    overview: "A complete beginner-to-job-ready package built for SEE/+2 graduates and job seekers who want one course that covers everything an office expects: fast typing, Office software fluency, internet and email literacy, and basic troubleshooting.",
+    learningObjectives: ["Type accurately and quickly in English and Nepali", "Operate MS Word, Excel, and PowerPoint confidently", "Manage email, internet research, and basic file systems", "Handle everyday data-entry and office-etiquette scenarios"],
+    prerequisites: "None — built for absolute beginners",
+    cta: "Get Your Batch Timing & Enrollment Details",
+    shortDescription: "A complete beginner-to-job-ready package combining typing, Office software, and internet skills for operator roles.",
   },
 
   // ===== Office & Productivity (3) =====
@@ -120,6 +132,9 @@ export const courses: Course[] = [
     image: img("office", 1),
     feeNPR: 7000,
     feeNote: "Installments available",
+    seoTitle: "MS Office Course in Nepal (Word, Excel, PowerPoint) | DarbarTech",
+    seoDescription: "Master the Office suite every workplace uses, plus Copilot AI basics, in 8 weeks.",
+    cta: "Enroll in the Next Office Batch",
   },
   {
     id: "c05",
@@ -190,6 +205,9 @@ export const courses: Course[] = [
     careerOpportunities: ["Junior Programmer", "Trainee Developer"],
     image: img("programming", 1),
     feeNPR: 13000,
+    seoTitle: "Beginner Programming Course (C, Python, Java) in Nepal | DarbarTech",
+    seoDescription: "Build real coding logic in C, Python, and Java — the foundation every developer starts with.",
+    cta: "Start Coding From Scratch",
   },
   {
     id: "c08",
@@ -212,6 +230,9 @@ export const courses: Course[] = [
     image: img("programming", 2),
     feeNPR: 14000,
     seats: "Limited seats",
+    seoTitle: "Data Structures & Algorithms Course in Kathmandu | DarbarTech",
+    seoDescription: "Sharpen your problem-solving for coding interviews and contests in 8 weeks.",
+    cta: "Prepare for Coding Interviews",
   },
   {
     id: "c09",
@@ -237,6 +258,9 @@ export const courses: Course[] = [
     feeNPR: 18000,
     feeNote: "3-part installment plan available",
     seats: "Limited seats",
+    seoTitle: "Python for AI Course in Nepal | DarbarTech",
+    seoDescription: "Learn Python and practical AI integration to build smart, automated applications.",
+    cta: "Build Your First AI App",
   },
 
   // ===== Web Development (5) =====
@@ -255,7 +279,6 @@ export const courses: Course[] = [
     industryCertification: "Meta",
     internship: "Optional Internship",
     targetStudents: "Bachelor Students, Job Seekers",
-    shortDescription: "Build modern, responsive websites and interfaces using React, Next.js, and AI-assisted coding tools.",
     skillsGained: ["HTML/CSS/JS", "React & Next.js", "Tailwind CSS", "AI pair-programming", "Responsive design"],
     softwareTools: ["VS Code", "React", "Next.js", "Tailwind CSS", "GitHub Copilot"],
     portfolioProjects: ["Restaurant Website", "Ecommerce Frontend", "School Website"],
@@ -265,6 +288,13 @@ export const courses: Course[] = [
     feeNPR: 28000,
     feeNote: "3-part installment plan available",
     seats: "Limited seats, cohort-based intake",
+    seoTitle: "Frontend Web Development Course (React & Next.js) in Nepal | DarbarTech",
+    seoDescription: "Learn React, Next.js, and Tailwind CSS hands-on in 16 weeks. Build a real portfolio, get Meta-aligned certification, and start your frontend developer career.",
+    overview: "A 16-week, project-driven course for anyone who wants to build modern, responsive websites and interfaces — not just follow tutorials. You'll use the same tools and AI-assisted workflows professional frontend teams use today.",
+    learningObjectives: ["Build responsive UIs with HTML/CSS/JS", "Develop with React and Next.js", "Style efficiently with Tailwind CSS", "Use AI pair-programming tools productively", "Ship three portfolio-ready websites"],
+    prerequisites: "Basic computer literacy; no prior coding required",
+    cta: "Reserve Your Seat in the Next Cohort",
+    shortDescription: "Build modern, responsive websites and interfaces using React, Next.js, and AI-assisted coding tools.",
   },
   {
     id: "c11",
@@ -289,6 +319,9 @@ export const courses: Course[] = [
     feeNPR: 28000,
     feeNote: "3-part installment plan available",
     seats: "Limited seats",
+    seoTitle: "Backend Development Course (Node.js & Laravel) Nepal | DarbarTech",
+    seoDescription: "Design secure, scalable backend systems and APIs in 16 weeks of hands-on training.",
+    cta: "Build Real Backend Systems",
   },
   {
     id: "c12",
@@ -305,7 +338,6 @@ export const courses: Course[] = [
     industryCertification: "Meta",
     internship: "Internship Available",
     targetStudents: "Bachelor Students, Job Seekers",
-    shortDescription: "Become a complete web developer, building and deploying full production apps from database to launch.",
     skillsGained: ["Node.js & Express", "MongoDB/MySQL", "REST APIs", "Auth & JWT", "Deployment & CI/CD"],
     softwareTools: ["React", "Node.js", "MongoDB", "Express", "Docker", "GitHub"],
     portfolioProjects: ["Ecommerce Platform", "Job Portal", "Social Media App"],
@@ -315,6 +347,13 @@ export const courses: Course[] = [
     feeNPR: 45000,
     feeNote: "4-part installment plan available",
     seats: "Limited seats, cohort-based intake",
+    seoTitle: "MERN Full Stack Development Course in Kathmandu | DarbarTech",
+    seoDescription: "Become a complete full-stack developer in 24 weeks. MongoDB, Express, React, Node — build and deploy real production apps with internship support.",
+    overview: "DarbarTech's most comprehensive web development track. Over 24 weeks, you go from database design to a deployed, production-style application — the kind of project that anchors a strong developer portfolio.",
+    learningObjectives: ["Design REST APIs with Node.js/Express", "Work with MongoDB and MySQL", "Implement authentication and JWT", "Deploy applications with Docker and CI/CD basics", "Ship an ecommerce platform, job portal, or social app"],
+    prerequisites: "Basic programming logic (covered in Software Development Foundation, if needed)",
+    cta: "Check Seats for the Next Cohort",
+    shortDescription: "Become a complete web developer, building and deploying full production apps from database to launch.",
   },
   {
     id: "c13",
@@ -336,6 +375,9 @@ export const courses: Course[] = [
     careerOpportunities: ["Web Developer", "WordPress Developer", "Freelancer"],
     image: img("web", 4),
     feeNPR: 14000,
+    seoTitle: "Next.js & WordPress Course in Kathmandu | DarbarTech",
+    seoDescription: "Build fast marketing sites and client websites, ready to deploy and sell, in 8 weeks.",
+    cta: "Start Building Client Websites",
   },
   {
     id: "c14",
@@ -361,6 +403,9 @@ export const courses: Course[] = [
     feeNPR: 30000,
     feeNote: "3-part installment plan available",
     seats: "Limited seats",
+    seoTitle: "Flutter & React Native Course in Nepal | DarbarTech",
+    seoDescription: "Launch real Android and iOS apps with one codebase using Flutter and React Native.",
+    cta: "Launch Your First Mobile App",
   },
 
   // ===== AI & Automation (4) =====
@@ -377,7 +422,6 @@ export const courses: Course[] = [
     timing: "Evening / Weekend",
     instituteCertificate: "Certificate",
     targetStudents: "Working Professionals, Business Owners, Freelancers",
-    shortDescription: "Learn to use ChatGPT, Claude and Gemini effectively to save hours of work through smart prompting.",
     skillsGained: ["Prompt engineering", "ChatGPT/Claude/Gemini workflows", "AI content generation", "AI image & video tools"],
     softwareTools: ["ChatGPT", "Claude", "Gemini", "Cursor AI"],
     portfolioProjects: ["AI Content Playbook", "Automated Prompt Library"],
@@ -385,6 +429,13 @@ export const courses: Course[] = [
     image: img("ai", 1),
     featured: true,
     feeNPR: 4500,
+    seoTitle: "Prompt Engineering Course in Nepal (ChatGPT, Claude, Gemini) | DarbarTech",
+    seoDescription: "A 3-week hands-on course to master ChatGPT, Claude, and Gemini for work — smarter prompting, AI content, and automation for professionals and freelancers.",
+    overview: "The fastest-growing skill gap in Nepal's job market right now isn't coding — it's knowing how to actually get useful output from AI tools. This short, practical course turns casual ChatGPT users into people who save hours every week.",
+    learningObjectives: ["Write structured, reusable prompts", "Compare ChatGPT, Claude, and Gemini for different tasks", "Use AI for content, image, and basic video generation", "Build a personal prompt library for repeat use"],
+    prerequisites: "Basic computer and internet use",
+    cta: "Join the Next 3-Week Batch",
+    shortDescription: "Learn to use ChatGPT, Claude and Gemini effectively to save hours of work through smart prompting.",
   },
   {
     id: "c16",
@@ -408,6 +459,9 @@ export const courses: Course[] = [
     image: img("ai", 2),
     feeNPR: 16000,
     feeNote: "Installments available",
+    seoTitle: "AI Automation Course in Nepal (LLM Agents) | DarbarTech",
+    seoDescription: "Build real AI-powered agents and automation pipelines with modern LLM APIs.",
+    cta: "Build Your First AI Agent",
   },
   {
     id: "c17",
@@ -432,6 +486,9 @@ export const courses: Course[] = [
     feeNPR: 22000,
     feeNote: "3-part installment plan available",
     seats: "Limited seats",
+    seoTitle: "LLM & RAG Development Course in Kathmandu | DarbarTech",
+    seoDescription: "Design and deploy retrieval-augmented and agentic LLM systems using modern frameworks.",
+    cta: "Build Production-Grade AI Systems",
   },
   {
     id: "c18",
@@ -448,7 +505,6 @@ export const courses: Course[] = [
     industryCertification: "Microsoft, Google",
     internship: "Internship Available",
     targetStudents: "Bachelor Students, Job Seekers",
-    shortDescription: "A flagship one-year diploma combining full stack development with AI integration and cloud deployment skills.",
     skillsGained: ["Full stack development", "LLM integration", "Cloud deployment", "DevOps basics", "Capstone project"],
     softwareTools: ["React", "Node.js", "Python", "AWS", "Docker", "GitHub"],
     portfolioProjects: ["Capstone AI Product", "Full Stack SaaS App"],
@@ -458,6 +514,13 @@ export const courses: Course[] = [
     feeNPR: 75000,
     feeNote: "6-part installment plan available",
     seats: "Limited seats, cohort-based intake",
+    seoTitle: "AI Software Engineering Diploma (1-Year Program) Nepal | DarbarTech",
+    seoDescription: "DarbarTech's flagship 48-week diploma: full-stack development, LLM integration, and cloud deployment. Build a capstone AI product with internship support.",
+    overview: "A one-year, career-defining diploma for students who want to graduate with more than a certificate — a working, deployed AI-integrated software product they built themselves, plus the full-stack and cloud fundamentals to keep building after graduation.",
+    learningObjectives: ["Build full-stack applications end-to-end", "Integrate LLMs into real products", "Deploy on cloud infrastructure (AWS)", "Apply DevOps fundamentals", "Complete a capstone AI product from scratch"],
+    prerequisites: "Comfort with computers; prior programming exposure helpful but not mandatory — foundational modules are included",
+    cta: "Apply for the Next Intake",
+    shortDescription: "A flagship one-year diploma combining full stack development with AI integration and cloud deployment skills.",
   },
 
   // ===== Data Science (3) =====
@@ -485,6 +548,9 @@ export const courses: Course[] = [
     feeNPR: 32000,
     feeNote: "3-part installment plan available",
     seats: "Limited seats",
+    seoTitle: "Machine Learning Course in Nepal (PyTorch & TensorFlow) | DarbarTech",
+    seoDescription: "Build and evaluate ML and deep learning models using Python, PyTorch, and TensorFlow.",
+    cta: "Start Your ML Portfolio",
   },
   {
     id: "c20",
@@ -509,6 +575,9 @@ export const courses: Course[] = [
     image: img("data", 2),
     feeNPR: 14000,
     seats: "Limited seats",
+    seoTitle: "Power BI & Data Analytics Course in Kathmandu | DarbarTech",
+    seoDescription: "Turn raw business data into dashboards and insights using SQL and Power BI.",
+    cta: "Turn Data Into Decisions",
   },
   {
     id: "c21",
@@ -534,6 +603,9 @@ export const courses: Course[] = [
     feeNPR: 25000,
     feeNote: "3-part installment plan available",
     seats: "Limited seats",
+    seoTitle: "Data Engineering Course in Nepal (SQL & Spark) | DarbarTech",
+    seoDescription: "Design ETL pipelines and big data infrastructure behind modern analytics and AI.",
+    cta: "Build Your First Data Pipeline",
   },
 
   // ===== Cloud & DevOps (1) =====
@@ -561,6 +633,9 @@ export const courses: Course[] = [
     feeNPR: 28000,
     feeNote: "3-part installment plan available",
     seats: "Limited seats",
+    seoTitle: "AWS & DevOps Course in Kathmandu | DarbarTech",
+    seoDescription: "Deploy, containerize, and automate applications on AWS and Azure like a modern tech team.",
+    cta: "Start Deploying Like a Pro",
   },
 
   // ===== Graphic Design (3) =====
@@ -579,7 +654,6 @@ export const courses: Course[] = [
     industryCertification: "Adobe",
     internship: "Optional Internship",
     targetStudents: "+2 Students, Freelancers, Job Seekers",
-    shortDescription: "Master Photoshop, Illustrator and AI design tools to create logos, brochures and social media graphics.",
     skillsGained: ["Photoshop", "Illustrator", "Canva AI", "Branding design", "Print design"],
     softwareTools: ["Photoshop", "Illustrator", "Canva", "Figma"],
     portfolioProjects: ["Logo Design", "Business Card", "Brochure", "Social Media Campaign"],
@@ -589,6 +663,13 @@ export const courses: Course[] = [
     feeNPR: 16000,
     feeNote: "Installments available",
     seats: "Limited seats",
+    seoTitle: "Graphic Design Course in Kathmandu (Photoshop, Illustrator, AI Tools) | DarbarTech",
+    seoDescription: "Learn Photoshop, Illustrator, and AI design tools in 12 weeks. Build a real portfolio — logos, branding, social media — with Adobe-aligned certification.",
+    overview: "For anyone whose creativity has outgrown Canva templates, this course builds real design fluency — the software skills, the branding logic, and the portfolio pieces employers and clients actually ask to see.",
+    learningObjectives: ["Design in Photoshop and Illustrator confidently", "Use Canva AI and Figma for faster workflows", "Apply branding and print-design principles", "Produce a client-ready design portfolio"],
+    prerequisites: "None — beginner-friendly, some creative interest helpful",
+    cta: "See the Full Design Curriculum",
+    shortDescription: "Master Photoshop, Illustrator and AI design tools to create logos, brochures and social media graphics.",
   },
   {
     id: "c24",
@@ -636,6 +717,9 @@ export const courses: Course[] = [
     feeNPR: 18000,
     feeNote: "Installments available",
     seats: "Limited seats",
+    seoTitle: "UI/UX Design Course in Kathmandu (Figma) | DarbarTech",
+    seoDescription: "Design user-friendly apps and websites in Figma, from wireframes to tested prototypes.",
+    cta: "Start Your UX Portfolio",
   },
 
   // ===== Video Production (1) =====
@@ -662,6 +746,9 @@ export const courses: Course[] = [
     image: img("video", 1),
     feeNPR: 15000,
     seats: "Limited seats",
+    seoTitle: "Video Editing Course in Nepal (Premiere Pro, After Effects) | DarbarTech",
+    seoDescription: "Edit professional videos and motion graphics for YouTube, Reels, and business use.",
+    cta: "Start Editing Like a Pro",
   },
 
   // ===== Business & Accounting (1) =====
@@ -685,6 +772,9 @@ export const courses: Course[] = [
     careerOpportunities: ["Accountant", "Billing Executive", "Inventory Officer"],
     image: img("business", 1),
     feeNPR: 8000,
+    seoTitle: "Tally & Accounting Course in Kathmandu | DarbarTech",
+    seoDescription: "Manage bookkeeping, billing, and GST-ready accounts with Tally Prime and Excel.",
+    cta: "Get Job-Ready in Accounting",
   },
 
   // ===== Networking (1) =====
@@ -712,6 +802,9 @@ export const courses: Course[] = [
     feeNPR: 20000,
     feeNote: "Installments available",
     seats: "Limited seats (lab capacity)",
+    seoTitle: "CCNA Networking Course in Nepal | DarbarTech",
+    seoDescription: "Build job-ready networking skills with CCNA and MikroTik training.",
+    cta: "Start Your Networking Career",
   },
 
   // ===== Cyber Security (2) =====
@@ -739,6 +832,9 @@ export const courses: Course[] = [
     feeNPR: 25000,
     feeNote: "Installments available",
     seats: "Limited seats (lab capacity)",
+    seoTitle: "Ethical Hacking Course in Kathmandu | DarbarTech",
+    seoDescription: "Learn cybersecurity defense through hands-on penetration testing labs.",
+    cta: "Start Thinking Like an Attacker",
   },
   {
     id: "c30",
@@ -764,6 +860,9 @@ export const courses: Course[] = [
     feeNPR: 30000,
     feeNote: "3-part installment plan available",
     seats: "Limited seats (lab capacity)",
+    seoTitle: "CEH & SOC Analyst Training in Nepal | DarbarTech",
+    seoDescription: "Prepare for CEH-style certification and real SOC analyst work with hands-on labs.",
+    cta: "Prepare for a SOC Career",
   },
 
   // ===== Digital Marketing (2) =====
@@ -782,7 +881,6 @@ export const courses: Course[] = [
     industryCertification: "Google, Meta",
     internship: "Optional Internship",
     targetStudents: "Business Owners, Freelancers, Job Seekers",
-    shortDescription: "Grow any brand online with SEO, paid ads and AI-powered content strategies for measurable results.",
     skillsGained: ["SEO & SEM", "Google & Meta Ads", "AI ad copy", "Social media analytics"],
     softwareTools: ["Google Ads", "Meta Ads Manager", "Google Analytics", "Canva"],
     portfolioProjects: ["SEO Audit", "Ad Campaign Launch", "Social Media Content Calendar"],
@@ -792,6 +890,13 @@ export const courses: Course[] = [
     feeNPR: 14000,
     feeNote: "Installments available",
     seats: "Limited seats",
+    seoTitle: "Digital Marketing Course in Nepal (SEO, Google & Meta Ads) | DarbarTech",
+    seoDescription: "Learn SEO, paid ads, and AI-powered content strategy in 8 weeks. Launch a real ad campaign and SEO audit — practical training for business owners and job seekers.",
+    overview: "Built for people who need marketing that produces measurable results, not just theory — SEO fundamentals, running real ad campaigns on Google and Meta, and using AI tools to produce content faster without losing quality.",
+    learningObjectives: ["Run an SEO audit and fix core issues", "Launch and manage Google and Meta ad campaigns", "Use AI tools for ad copy and content", "Read and act on social media analytics"],
+    prerequisites: "Basic computer and internet use",
+    cta: "Start Growing a Real Campaign",
+    shortDescription: "Grow any brand online with SEO, paid ads and AI-powered content strategies for measurable results.",
   },
   {
     id: "c32",
@@ -814,6 +919,9 @@ export const courses: Course[] = [
     careerOpportunities: ["Growth Marketer", "Performance Marketing Specialist", "Marketing Automation Manager"],
     image: img("marketing", 2),
     feeNPR: 18000,
+    seoTitle: "Growth Marketing Course in Kathmandu | DarbarTech",
+    seoDescription: "Master multi-channel ads, analytics, and marketing automation beyond the basics.",
+    cta: "Scale Your Marketing Skills",
   },
 
   // ===== Career Programs (4) =====
@@ -837,6 +945,9 @@ export const courses: Course[] = [
     careerOpportunities: ["Freelancer", "Virtual Assistant", "Independent Consultant"],
     image: img("career", 1),
     feeNPR: 5000,
+    seoTitle: "Freelancing Course in Nepal (Fiverr & Upwork) | DarbarTech",
+    seoDescription: "Learn to find clients, build a portfolio, and win freelance projects with confidence.",
+    cta: "Start Earning Online",
   },
   {
     id: "c34",
@@ -859,6 +970,9 @@ export const courses: Course[] = [
     careerOpportunities: ["CAD Draftsman", "Civil/Architecture Assistant", "Design Engineer"],
     image: img("career", 2),
     feeNPR: 12000,
+    seoTitle: "AutoCAD Course in Kathmandu | DarbarTech",
+    seoDescription: "Learn professional 2D and 3D drafting used across civil and architecture projects.",
+    cta: "Start Drafting Real Projects",
   },
   {
     id: "c35",
@@ -880,6 +994,9 @@ export const courses: Course[] = [
     careerOpportunities: ["Foundation for Future STEM Careers"],
     image: img("career", 3),
     feeNPR: 6000,
+    seoTitle: "Kids Coding & Robotics Course in Nepal | DarbarTech",
+    seoDescription: "A fun, guided introduction to coding, robotics, and safe AI use for ages 8–15.",
+    cta: "Enroll Your Child Today",
   },
   {
     id: "c36",
@@ -904,6 +1021,9 @@ export const courses: Course[] = [
     feeNPR: 32000,
     feeNote: "3-part installment plan available",
     seats: "Limited seats, cohort-based intake",
+    seoTitle: "AI Automation Specialist Career Track Nepal | DarbarTech",
+    seoDescription: "Become an in-demand AI automation specialist with a job-ready automation portfolio.",
+    cta: "Start Your AI Career Track",
   },
 
   // ===== Professional Diploma (1) =====
@@ -922,7 +1042,6 @@ export const courses: Course[] = [
     industryCertification: "Microsoft",
     internship: "Optional Internship",
     targetStudents: "SEE Students, +2 Students, Job Seekers",
-    shortDescription: "A complete six-month diploma covering computer fundamentals, Office skills and IT support for job-ready graduates.",
     skillsGained: ["Computer fundamentals", "Typing", "Office suite", "Internet", "IT support basics"],
     softwareTools: ["MS Office", "Windows", "Internet tools"],
     portfolioProjects: ["Office Skills Portfolio", "IT Support Case Studies"],
@@ -932,6 +1051,13 @@ export const courses: Course[] = [
     feeNPR: 18000,
     feeNote: "4-part installment plan available",
     seats: "Limited seats",
+    seoTitle: "Computer Diploma Course in Kathmandu (6-Month Program) | DarbarTech",
+    seoDescription: "A complete 24-week diploma covering computer fundamentals, MS Office, and IT support basics — one program from zero to job-ready.",
+    overview: "For students who want one structured program that takes them from complete beginner to job-ready across computer fundamentals, Office software, and basic IT support — without having to plan a sequence of separate short courses.",
+    learningObjectives: ["Operate confidently across OS, internet, and Office software", "Type accurately at a professional standard", "Handle basic IT support scenarios", "Build an IT support and office-skills portfolio"],
+    prerequisites: "None",
+    cta: "Start Your 6-Month Diploma",
+    shortDescription: "A complete six-month diploma covering computer fundamentals, Office skills and IT support for job-ready graduates.",
   },
 ];
 

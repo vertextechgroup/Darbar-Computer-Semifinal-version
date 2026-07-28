@@ -24,15 +24,15 @@ export function CTABanner() {
                 id="cta-heading"
                 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-balance"
               >
-                Ready to Start Your Course?
+                Not sure which course is right for you?
               </h2>
               <p className="mt-3 sm:mt-4 text-sm sm:text-lg text-white/85 leading-relaxed max-w-xl">
-                Enrollment is open for upcoming batches. Book a free demo or talk to our counselor today — no commitments, just guidance.
+                Talk to a course counselor free — no obligation, no pressure. We&rsquo;ll recommend the right track based on your goals, background, and timeline.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:justify-self-end w-full sm:w-auto">
-              <Link href="/admissions/inquire" className="w-full">
-                <Button size="lg" className="text-white bg-secondary hover:bg-secondary/90 text-secondary-foreground shadow-lg shadow-black/10 w-full group/btn">
+              <Link href="/admissions/inquire" className="w-full block">
+                <Button variant="secondary" size="lg" className="w-full group/btn shadow-lg shadow-black/10">
                   <MessageSquare className="size-5" aria-hidden="true" />
                   Enquire About Admission
                   <ArrowRight className="size-4 transition-transform duration-200 group-hover/btn:translate-x-0.5" aria-hidden="true" />
@@ -40,10 +40,12 @@ export function CTABanner() {
               </Link>
               <a
                 href={`tel:${SITE_CONFIG.phone.replace(/[^0-9+]/g, "")}`}
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 hover:bg-white/15 backdrop-blur-sm px-5 h-12 text-sm sm:text-base font-medium text-white transition-colors duration-200"
+                className="w-full block"
               >
-                <PhoneCall className="size-5" aria-hidden="true" />
-                <span className="truncate">Call {SITE_CONFIG.phone}</span>
+                <Button variant="outline-inverse" size="lg" className="w-full">
+                  <PhoneCall className="size-5" aria-hidden="true" />
+                  <span className="truncate">Call {SITE_CONFIG.phone}</span>
+                </Button>
               </a>
             </div>
           </div>

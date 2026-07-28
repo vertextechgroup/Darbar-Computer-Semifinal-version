@@ -29,8 +29,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 import { CourseCard } from "@/components/sections/CourseCard";
 import { courses, getCourseBySlug, getRelatedCourses, formatFee } from "@/content/courses";
-import { EVERY_COURSE_INCLUDES } from "@/lib/constants";
-import { buildMetadata, courseJsonLd } from "@/lib/seo";
+import { EVERY_COURSE_INCLUDES, SITE_CONFIG } from "@/lib/constants";
+import { buildMetadata, courseJsonLd, breadcrumbListJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return courses.map((c) => ({ slug: c.slug }));
@@ -47,8 +47,8 @@ export async function generateMetadata({
     return buildMetadata({ title: "Course Not Found", path: `/courses/${slug}` });
   }
   return buildMetadata({
-    title: course.title,
-    description: course.shortDescription,
+    title: (course as any).seoTitle || course.title,
+    description: (course as any).seoDescription || course.shortDescription,
     path: `/courses/${course.slug}`,
     images: [course.image],
     keywords: [course.title, course.category, course.level, ...course.skillsGained, "Darbar Computer course"],
@@ -66,12 +66,22 @@ export default async function CourseDetailPage({
 
   const related = getRelatedCourses(course, 3);
   const jsonLd = courseJsonLd(course);
+  const breadcrumbJsonLd = breadcrumbListJsonLd([
+    { name: "Home", item: SITE_CONFIG.url },
+    { name: "Courses", item: `${SITE_CONFIG.url}/courses` },
+    { name: course.category, item: `${SITE_CONFIG.url}/courses?category=${encodeURIComponent(course.category)}` },
+    { name: course.title },
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <div className="bg-neutral-50 border-b border-neutral-200">
         <Container size="xl" className="pt-4 pb-8 sm:pb-10">
@@ -162,7 +172,7 @@ export default async function CourseDetailPage({
                   <TabsTrigger value="overview" className="snap-start shrink-0 whitespace-nowrap">Overview</TabsTrigger>
                   <TabsTrigger value="skills" className="snap-start shrink-0 whitespace-nowrap">Skills &amp; Tools</TabsTrigger>
                   <TabsTrigger value="portfolio" className="snap-start shrink-0 whitespace-nowrap">Portfolio &amp; Career</TabsTrigger>
-                  <TabsTrigger value="fees" className="snap-start shrink-0 whitespace-nowrap">Fees &amp; Batches</TabsTrigger>
+                  <TabsTrigger value="fees" className="snap-start shrink-0 whitespace-nowrap">Batches &amp; Enrollment</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="overview">
@@ -171,11 +181,21 @@ export default async function CourseDetailPage({
                       <BookOpen className="size-5 text-primary" />
                       About this course
                     </h3>
-                    <p className="text-neutral-700 leading-relaxed text-[15px] whitespace-pre-line">
-                      {course.shortDescription} {course.tagline} Designed for {course.targetStudents.toLowerCase()}.
-                    </p>
-
-                    <Separator className="my-6" />
+                    {course.overview ? (
+                      <>
+                        <p className="text-neutral-700 leading-relaxed text-[15px] whitespace-pre-line">
+                          {course.overview}
+                        </p>
+                        <Separator className="my-6" />
+                      </>
+                    ) : (
+                      <>
+                        <p className="text-neutral-700 leading-relaxed text-[15px] whitespace-pre-line">
+                          {course.shortDescription} {course.tagline}
+                        </p>
+                        <Separator className="my-6" />
+                      </>
+                    )}
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="rounded-xl border border-neutral-200 bg-white p-5">
@@ -214,7 +234,7 @@ export default async function CourseDetailPage({
                           <Users className="size-5 text-primary" />
                           <h4 className="text-sm font-semibold text-neutral-900">Ideal For</h4>
                         </div>
-                        <p className="text-[15px] text-neutral-700 leading-relaxed mb-3">{course.targetStudents}</p>
+                        <p className="text-[15px] text-neutral-700 leading-relaxed mb-3">Designed for {course.targetStudents.toLowerCase()}.</p>
                         <div className="flex flex-wrap gap-1.5">
                           {course.targetStudents.split(", ").map((t) => (
                             <Badge key={t} variant="outline" className="text-xs">
@@ -224,6 +244,46 @@ export default async function CourseDetailPage({
                         </div>
                       </div>
                     </div>
+
+                    {(() => {
+                      const hasObjectives = Array.isArray(course.learningObjectives) && course.learningObjectives.length > 0;
+                      const hasPrerequisites = !!course.prerequisites;
+                      if (!hasObjectives && !hasPrerequisites) return null;
+                      return (
+                        <>
+                          <Separator className="my-6" />
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {hasObjectives && (
+                              <div className="rounded-xl border border-neutral-200 bg-white p-5">
+                                <div className="flex items-center gap-2 mb-3">
+                                  <GraduationCap className="size-5 text-primary" />
+                                  <h4 className="text-sm font-semibold text-neutral-900">Learning Objectives</h4>
+                                </div>
+                                <ul className="space-y-2 text-[15px]">
+                                  {course.learningObjectives!.map((objective) => (
+                                    <li key={objective} className="flex items-start gap-2">
+                                      <CheckCircle2 className="size-4 text-accent mt-0.5 shrink-0" />
+                                      <span className="text-neutral-700">{objective}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+                            {hasPrerequisites && (
+                              <div className="rounded-xl border border-neutral-200 bg-white p-5">
+                                <div className="flex items-center gap-2 mb-3">
+                                  <BookOpen className="size-5 text-primary" />
+                                  <h4 className="text-sm font-semibold text-neutral-900">Prerequisites</h4>
+                                </div>
+                                <p className="text-[15px] text-neutral-700 leading-relaxed whitespace-pre-line">
+                                  {course.prerequisites}
+                                </p>
+                              </div>
+                            )}
+                          </div>
+                        </>
+                      );
+                    })()}
 
                     <Separator className="my-6" />
 
@@ -334,27 +394,11 @@ export default async function CourseDetailPage({
                 </TabsContent>
 
                 <TabsContent value="fees">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <Card>
-                      <CardContent className="p-6">
-                        <Wallet className="size-6 text-primary mb-3" />
-                        <div className="text-sm text-neutral-500 font-medium">
-                          Course Fee
-                        </div>
-                        <div className="mt-1 text-3xl font-extrabold text-neutral-900">
-                          {formatFee(course.feeNPR)}
-                        </div>
-                        {course.feeNote && (
-                          <p className="mt-2 text-sm text-neutral-600">
-                            {course.feeNote}
-                          </p>
-                        )}
-                      </CardContent>
-                    </Card>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                     <Card>
                       <CardContent className="p-6">
                         <CalendarDays className="size-6 text-primary mb-3" />
-                        <div className="text-sm text-neutral-500 font-medium">Duration</div>
+                        <div className="text-sm text-neutral-500 font-medium">Program Duration</div>
                         <div className="mt-1 text-3xl font-extrabold text-neutral-900">
                           {course.duration}
                         </div>
@@ -405,22 +449,6 @@ export default async function CourseDetailPage({
                 <Card className="shadow-md overflow-hidden">
                   <div className="h-1.5 gradient-primary w-full" />
                   <CardContent className="p-6 space-y-5">
-                    <div>
-                      <div className="text-xs font-semibold uppercase tracking-wider text-neutral-500">
-                        Enrollment Fee
-                      </div>
-                      <div className="mt-1 flex items-baseline gap-2">
-                        <span className="text-3xl font-extrabold text-neutral-900">
-                          {formatFee(course.feeNPR)}
-                        </span>
-                        <span className="text-sm text-neutral-500">
-                          / {course.duration}
-                        </span>
-                      </div>
-                      {course.feeNote && (
-                        <p className="mt-1 text-xs text-neutral-500">{course.feeNote}</p>
-                      )}
-                    </div>
                     <Separator />
                     <ul className="space-y-2.5 text-sm text-neutral-700">
                       <li className="flex items-center gap-2">
@@ -457,7 +485,7 @@ export default async function CourseDetailPage({
                         href={`/admissions/inquire?course=${encodeURIComponent(course.slug)}`}
                       >
                         <Button size="lg" className="w-full shadow-lg shadow-primary/20">
-                          Enquire About This Course
+                          {(course as any).cta || "Get Batch Timing & Enrollment Details →"}
                           <ArrowRight className="size-4" />
                         </Button>
                       </Link>

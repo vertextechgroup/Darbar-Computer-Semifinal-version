@@ -26,7 +26,13 @@ export interface Course {
   careerOpportunities: string[];
   image: string;
   featured?: boolean;
-  feeNPR: number;
+  feeNPR?: number;
   feeNote?: string;
   seats?: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  overview?: string;
+  learningObjectives?: string[];
+  prerequisites?: string;
+  cta?: string;
 }
