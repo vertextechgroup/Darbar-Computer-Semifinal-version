@@ -7,20 +7,20 @@ import type { Course } from "@/types/course";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function img(cat: string, _index: number) {
   const categoryMap: Record<string, string> = {
-    basic: "https://images.pexels.com/photos/10638075/pexels-photo-10638075.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    office: "https://images.pexels.com/photos/18471480/pexels-photo-18471480.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    programming: "https://images.pexels.com/photos/6424590/pexels-photo-6424590.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    web: "https://images.pexels.com/photos/574069/pexels-photo-574069.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    ai: "https://images.pexels.com/photos/6424590/pexels-photo-6424590.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    data: "https://images.pexels.com/photos/6424590/pexels-photo-6424590.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    cloud: "https://images.pexels.com/photos/6424590/pexels-photo-6424590.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    basic: "https://images.pexels.com/photos/574069/pexels-photo-574069.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    office: "https://images.pexels.com/photos/7551442/pexels-photo-7551442.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    programming: "https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    web: "https://images.pexels.com/photos/92905/pexels-photo-92905.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    ai: "https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    data: "https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    cloud: "https://images.pexels.com/photos/4551578/pexels-photo-4551578.jpeg?auto=compress&cs=tinysrgb&w=1000",
     design: "https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    video: "https://images.pexels.com/photos/6424590/pexels-photo-6424590.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    video: "https://images.pexels.com/photos/12228979/pexels-photo-12228979.jpeg?auto=compress&cs=tinysrgb&w=1000",
     business: "https://images.pexels.com/photos/8296990/pexels-photo-8296990.jpeg?auto=compress&cs=tinysrgb&w=1000",
     network: "https://images.pexels.com/photos/442154/pexels-photo-442154.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    cyber: "https://images.pexels.com/photos/6424590/pexels-photo-6424590.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    marketing: "https://images.pexels.com/photos/6424590/pexels-photo-6424590.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    career: "https://images.pexels.com/photos/17258012/pexels-photo-17258012.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    cyber: "https://images.pexels.com/photos/1054397/pexels-photo-1054397.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    marketing: "https://images.pexels.com/photos/10628411/pexels-photo-10628411.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    career: "https://images.pexels.com/photos/5940839/pexels-photo-5940839.jpeg?auto=compress&cs=tinysrgb&w=1000",
     diploma: "https://images.pexels.com/photos/17258012/pexels-photo-17258012.jpeg?auto=compress&cs=tinysrgb&w=1000",
   };
   return categoryMap[cat] ?? categoryMap.programming;

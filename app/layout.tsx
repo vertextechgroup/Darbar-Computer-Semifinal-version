@@ -45,6 +45,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
     url: SITE_CONFIG.url,
@@ -52,14 +53,6 @@ export const metadata: Metadata = {
     title: SITE_CONFIG.name,
     description: SITE_CONFIG.description,
     locale: "en_US",
-    images: [
-      {
-        url: "/opengraph-image.png",
-        width: 1200,
-        height: 630,
-        alt: SITE_CONFIG.name,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -67,7 +60,6 @@ export const metadata: Metadata = {
     description: SITE_CONFIG.description,
     creator: SITE_CONFIG.twitter.handle,
     site: SITE_CONFIG.twitter.site,
-    images: ["/opengraph-image.png"],
   },
   robots: {
     index: true,
@@ -81,7 +73,21 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.svg", rel: "icon", type: "image/svg+xml" },
+    ],
+    shortcut: ["/favicon.svg"],
+    apple: [
+      { url: "/apple-touch-icon.svg", type: "image/svg+xml" },
+    ],
+    other: [
+      {
+        rel: "apple-touch-icon-precomposed",
+        url: "/apple-touch-icon.svg",
+        type: "image/svg+xml",
+      },
+    ],
   },
 };
 

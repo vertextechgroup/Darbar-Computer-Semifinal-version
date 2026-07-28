@@ -50,6 +50,14 @@ export const NAV_LINKS = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
+export const HEADER_NAV_LINKS = [
+  { href: "/", label: "Home" },
+  { href: "/courses", label: "Courses" },
+  { href: "/about", label: "About" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/contact", label: "Contact" },
+] as const;
+
 export const EVERY_COURSE_INCLUDES = [
   "Live Projects",
   "Portfolio Building",

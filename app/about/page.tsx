@@ -17,7 +17,7 @@ import {
   BookOpen,
   Users,
 } from "lucide-react";
-import { instituteInfo } from "@/content/institute";
+import { instituteInfo, ABOUT_CAMPUS_IMAGE } from "@/content/institute";
 import { buildMetadata, orgJsonLd } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -56,7 +56,7 @@ export default function AboutPage() {
           <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
             <div className="relative rounded-2xl border border-neutral-200 bg-neutral-100 aspect-[4/3] overflow-hidden">
               <Image
-                src="https://images.pexels.com/photos/10127241/pexels-photo-10127241.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                src={ABOUT_CAMPUS_IMAGE}
                 alt="DarbarTech Group of Technology campus building and student lounge"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -147,17 +147,19 @@ export default function AboutPage() {
                   <div className="text-center">
                     <UserCircle className="size-20 mx-auto text-neutral-300" />
                     {member.isPlaceholder && (
-                      <Badge variant="outline" className="mt-2 text-[10px]">PLACEHOLDER</Badge>
+                      <Badge variant="outline" className="mt-2 text-[10px]">PHOTO COMING SOON</Badge>
                     )}
                   </div>
                 </div>
-                <Image
-                  src={member.image}
-                  alt={`${member.name} — ${member.role}`}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105 bg-neutral-100"
-                />
+                {member.image && (
+                  <Image
+                    src={member.image}
+                    alt={`${member.name} — ${member.role}`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105 bg-neutral-100"
+                  />
+                )}
               </div>
               <CardContent className="p-5">
                 <h3 className="font-semibold text-neutral-900">{member.name}</h3>

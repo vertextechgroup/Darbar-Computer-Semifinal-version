@@ -50,7 +50,8 @@ function FooterLink({
 }) {
   const classes = cn(
     "group/link relative inline-flex w-fit items-center min-h-[34px] py-0.5 text-[13.5px] text-neutral-400 transition-all duration-200 ease-out",
-    "hover:text-white"
+    "hover:text-white",
+    className
   );
   const inner = (
     <>

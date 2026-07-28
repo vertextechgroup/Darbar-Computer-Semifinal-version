@@ -2,10 +2,6 @@
 
 import type { EventItem } from "@/types/event";
 
-const evSize = "landscape_16_9";
-const ev = (p: string) =>
-  `https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=${encodeURIComponent(p)}&image_size=${evSize}`;
-
 export const events: EventItem[] = [
   {
     id: "e1",
@@ -13,10 +9,10 @@ export const events: EventItem[] = [
     title: "Open House Day — Explore DarbarTech",
     date: "2026-08-15",
     time: "10:00 AM – 4:00 PM",
-    location: "DarbarTech Campus, [PLACEHOLDER Address]",
+    location: "DarbarTech Campus, Kathmandu",
     shortDescription: "Tour our labs, meet trainers, watch live demos, and get free counseling. Exclusive on-the-spot admission discounts for attendees.",
     fullDescription: "Join us for a full day of exploration at DarbarTech Group of Technology. Tour our computer labs, meet our certified trainers, watch live demonstrations of our most popular courses, and get one-on-one free career counseling. Attendees who enroll on the spot receive an exclusive discount. Parents and guardians welcome.",
-    image: ev("Open house event at DarbarTech computer training institute Nepal, large banner with institute name, welcome desk with staff greeting visitors with brochures, families and prospective students touring modern labs, bright sunny campus day, professional event banner HD photography"),
+    image: "https://images.pexels.com/photos/5539293/pexels-photo-5539293.jpeg?auto=compress&cs=tinysrgb&w=1400",
     category: "Open House",
     upcoming: true,
   },
@@ -29,7 +25,7 @@ export const events: EventItem[] = [
     location: "Lab 3, DarbarTech Campus",
     shortDescription: "A hands-on beginner-friendly workshop. No coding experience required — leave with a live personal website.",
     fullDescription: "A completely free, hands-on introductory workshop led by our senior web development trainer. You will build and deploy a simple personal website using HTML and CSS. Open to everyone ages 14+. Bring your own laptop if possible (limited lab seats available).",
-    image: ev("Hands-on web development workshop in Nepal, young Nepali instructor helping students code HTML CSS website on laptops, lab classroom with students following along coding, projector showing website code in background, educational workshop HD photography photorealistic"),
+    image: "https://images.pexels.com/photos/5940841/pexels-photo-5940841.jpeg?auto=compress&cs=tinysrgb&w=1400",
     category: "Workshop",
     upcoming: true,
   },
@@ -42,7 +38,7 @@ export const events: EventItem[] = [
     location: "Seminar Hall, DarbarTech Campus",
     shortDescription: "See practical Python automation demos for office tasks, data, and more — perfect for working professionals.",
     fullDescription: "A one-time seminar showcasing how Python can save hours every week through simple automation scripts — Excel processing, file renaming, report generation, and more. Presented with live demos. No prior Python knowledge needed.",
-    image: ev("Professional tech seminar at DarbarTech Nepal training institute, speaker presenting Python automation slides on large projector screen, audience of working professionals seated attentively, seminar hall with modern seating, professional conference event HD photography"),
+    image: "https://images.pexels.com/photos/5940839/pexels-photo-5940839.jpeg?auto=compress&cs=tinysrgb&w=1400",
     category: "Seminar",
     upcoming: true,
   },
@@ -55,7 +51,7 @@ export const events: EventItem[] = [
     location: "Main Campus Auditorium",
     shortDescription: "Celebrating the graduating students of Batch 24 with certificates, guest speakers, and an alumni meet-and-greet.",
     fullDescription: "Our quarterly certification ceremony honoring Batch 24 graduates. Family, friends, and alumni are invited. The program includes distribution of certificates, guest talks from industry professionals, and an alumni networking session.",
-    image: ev("DarbarTech Group of Technology batch graduation certification ceremony in Nepal, decorated auditorium stage with flowers and institute logo banner, students on stage receiving certificates from director, audience seated clapping, celebration event HD photography joyful atmosphere"),
+    image: "https://images.pexels.com/photos/17258012/pexels-photo-17258012.jpeg?auto=compress&cs=tinysrgb&w=1400",
     category: "Certification",
     upcoming: false,
   },
@@ -68,7 +64,7 @@ export const events: EventItem[] = [
     location: "Online (Zoom) + In-person Lab 2",
     shortDescription: "Hybrid info session covering how our graduates launch freelance careers. Live Q&A with working alumni.",
     fullDescription: "An honest, practical information session about freelance work for IT/design graduates. The session features three DarbarTech alumni working as freelancers sharing their journeys, platform recommendations, and answering all your questions.",
-    image: ev("Hybrid freelancing information session at DarbarTech Nepal, panel of three successful Nepali freelancer alumni sitting at table with microphones sharing Upwork Fiverr stories, audience of students taking notes, hybrid setup with video conferencing screen, info session HD photo"),
+    image: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=1400",
     category: "Seminar",
     upcoming: false,
   },

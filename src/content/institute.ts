@@ -1,5 +1,5 @@
-// [PLACEHOLDER INSTITUTE CONTENT - replace all [PLACEHOLDER] values before launch]
-// Per build document §6.1 (Footer), §6.5 (About), §6.9 (Contact)
+export const ABOUT_CAMPUS_IMAGE =
+  "https://images.pexels.com/photos/10127241/pexels-photo-10127241.jpeg?auto=compress&cs=tinysrgb&w=1400";
 
 export const instituteInfo = {
   name: "DarbarTech",
@@ -75,7 +75,7 @@ export const instituteInfo = {
       name: "Director / Senior Trainer",
       role: "Founder & Director",
       specialty: "Institute Leadership & Strategy",
-      image: "https://images.pexels.com/photos/33261958/pexels-photo-33261958.jpeg?auto=compress&cs=tinysrgb&w=500",
+      image: "",
       isPlaceholder: true,
     },
     {
@@ -83,7 +83,7 @@ export const instituteInfo = {
       name: "Programming Trainer",
       role: "Senior Programming Trainer",
       specialty: "Full-Stack Web Development, Python",
-      image: "https://images.pexels.com/photos/33261955/pexels-photo-33261955.jpeg?auto=compress&cs=tinysrgb&w=500",
+      image: "",
       isPlaceholder: true,
     },
     {
@@ -91,7 +91,7 @@ export const instituteInfo = {
       name: "Design Trainer",
       role: "Design Department Head",
       specialty: "Graphic Design, UI/UX, Video Editing",
-      image: "https://images.pexels.com/photos/34381970/pexels-photo-34381970.jpeg?auto=compress&cs=tinysrgb&w=500",
+      image: "",
       isPlaceholder: true,
     },
     {
@@ -99,7 +99,7 @@ export const instituteInfo = {
       name: "Hardware & Networking Trainer",
       role: "Hardware & Networking Trainer",
       specialty: "Hardware, Networks, IT Support",
-      image: "https://images.pexels.com/photos/33261951/pexels-photo-33261951.jpeg?auto=compress&cs=tinysrgb&w=500",
+      image: "",
       isPlaceholder: true,
     },
   ],
@@ -117,10 +117,10 @@ export const instituteInfo = {
     { id: "g3", category: "Lab", image: "https://images.pexels.com/photos/442154/pexels-photo-442154.jpeg?auto=compress&cs=tinysrgb&w=1200", alt: "Hardware lab" },
     { id: "g4", category: "Events", image: "https://images.pexels.com/photos/17258012/pexels-photo-17258012.jpeg?auto=compress&cs=tinysrgb&w=1200", alt: "Certification ceremony" },
     { id: "g5", category: "Classroom", image: "https://images.pexels.com/photos/10643463/pexels-photo-10643463.jpeg?auto=compress&cs=tinysrgb&w=1200", alt: "Trainer with students" },
-    { id: "g6", category: "Certificates", image: "https://images.pexels.com/photos/17258012/pexels-photo-17258012.jpeg?auto=compress&cs=tinysrgb&w=1200", alt: "Student receiving certificate" },
+    { id: "g6", category: "Certificates", image: "https://images.pexels.com/photos/5940839/pexels-photo-5940839.jpeg?auto=compress&cs=tinysrgb&w=1200", alt: "Student receiving certificate" },
     { id: "g7", category: "Events", image: "https://images.pexels.com/photos/5539293/pexels-photo-5539293.jpeg?auto=compress&cs=tinysrgb&w=1200", alt: "Open house event" },
-    { id: "g8", category: "Lab", image: "https://images.pexels.com/photos/5539293/pexels-photo-5539293.jpeg?auto=compress&cs=tinysrgb&w=1200", alt: "Networking practice" },
-    { id: "g9", category: "Certificates", image: "https://images.pexels.com/photos/10643463/pexels-photo-10643463.jpeg?auto=compress&cs=tinysrgb&w=1200", alt: "Group photo with certificates" },
+    { id: "g8", category: "Lab", image: "https://images.pexels.com/photos/3862632/pexels-photo-3862632.jpeg?auto=compress&cs=tinysrgb&w=1200", alt: "Networking practice" },
+    { id: "g9", category: "Certificates", image: "https://images.pexels.com/photos/143133/pexels-photo-143133.jpeg?auto=compress&cs=tinysrgb&w=1200", alt: "Group photo with certificates" },
   ],
   galleryCategories: ["All", "Classroom", "Lab", "Events", "Certificates"],
 };

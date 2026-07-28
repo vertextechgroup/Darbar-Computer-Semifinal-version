@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { Menu, Phone, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { NAV_LINKS, SITE_CONFIG } from "@/lib/constants";
+import { HEADER_NAV_LINKS, SITE_CONFIG } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { DarbarTechLogo } from "@/components/common/DarbarTechLogo";
 import { instituteInfo } from "@/content/institute";
@@ -57,7 +57,7 @@ export function Header() {
             aria-label="Primary navigation"
             className="hidden lg:flex items-center gap-1"
           >
-            {NAV_LINKS.map((link) => (
+            {HEADER_NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -120,7 +120,7 @@ export function Header() {
                   aria-label="Mobile navigation"
                   className="flex flex-col gap-1 px-1 py-5"
                 >
-                  {NAV_LINKS.map((link) => (
+                  {HEADER_NAV_LINKS.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}

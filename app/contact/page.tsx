@@ -52,7 +52,7 @@ export default function ContactPage() {
         <Container size="xl">
           <div className="relative overflow-hidden rounded-2xl border border-neutral-200 mb-10 aspect-[21/9] bg-neutral-100">
             <Image
-              src={`https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=${encodeURIComponent("Wide panoramic banner of DarbarTech friendly reception and counseling area at computer training institute Nepal, welcoming reception desk with staff greeting student, modern student lounge with comfortable seating, students talking with career counselor, bright natural lighting, plants and modern interior design, warm welcoming professional atmosphere, HD photorealistic wide banner")}&image_size=landscape_16_9`}
+              src="https://images.pexels.com/photos/10638115/pexels-photo-10638115.jpeg?auto=compress&cs=tinysrgb&w=1800"
               alt="DarbarTech reception and student counseling area"
               fill
               priority
