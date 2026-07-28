@@ -33,7 +33,7 @@ export const instituteInfo = {
   ],
   stats: [
     { label: "Years of Training Excellence", value: "10+", isPlaceholder: true },
-    { label: "Students Trained", value: "Hundreds+", isPlaceholder: true },
+    { label: "Students Trained", value: "15+", isPlaceholder: true },
     { label: "Courses Offered", value: "37" },
     { label: "Certification Rate", value: "On-Time Completion Focused", isPlaceholder: true },
   ],

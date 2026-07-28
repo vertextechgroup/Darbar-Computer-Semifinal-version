@@ -37,8 +37,8 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-[80] w-full border-b border-neutral-200/70 bg-white/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/60 transition-all duration-200",
-        scrolled && "shadow-sm"
+        "sticky top-0 z-[80] w-full border-b border-[#222F5D]/6 bg-[#FAFCFF]/80 backdrop-blur-md supports-[backdrop-filter]:bg-[#FAFCFF]/55 transition-all duration-300 ease-out",
+        scrolled && "shadow-[0_8px_28px_-12px_rgba(34,47,93,0.18)] ring-1 ring-[#222F5D]/4"
       )}
       role="banner"
     >
