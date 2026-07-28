@@ -496,7 +496,7 @@ export function Hero() {
               initial="offscreen"
               animate={state}
               custom={STAGGER.eyebrow}
-              className="mb-8 inline-flex items-center text-[18px] sm:text-[19px] font-small leading-[28px] text-[#222F5D]"
+              className="mb-6 inline-flex items-center text-[14px] leading-[22px] sm:text-[17px] sm:leading-[26px] md:text-[18px] md:leading-[28px] lg:text-[19px] font-small text-[#222F5D]"
             >
             
                 <span className="relative inline-flex h-1.5 w-1.5 items-center justify-center">
@@ -504,11 +504,11 @@ export function Hero() {
                   <span className="relative inline-flex h-1.5 w-1.5 rounded-full" />
                 </span>
                 <span className="ml-2">
-                  37 Career-Focused· {" "}
-                  <span className="relative font-semibold text-[#15678E]">
-                     Courses 
-                  </span>{" "}
-                  Certified Trainers.
+                  <span className="whitespace-nowrap">37 Career-Focused·{" "}</span>
+                  <span className="relative font-semibold whitespace-nowrap text-[#15678E]">
+                     Courses{" "}
+                  </span>
+                  <span className="whitespace-nowrap">Certified Trainers.</span>
                 </span>
       
             </motion.p>
@@ -546,18 +546,18 @@ export function Hero() {
               initial="offscreen"
               animate={state}
               custom={STAGGER.cta}
-              className="mt-0 flex flex-wrap sm:flex-nowrap items-center justify-start gap-3 sm:gap-5 md:gap-5 w-full"
+              className="mt-0 flex flex-nowrap items-center justify-start gap-2 sm:gap-5 md:gap-5 w-full overflow-hidden"
             >
               <Link
                 href="/courses"
-                className="group/cta group/btn relative inline-flex shrink-0 h-11 sm:h-13 md:h-12 cursor-pointer items-center gap-2 overflow-hidden rounded-lg bg-gradient-to-r from-[#172B48] to-[#222F5D] px-5 sm:px-8 md:px-7 text-white shadow-[0_8px_24px_-10px_rgba(23,43,72,0.55)] ring-1 ring-[#222F5D]/80 transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[0_12px_32px_-10px_rgba(23,43,72,0.7)] active:translate-y-[1px]"
+                className="group/cta group/btn relative inline-flex h-[38px] sm:h-13 md:h-12 cursor-pointer items-center gap-1.5 sm:gap-2 md:gap-2 overflow-hidden rounded-lg bg-gradient-to-r from-[#172B48] to-[#222F5D] px-3.5 sm:px-8 md:px-7 text-white shadow-[0_8px_24px_-10px_rgba(23,43,72,0.55)] ring-1 ring-[#222F5D]/80 transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[0_12px_32px_-10px_rgba(23,43,72,0.7)] active:translate-y-[1px]"
               >
-                <span className="relative z-10 text-[13.5px] sm:text-[15.5px] md:text-[15px] font-semibold tracking-[0.01em]">
+                <span className="relative z-10 text-[12px] sm:text-[15.5px] md:text-[15px] font-semibold tracking-[0.01em] leading-none">
                   Browse Courses
                 </span>
                 <svg
                   aria-hidden="true"
-                  className="relative z-10 h-[17px] w-[17px] sm:h-[18px] sm:w-[18px] md:h-[18px] md:w-[18px] -mr-0.5 translate-x-0 transition-transform duration-300 group-hover/cta:translate-x-[2px]"
+                  className="relative z-10 h-[15px] w-[15px] sm:h-[18px] sm:w-[18px] md:h-[18px] md:w-[18px] -mr-0.5 translate-x-0 transition-transform duration-300 group-hover/cta:translate-x-[2px] shrink-0"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -576,17 +576,17 @@ export function Hero() {
 
               <button
                 type="button"
-                aria-label="Watch introduction video"
-                className="group/play inline-flex min-w-0 shrink cursor-pointer items-center gap-2 sm:gap-3 md:gap-3 bg-transparent transition-all duration-300 hover:bg-transparent"
+                aria-label="Book a free consultation call"
+                className="group/play inline-flex min-w-0 shrink cursor-pointer items-center gap-1.5 sm:gap-3 md:gap-3 bg-transparent transition-all duration-300 hover:bg-transparent"
               >
-                <span className="relative grid h-11 w-11 sm:h-12 sm:w-12 md:h-12 md:w-12 shrink-0 place-items-center rounded-full bg-white text-[#22C7E8] shadow-[0_8px_24px_-8px_rgba(34,199,232,0.55)] ring-1 ring-[#22C7E8]/25 transition-all duration-300 group-hover/play:scale-105 group-hover/play:ring-[#22C7E8]/60">
-               <MessageCircle className="size-[18px] sm:size-5" aria-hidden="true" />
+                <span className="relative grid h-[38px] w-[38px] sm:h-12 sm:w-12 md:h-12 md:w-12 shrink-0 place-items-center rounded-full bg-white text-[#22C7E8] shadow-[0_8px_24px_-8px_rgba(34,199,232,0.55)] ring-1 ring-[#22C7E8]/25 transition-all duration-300 group-hover/play:scale-105 group-hover/play:ring-[#22C7E8]/60">
+               <MessageCircle className="size-[16px] sm:size-5" aria-hidden="true" />
                 </span>
                 <span className="flex min-w-0 flex-col items-start leading-tight">
-                  <span className="truncate text-[13.5px] sm:text-[15px] md:text-[14.5px] font-semibold text-[#172B48]">
+                  <span className="truncate text-[11.5px] sm:text-[15px] md:text-[14.5px] font-semibold text-[#172B48]">
                     Book a Free Consultation
                   </span>
-                  <span className="truncate text-[12px] sm:text-[13px] md:text-[12.5px] font-normal text-[#64748B]">
+                  <span className="truncate text-[10.5px] sm:text-[13px] md:text-[12.5px] font-normal text-[#64748B]">
                     5-min call · No pressure
                   </span>
                 </span>
