@@ -1,3 +1,6 @@
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+
 interface DarbarTechLogoProps {
   className?: string;
   size?: "sm" | "md" | "lg";
@@ -6,69 +9,30 @@ interface DarbarTechLogoProps {
 }
 
 export function DarbarTechLogo({ className = "", size = "md", showText = true, variant = "light" }: DarbarTechLogoProps) {
-  const sizeMap = {
-    sm: { icon: "h-8 w-8", text: "text-[13px]", sub: "text-[9px]", line: "w-4 h-px" },
-    md: { icon: "h-9 w-9", text: "text-[15px]", sub: "text-[11px]", line: "w-5 h-px" },
-    lg: { icon: "h-11 w-11", text: "text-xl", sub: "text-[12px]", line: "w-6 h-px" },
+  const sizeMap: Record<NonNullable<DarbarTechLogoProps["size"]>, number> = {
+    sm: 32,
+    md: 36,
+    lg: 44,
   };
-  const s = sizeMap[size];
+  const heightPx = sizeMap[size];
 
-  const colors = variant === "dark"
-    ? {
-        t: "#4E8CAE",
-        d: "#ffffff",
-        darbar: "#ffffff",
-        tech: "#4E8CAE",
-        sub: "#a1a1aa",
-        line: "#52525b",
-      }
-    : {
-        t: "#15678E",
-        d: "#172B48",
-        darbar: "#172B48",
-        tech: "#15678E",
-        sub: "#4E8CAE",
-        line: "#4E8CAE",
-      };
+  const finalLogoSrc = "/images/logo/final-logo.png";
+
+  const lockupAlt = "DarbarTech Group of Technology";
+
+  const renderFinalLogo = (props?: { className?: string }) => (
+    <Image
+      src={finalLogoSrc}
+      width={Math.round(heightPx * 1.942)}
+      height={heightPx}
+      alt={lockupAlt}
+      className={props?.className}
+    />
+  );
 
   return (
-    <div className={`flex items-center gap-2 shrink-0 ${className}`}>
-      <svg
-        viewBox="0 0 100 100"
-        className={`${s.icon} shrink-0`}
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <rect x="5" y="22" width="48" height="16" rx="3" fill={colors.t} />
-        <polygon points="48,22 60,22 48,38" fill="#ffffff" />
-        <rect x="18" y="38" width="16" height="40" rx="2" fill={colors.t} />
-        <path
-          d="M34,22
-             Q60,22 78,34
-             Q88,48 88,62
-             Q88,76 74,88
-             Q62,95 50,95
-             L50,95
-             Q50,95 50,80
-             Q50,70 50,62
-             Q68,62 72,52
-             Q72,40 60,34"
-          fill={colors.d}
-        />
-      </svg>
-      {showText && (
-        <span className="flex flex-col leading-tight">
-          <span className={`${s.text} font-bold tracking-tight`}>
-            <span style={{ color: colors.darbar }}>Darbar</span>
-            <span style={{ color: colors.tech }}>Tech</span>
-          </span>
-          <span className={`hidden sm:flex items-center gap-2 ${s.sub} font-medium`} style={{ letterSpacing: "0.2em", color: colors.sub }}>
-            <span className={`${s.line}`} style={{ backgroundColor: colors.line }} />
-            GROUP OF TECHNOLOGY
-            <span className={`${s.line}`} style={{ backgroundColor: colors.line }} />
-          </span>
-        </span>
-      )}
-    </div>
+    <span className={cn("inline-flex items-center shrink-0", className)}>
+      {renderFinalLogo()}
+    </span>
   );
 }
