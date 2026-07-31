@@ -28,21 +28,21 @@ export function CourseGrid({
 }: CourseGridProps) {
   const defaultDesc =
     "Hands-on courses taught by certified trainers with real industry experience. Small batches, lab-heavy, project-based.";
+  const isCenteredHeading = headingAlign === "center";
 
   return (
     <section aria-labelledby="courses-heading" className="section-padding bg-white">
       <Container size="xl">
-        <div className="flex flex-col gap-4 mb-10 sm:mb-12">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+        {isCenteredHeading ? (
+          <div className="flex flex-col items-center gap-5 mb-10 sm:mb-12">
             <SectionHeading
               eyebrow={eyebrow}
               title={title}
               description={description ?? defaultDesc}
-              align={headingAlign}
-              className={headingAlign === "left" ? "mx-0" : ""}
+              align="center"
             />
             {showViewAllButton && (
-              <Link href="/courses" className="sm:shrink-0 mx-auto sm:mx-0 mt-2 sm:mt-0">
+              <Link href="/courses">
                 <Button variant="outline" size="lg" className="w-full sm:w-auto group/btn">
                   View All Courses
                   <ArrowRight className="size-4 transition-transform duration-200 group-hover/btn:translate-x-0.5" aria-hidden="true" />
@@ -50,7 +50,27 @@ export function CourseGrid({
               </Link>
             )}
           </div>
-        </div>
+        ) : (
+          <div className="flex flex-col gap-4 mb-10 sm:mb-12">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+              <SectionHeading
+                eyebrow={eyebrow}
+                title={title}
+                description={description ?? defaultDesc}
+                align="left"
+                className="mx-0"
+              />
+              {showViewAllButton && (
+                <Link href="/courses" className="sm:shrink-0 mx-auto sm:mx-0 mt-2 sm:mt-0">
+                  <Button variant="outline" size="lg" className="w-full sm:w-auto group/btn">
+                    View All Courses
+                    <ArrowRight className="size-4 transition-transform duration-200 group-hover/btn:translate-x-0.5" aria-hidden="true" />
+                  </Button>
+                </Link>
+              )}
+            </div>
+          </div>
+        )}
 
         {courses.length === 0 ? (
           <div className="rounded-xl border-2 border-dashed border-neutral-200 p-12 text-center">
