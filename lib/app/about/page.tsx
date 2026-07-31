@@ -113,7 +113,7 @@ export default function AboutPage() {
           description="A learning environment built for focus, practice, and collaboration."
         />
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {instituteInfo.facilities.slice(0, 6).map((f, i) => {
+          {instituteInfo.facilities.map((f, i) => {
             const Icon = facilityIcons[i % facilityIcons.length];
             return (
               <div

@@ -9,21 +9,13 @@ import {
   type Variants,
   type HTMLMotionProps,
 } from "framer-motion";
-import {
-  MessageCircle,
-  Play,
-} from "lucide-react";
 import { Container } from "@/components/common/Container";
 import { cn } from "@/lib/utils";
 
 const HERO_IMG =
   "https://cdn.prod.website-files.com/640021754b75fb0c4b535941/64539e138771820ebcb7619d_hero-image.png";
-const POPUP_COMPLETE =
-  "https://cdn.prod.website-files.com/640021754b75fb0c4b535941/6451ec80e6513987e620b96f_hero-popup-image-1.png";
 const POPUP_STUDENTS =
   "https://cdn.prod.website-files.com/640021754b75fb0c4b535941/6451ec7f19901e54999d5d0c_hero-popup-image-2.png";
-const POPUP_MENTOR =
-  "https://cdn.prod.website-files.com/640021754b75fb0c4b535941/6451ec7f19901e3b359d5d0b_hero-popup-image-3.png";
 
 const CODE_TOKENS: ReadonlyArray<{
   label: string;
@@ -71,8 +63,8 @@ function seededRandom(seed: number) {
   };
 }
 
-const COLUMN_COUNT = 22;
-const TOKENS_PER_COLUMN = 6;
+const COLUMN_COUNT = 8;
+const TOKENS_PER_COLUMN = 2;
 
 type CodeRainToken = {
   id: number;
@@ -97,13 +89,13 @@ function buildRain(): CodeRainToken[] {
   for (let col = 0; col < COLUMN_COUNT; col++) {
     for (let i = 0; i < TOKENS_PER_COLUMN; i++) {
       const token = CODE_TOKENS[Math.floor(rng() * CODE_TOKENS.length)];
-      const sizePx = 10 + rng() * 5;
+      const sizePx = 9 + rng() * 4;
       const topStart = -10 - rng() * 120;
-      const offsetX = (rng() - 0.5) * 40;
-      const rotate = (rng() - 0.5) * 6;
-      const duration = 18 + rng() * 16;
+      const offsetX = (rng() - 0.5) * 28;
+      const rotate = (rng() - 0.5) * 4;
+      const duration = 26 + rng() * 14;
       const delay = -(rng() * duration);
-      const opacity = 0.018 + rng() * 0.03;
+      const opacity = 0.008 + rng() * 0.012;
       list.push({
         id: id++,
         label: token.label,
@@ -221,16 +213,16 @@ const ICON_SQL = (
 );
 
 const LANG_ICONS: ReadonlyArray<Omit<FloatIcon, "id">> = [
-  { svg: ICON_JS, x: "left-[3%]", y: "top-[12%]", size: 38, opacity: 0.036, floatY: [-8, 10], rotate: [-6, 6], floatSec: 16, delay: 0.2 },
-  { svg: ICON_PYTHON, x: "right-[6%]", y: "top-[8%]", size: 42, opacity: 0.033, floatY: [-6, 12], rotate: [4, -7], floatSec: 20, delay: 0.6 },
-  { svg: ICON_REACT, x: "left-[14%]", y: "bottom-[18%]", size: 46, opacity: 0.03, floatY: [-10, 8], rotate: [-10, 10], floatSec: 18, delay: 1.0 },
-  { svg: ICON_HTML5, x: "right-[18%]", y: "bottom-[10%]", size: 40, opacity: 0.032, floatY: [-5, 9], rotate: [5, -4], floatSec: 15, delay: 1.4 },
-  { svg: ICON_CSS3, x: "left-[42%]", y: "top-[6%]", size: 36, opacity: 0.028, floatY: [-7, 7], rotate: [-3, 5], floatSec: 22, delay: 0.4 },
-  { svg: ICON_NODE, x: "right-[38%]", y: "bottom-[4%]", size: 44, opacity: 0.026, floatY: [-9, 7], rotate: [6, -5], floatSec: 17, delay: 0.8 },
-  { svg: ICON_TS, x: "left-[30%]", y: "bottom-[8%]", size: 34, opacity: 0.03, floatY: [-6, 10], rotate: [-7, 4], floatSec: 19, delay: 1.2 },
-  { svg: ICON_GIT, x: "right-[30%]", y: "top-[18%]", size: 36, opacity: 0.024, floatY: [-8, 8], rotate: [8, -8], floatSec: 21, delay: 1.6 },
-  { svg: ICON_CPP, x: "left-[22%]", y: "top-[38%]", size: 32, opacity: 0.022, floatY: [-5, 7], rotate: [-4, 6], floatSec: 14, delay: 0.9 },
-  { svg: ICON_SQL, x: "right-[22%]", y: "top-[42%]", size: 34, opacity: 0.024, floatY: [-7, 6], rotate: [5, -6], floatSec: 18, delay: 1.8 },
+  { svg: ICON_JS, x: "left-[4%]", y: "top-[14%]", size: 36, opacity: 0.014, floatY: [-6, 8], rotate: [-4, 4], floatSec: 18, delay: 0.2 },
+  { svg: ICON_PYTHON, x: "right-[7%]", y: "top-[10%]", size: 40, opacity: 0.013, floatY: [-6, 10], rotate: [3, -4], floatSec: 20, delay: 0.6 },
+  { svg: ICON_REACT, x: "left-[14%]", y: "bottom-[16%]", size: 42, opacity: 0.012, floatY: [-8, 6], rotate: [-6, 6], floatSec: 19, delay: 1.0 },
+  { svg: ICON_HTML5, x: "right-[18%]", y: "bottom-[10%]", size: 38, opacity: 0.012, floatY: [-5, 7], rotate: [4, -3], floatSec: 17, delay: 1.4 },
+  { svg: ICON_CSS3, x: "left-[42%]", y: "top-[6%]", size: 36, opacity: 0.01, floatY: [-7, 7], rotate: [-3, 5], floatSec: 22, delay: 0.4 },
+  { svg: ICON_NODE, x: "right-[38%]", y: "bottom-[4%]", size: 44, opacity: 0.01, floatY: [-9, 7], rotate: [6, -5], floatSec: 17, delay: 0.8 },
+  { svg: ICON_TS, x: "left-[30%]", y: "bottom-[8%]", size: 34, opacity: 0.01, floatY: [-6, 10], rotate: [-7, 4], floatSec: 19, delay: 1.2 },
+  { svg: ICON_GIT, x: "right-[30%]", y: "top-[18%]", size: 36, opacity: 0.01, floatY: [-8, 8], rotate: [8, -8], floatSec: 21, delay: 1.6 },
+  { svg: ICON_CPP, x: "left-[22%]", y: "top-[38%]", size: 32, opacity: 0.01, floatY: [-5, 7], rotate: [-4, 6], floatSec: 14, delay: 0.9 },
+  { svg: ICON_SQL, x: "right-[22%]", y: "top-[42%]", size: 34, opacity: 0.01, floatY: [-7, 6], rotate: [5, -6], floatSec: 18, delay: 1.8 },
 ];
 
 const STAGGER = {
@@ -439,9 +431,9 @@ export function Hero() {
 
         {/* Floating programming-language icon images around perimeter */}
         <div className="absolute inset-0">
-          {LANG_ICONS.map((icon, i) => {
+          {LANG_ICONS.slice(0, 4).map((icon, i) => {
             const BLINK_CYCLE = 10;
-            const blinkStep = BLINK_CYCLE / LANG_ICONS.length;
+            const blinkStep = BLINK_CYCLE / 4;
             const blinkDelay = i * blinkStep;
             const blinkBoost = Number((icon.opacity * 1.5).toFixed(6));
             const floatAni = !effectiveReduce
@@ -573,28 +565,10 @@ export function Hero() {
                   className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/18 to-transparent transition-transform duration-700 ease-out group-hover/cta:translate-x-full"
                 />
               </Link>
-
-              <button
-                type="button"
-                aria-label="Book a free consultation call"
-                className="group/play inline-flex min-w-0 shrink cursor-pointer items-center gap-1.5 sm:gap-3 md:gap-3 bg-transparent transition-all duration-300 hover:bg-transparent"
-              >
-                <span className="relative grid h-[38px] w-[38px] sm:h-12 sm:w-12 md:h-12 md:w-12 shrink-0 place-items-center rounded-full bg-white text-[#22C7E8] shadow-[0_8px_24px_-8px_rgba(34,199,232,0.55)] ring-1 ring-[#22C7E8]/25 transition-all duration-300 group-hover/play:scale-105 group-hover/play:ring-[#22C7E8]/60">
-               <MessageCircle className="size-[16px] sm:size-5" aria-hidden="true" />
-                </span>
-                <span className="flex min-w-0 flex-col items-start leading-tight">
-                  <span className="truncate text-[11.5px] sm:text-[15px] md:text-[14.5px] font-semibold text-[#172B48]">
-                    Book a Free Consultation
-                  </span>
-                  <span className="truncate text-[10.5px] sm:text-[13px] md:text-[12.5px] font-normal text-[#64748B]">
-                    5-min call · No pressure
-                  </span>
-                </span>
-              </button>
             </motion.div>
           </motion.div>
 
-          {/* ===== RIGHT — Hero visual block: image + 3 popup overlays ===== */}
+          {/* ===== RIGHT — Hero visual block: image + popup overlay ===== */}
           <motion.div
             variants={fadeUp}
             initial="offscreen"
@@ -623,36 +597,6 @@ export function Hero() {
                   alt="Students 15k popup"
                   fill
                   sizes="160px"
-                  className="object-contain drop-shadow-[0_20px_50px_-12px_rgba(23,43,72,0.18)]"
-                />
-              </FloatWrap>
-
-              <FloatWrap
-                delay={STAGGER.popup1}
-                floatY={[-10, 8]}
-                floatSec={5.5}
-                className="absolute right-0 sm:right-[2%] lg:right-[-1%] top-[28%] sm:top-[28%] lg:top-[29%] w-[44%] sm:w-[44%] h-[15%]"
-              >
-                <Image
-                  src={POPUP_COMPLETE}
-                  alt="Hurrrra complete your step popup"
-                  fill
-                  sizes="190px"
-                  className="object-contain drop-shadow-[0_20px_50px_-12px_rgba(23,43,72,0.18)]"
-                />
-              </FloatWrap>
-
-              <FloatWrap
-                delay={STAGGER.popup3}
-                floatY={[-5, 7]}
-                floatSec={5}
-                className="absolute right-[8%] sm:right-[10%] lg:right-[8%] bottom-[8%] sm:bottom-[7%] lg:bottom-[8%] w-[53%] sm:w-[53%] h-[14%]"
-              >
-                <Image
-                  src={POPUP_MENTOR}
-                  alt="Chat up with your mentor popup"
-                  fill
-                  sizes="230px"
                   className="object-contain drop-shadow-[0_20px_50px_-12px_rgba(23,43,72,0.18)]"
                 />
               </FloatWrap>

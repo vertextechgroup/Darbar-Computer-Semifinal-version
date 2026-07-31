@@ -11,9 +11,8 @@ import { cn } from "@/lib/utils";
 import { testimonials } from "@/content/testimonials";
 
 export function TestimonialCarousel() {
-  if (testimonials.length === 0) return null;
-  const [index, setIndex] = React.useState(0);
   const count = testimonials.length;
+  const [index, setIndex] = React.useState(0);
   const [isMobile, setIsMobile] = React.useState<boolean>(() =>
     typeof window !== "undefined" ? window.innerWidth < 768 : false
   );
@@ -47,6 +46,8 @@ export function TestimonialCarousel() {
     }, 6000);
     return () => clearInterval(id);
   }, [maxIndex]);
+
+  if (count === 0) return null;
 
   return (
     <section aria-labelledby="testimonial-heading" className="section-padding bg-secondary">

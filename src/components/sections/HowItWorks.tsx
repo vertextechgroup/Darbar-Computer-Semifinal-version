@@ -29,17 +29,23 @@ const steps = [
   },
 ];
 
-export function HowItWorks() {
+export type HowItWorksProps = {
+  showHeading?: boolean;
+};
+
+export function HowItWorks({ showHeading = true }: HowItWorksProps) {
   return (
     <section aria-labelledby="how-heading" className="section-padding bg-white">
       <Container size="xl">
-        <SectionHeading
-          eyebrow="Simple Process"
-          title="Get Started in 4 Easy Steps"
-          description="From first inquiry to graduation, our clear enrollment process keeps everything simple and transparent."
-        />
+        {showHeading && (
+          <SectionHeading
+            eyebrow="Simple Process"
+            title="Get Started in 4 Easy Steps"
+            description="From first inquiry to graduation, our clear enrollment process keeps everything simple and transparent."
+          />
+        )}
 
-        <div className="mt-10 sm:mt-14 relative">
+        <div className={showHeading ? "mt-10 sm:mt-14 relative" : "relative"}>
           <div
             className="hidden lg:block absolute left-[12%] right-[12%] top-[52px] h-0.5 bg-gradient-to-r from-primary/20 via-secondary/30 to-primary/20"
             aria-hidden="true"

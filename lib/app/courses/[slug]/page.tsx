@@ -14,6 +14,7 @@ import {
   RefreshCw,
   Sparkles,
   FolderKanban,
+  TrendingUp,
   Wrench,
   BookOpen,
 } from "lucide-react";
@@ -311,7 +312,7 @@ export default async function CourseDetailPage({
                         <h3 className="text-lg font-semibold text-neutral-900">Skills You&apos;ll Gain</h3>
                       </div>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                        {course.skillsGained.slice(0, 6).map((skill) => (
+                        {course.skillsGained.map((skill) => (
                           <div
                             key={skill}
                             className="flex items-start gap-2.5 rounded-lg bg-neutral-50 p-3"
@@ -320,14 +321,6 @@ export default async function CourseDetailPage({
                             <span className="text-[15px] text-neutral-700 leading-relaxed">{skill}</span>
                           </div>
                         ))}
-                        {course.skillsGained.length > 6 && (
-                          <div className="flex items-start gap-2.5 rounded-lg bg-neutral-50 p-3">
-                            <CheckCircle2 className="size-4.5 text-neutral-300 mt-0.5 shrink-0" />
-                            <span className="text-[15px] font-medium text-neutral-600 leading-relaxed">
-                              +{course.skillsGained.length - 6} more
-                            </span>
-                          </div>
-                        )}
                       </div>
                     </div>
 
@@ -352,53 +345,48 @@ export default async function CourseDetailPage({
                 </TabsContent>
 
                 <TabsContent value="portfolio">
-                  <div className="rounded-xl border border-neutral-200 bg-white p-5 sm:p-6">
-                    <div className="flex items-center gap-2 mb-4">
-                      <FolderKanban className="size-5 text-primary" />
-                      <h3 className="text-lg font-semibold text-neutral-900">
-                        Projects &amp; Career Outcomes
-                      </h3>
+                  <div className="space-y-6">
+                    <div className="rounded-xl border border-neutral-200 bg-white p-5 sm:p-6">
+                      <div className="flex items-center gap-2 mb-4">
+                        <FolderKanban className="size-5 text-primary" />
+                        <h3 className="text-lg font-semibold text-neutral-900">Portfolio Projects</h3>
+                        <span className="text-xs text-neutral-500 font-normal">Real, job-ready work</span>
+                      </div>
+                      <div className="grid grid-cols-1 gap-3">
+                        {course.portfolioProjects.map((project, i) => (
+                          <div
+                            key={project}
+                            className="flex items-start gap-3 rounded-lg border border-neutral-100 bg-neutral-50 p-4"
+                          >
+                            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary text-white text-xs font-bold">
+                              {i + 1}
+                            </span>
+                            <div>
+                              <div className="text-[15px] font-semibold text-neutral-900">{project}</div>
+                              <div className="text-xs text-neutral-500 mt-0.5">
+                                Hands-on project built during the course
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <div>
-                        <div className="text-sm font-semibold text-neutral-900">
-                          Portfolio Projects
-                        </div>
-                        <div className="mt-3 space-y-2.5">
-                          {course.portfolioProjects.map((project, i) => (
-                            <div
-                              key={project}
-                              className="flex items-start gap-3 rounded-lg border border-neutral-100 bg-neutral-50 p-3"
-                            >
-                              <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-primary text-white text-[11px] font-bold">
-                                {i + 1}
-                              </span>
-                              <div className="text-[15px] font-medium text-neutral-800 leading-relaxed">
-                                {project}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
+                    <div className="rounded-xl border border-neutral-200 bg-white p-5 sm:p-6">
+                      <div className="flex items-center gap-2 mb-4">
+                        <TrendingUp className="size-5 text-primary" />
+                        <h3 className="text-lg font-semibold text-neutral-900">Career Opportunities</h3>
                       </div>
-
-                      <div>
-                        <div className="text-sm font-semibold text-neutral-900">
-                          Career Opportunities
-                        </div>
-                        <div className="mt-3 space-y-2.5">
-                          {course.careerOpportunities.map((role) => (
-                            <div
-                              key={role}
-                              className="flex items-start gap-2.5 rounded-lg border border-neutral-100 bg-neutral-50 p-3"
-                            >
-                              <Briefcase className="size-4.5 text-secondary mt-0.5 shrink-0" />
-                              <div className="text-[15px] font-medium text-neutral-800 leading-relaxed">
-                                {role}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        {course.careerOpportunities.map((role) => (
+                          <div
+                            key={role}
+                            className="flex items-center gap-2.5 rounded-lg bg-gradient-to-r from-secondary/5 to-transparent border border-secondary/15 p-3"
+                          >
+                            <Briefcase className="size-4.5 text-secondary shrink-0" />
+                            <span className="text-[15px] font-medium text-neutral-800 leading-relaxed">{role}</span>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -460,7 +448,16 @@ export default async function CourseDetailPage({
                 <Card className="shadow-md overflow-hidden">
                   <div className="h-1.5 gradient-primary w-full" />
                   <CardContent className="p-6 space-y-5">
+                    <Separator />
                     <ul className="space-y-2.5 text-sm text-neutral-700">
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="size-4 text-accent shrink-0" />
+                        {course.duration} · {course.level} level
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="size-4 text-accent shrink-0" />
+                        {course.learningMode.split(" / ")[0]} batches
+                      </li>
                       <li className="flex items-center gap-2">
                         <CheckCircle2 className="size-4 text-accent shrink-0" />
                         {course.instituteCertificate} on completion
@@ -489,6 +486,11 @@ export default async function CourseDetailPage({
                         <Button size="lg" className="w-full shadow-lg shadow-primary/20">
                           {course.cta || "Get Batch Timing & Enrollment Details →"}
                           <ArrowRight className="size-4" />
+                        </Button>
+                      </Link>
+                      <Link href="/admissions/inquire">
+                        <Button variant="outline" size="lg" className="w-full">
+                          Book Free Demo Class
                         </Button>
                       </Link>
                     </div>

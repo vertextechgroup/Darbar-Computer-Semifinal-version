@@ -7,11 +7,9 @@ import { cn } from "@/lib/utils";
 export function WhatsAppButton() {
   const [visible, setVisible] = React.useState(false);
   const [showTooltip, setShowTooltip] = React.useState(false);
-  const [isMobileViewport, setIsMobileViewport] = React.useState<boolean>(false);
-
-  React.useEffect(() => {
-    setIsMobileViewport(window.innerWidth < 640);
-  }, []);
+  const [isMobileViewport, setIsMobileViewport] = React.useState<boolean>(() =>
+    typeof window !== "undefined" ? window.innerWidth < 640 : false
+  );
 
   React.useEffect(() => {
     let rafId: number | null = null;
@@ -22,6 +20,7 @@ export function WhatsAppButton() {
         setIsMobileViewport(window.innerWidth < 640);
       });
     };
+    onResize();
     window.addEventListener("resize", onResize, { passive: true });
     return () => {
       window.removeEventListener("resize", onResize);

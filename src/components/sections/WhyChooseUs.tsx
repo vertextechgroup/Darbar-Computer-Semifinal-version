@@ -6,10 +6,14 @@ import {
   Wallet,
   CheckCircle2,
   Users,
+  BookOpenCheck,
+  GraduationCap,
 } from "lucide-react";
 import { Container } from "@/components/common/Container";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { instituteInfo } from "@/content/institute";
+
+const statsIcons = [Award, Users, BookOpenCheck, GraduationCap];
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   award: Award,
@@ -52,6 +56,40 @@ export function WhyChooseUs() {
                 <p className="mt-2 text-sm text-neutral-600 leading-relaxed">
                   {item.description}
                 </p>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mt-10 sm:mt-12 grid grid-cols-2 gap-x-4 gap-y-4 sm:gap-x-6 lg:grid-cols-4">
+          {instituteInfo.stats.map((stat, i) => {
+            const Icon = statsIcons[i % statsIcons.length];
+            return (
+              <div
+                key={stat.label}
+                className="rounded-2xl border border-neutral-200 bg-white px-4 py-4 sm:px-5 sm:py-5"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <Icon className="size-[18px]" aria-hidden="true" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-lg sm:text-xl font-extrabold tracking-tight text-neutral-900 leading-none">
+                      {stat.value}
+                      {stat.isPlaceholder && (
+                        <span className="text-[10px] sm:text-xs align-super text-neutral-400 ml-0.5">
+                          *
+                        </span>
+                      )}
+                    </div>
+                    <div className="mt-1 text-[11px] sm:text-xs text-neutral-600 leading-tight line-clamp-2">
+                      {stat.label}
+                      {stat.isPlaceholder && (
+                        <span className="sr-only"> (illustrative figure)</span>
+                      )}
+                    </div>
+                  </div>
+                </div>
               </div>
             );
           })}
