@@ -2,7 +2,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Phone, MessageCircle } from "lucide-react";
+import { Menu, Phone, MessageCircle, LogIn, UserPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { HEADER_NAV_LINKS, SITE_CONFIG } from "@/lib/constants";
@@ -137,6 +137,18 @@ export function Header() {
                     </Link>
                   ))}
                   <div className="mt-5 pt-5 border-t border-neutral-200 space-y-2.5">
+                    <Link href="/student/login" onClick={closeSheet} className="w-full flex">
+                      <Button variant="outline" className="w-full h-12">
+                        <LogIn className="size-5" aria-hidden="true" />
+                        Student Login
+                      </Button>
+                    </Link>
+                    <Link href="/student/register" onClick={closeSheet} className="w-full flex">
+                      <Button className="w-full h-12">
+                        <UserPlus className="size-5" aria-hidden="true" />
+                        Student Register
+                      </Button>
+                    </Link>
                     <a
                       href={waLink}
                       target="_blank"
@@ -159,6 +171,24 @@ export function Header() {
                 </nav>
               </SheetContent>
             </Sheet>
+            <Link href="/student/login" className="hidden sm:inline-flex" aria-label="Student Login">
+              <Button
+                variant="outline"
+                size="icon"
+                className={cn(isActive("/student/login") && "border-primary text-primary bg-primary/5")}
+              >
+                <LogIn className="size-5" aria-hidden="true" />
+              </Button>
+            </Link>
+            <Link href="/student/register" className="hidden sm:inline-flex" aria-label="Student Register">
+              <Button
+                variant="outline"
+                size="icon"
+                className={cn(isActive("/student/register") && "border-primary text-primary bg-primary/5")}
+              >
+                <UserPlus className="size-5" aria-hidden="true" />
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
