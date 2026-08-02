@@ -13,8 +13,8 @@ export const instituteInfo = {
       "To be the most trusted computer training institute in the region, known for producing skilled, ethical, and career-ready professionals in every field of information technology.",
   },
   contact: {
-    phone: "+977-98-XXXXXXX",
-    whatsapp: "+977-98-XXXXXXX",
+    phone: "+977-9760808629",
+    whatsapp: "+977-9760808629",
     email: "info@darbarcomputer.edu.np",
     address: "Kathmandu, Nepal",
     mapEmbed:
