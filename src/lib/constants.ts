@@ -5,7 +5,7 @@ export const SITE_CONFIG = {
   description: "DarbarTech Group of Technology — Kathmandu's hands-on computer training institute. 37 career-focused courses across 15 fields: programming, web development, AI engineering, design, networking, digital marketing, and more. Certified trainers, small batches, real lab time, and career support.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   locale: "en",
-  phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || "+977-98-XXXXXXX",
+  phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || "+977-9760808629",
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@darbarcomputer.edu.np",
   address: process.env.NEXT_PUBLIC_ADDRESS || "Kathmandu, Nepal",
   ogImage: "/opengraph-image.png",
