@@ -29,9 +29,12 @@ import { Select } from "@/components/ui/select";
 import { Badge } from "@/components/common/Badge";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { courses } from "@/content/courses";
-import { COURSE_CATEGORIES, COURSE_LEVELS, EVERY_COURSE_INCLUDES } from "@/lib/constants";
+import { COURSE_CATEGORY_GROUPS, COURSE_LEVELS, EVERY_COURSE_INCLUDES } from "@/lib/constants";
 
-const allCategories = ["All", ...COURSE_CATEGORIES];
+const allCategoryGroups = [
+  { id: "All", label: "All", categories: [] as string[] },
+  ...COURSE_CATEGORY_GROUPS,
+];
 const allLevels = ["All", ...COURSE_LEVELS];
 
 const BENEFIT_ICONS: Record<string, React.ReactNode> = {
@@ -49,20 +52,20 @@ function CoursesClientPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const initialCategory = searchParams.get("category") ?? "All";
+  const initialCategoryGroup = searchParams.get("category") ?? "All";
   const initialLevel = searchParams.get("level") ?? "All";
   const initialSearch = searchParams.get("search") ?? "";
 
   const [search, setSearch] = React.useState(initialSearch);
-  const [category, setCategory] = React.useState(initialCategory);
+  const [categoryGroup, setCategoryGroup] = React.useState(initialCategoryGroup);
   const [level, setLevel] = React.useState(initialLevel);
   const [filtersOpen, setFiltersOpen] = React.useState(false);
 
   const syncToUrl = React.useCallback(
-    (nextSearch: string, nextCategory: string, nextLevel: string) => {
+    (nextSearch: string, nextCategoryGroup: string, nextLevel: string) => {
       const params = new URLSearchParams();
       if (nextSearch) params.set("search", nextSearch);
-      if (nextCategory && nextCategory !== "All") params.set("category", nextCategory);
+      if (nextCategoryGroup && nextCategoryGroup !== "All") params.set("category", nextCategoryGroup);
       if (nextLevel && nextLevel !== "All") params.set("level", nextLevel);
       const query = params.toString();
       const url = query ? `${pathname}?${query}` : pathname;
@@ -77,24 +80,37 @@ function CoursesClientPage() {
     setSearch(value);
     if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current);
     searchTimeoutRef.current = setTimeout(() => {
-      syncToUrl(value, category, level);
+      syncToUrl(value, categoryGroup, level);
     }, 350);
   };
 
-  const updateCategory = (value: string) => {
-    setCategory(value);
+  const updateCategoryGroup = (value: string) => {
+    setCategoryGroup(value);
     syncToUrl(search, value, level);
   };
 
   const updateLevel = (value: string) => {
     setLevel(value);
-    syncToUrl(search, category, value);
+    syncToUrl(search, categoryGroup, value);
   };
 
   const filtered = React.useMemo(() => {
     const q = search.trim().toLowerCase();
-    return courses.filter((c) => {
-      if (category !== "All" && c.category !== category) return false;
+    const activeGroup =
+      categoryGroup === "All"
+        ? undefined
+        : allCategoryGroups.find((g) => g.id === categoryGroup) ?? undefined;
+    const activeGroupCategories = activeGroup?.categories as readonly string[] | undefined;
+
+    const levelOrder = new Map<string, number>([
+      ["Beginner", 0],
+      ["Beginner to Intermediate", 1],
+      ["Intermediate", 2],
+      ["Advanced", 3],
+    ]);
+
+    const result = courses.filter((c) => {
+      if (activeGroupCategories && !activeGroupCategories.includes(c.category)) return false;
       if (level !== "All" && c.level !== level) return false;
       if (q) {
         const haystack = [
@@ -114,17 +130,33 @@ function CoursesClientPage() {
       }
       return true;
     });
-  }, [search, category, level]);
 
-  const hasActiveFilters = category !== "All" || level !== "All" || search !== "";
+    if (activeGroupCategories) {
+      result.sort((a, b) => {
+        const aLevel = levelOrder.get(a.level) ?? 99;
+        const bLevel = levelOrder.get(b.level) ?? 99;
+        if (aLevel !== bLevel) return aLevel - bLevel;
+        return a.title.localeCompare(b.title);
+      });
+    }
+
+    return result;
+  }, [search, categoryGroup, level]);
+
+  const hasActiveFilters = categoryGroup !== "All" || level !== "All" || search !== "";
   const activeFilterCount =
-    (category !== "All" ? 1 : 0) + (level !== "All" ? 1 : 0) + (search !== "" ? 1 : 0);
+    (categoryGroup !== "All" ? 1 : 0) + (level !== "All" ? 1 : 0) + (search !== "" ? 1 : 0);
   const clearFilters = () => {
     setSearch("");
-    setCategory("All");
+    setCategoryGroup("All");
     setLevel("All");
     syncToUrl("", "All", "All");
   };
+
+  const activeCategoryGroupLabel =
+    categoryGroup === "All"
+      ? "All"
+      : allCategoryGroups.find((g) => g.id === categoryGroup)?.label ?? categoryGroup;
 
   return (
     <>
@@ -195,15 +227,8 @@ function CoursesClientPage() {
                       )}
                   </div>
 
-                  <div className="hidden md:flex items-center gap-3 flex-1">
-                    <div className="flex-1">
-                      <Select
-                        value={category}
-                        onChange={(e) => updateCategory(e.target.value)}
-                        options={allCategories.map((c) => ({ value: c, label: c }))}
-                      />
-                    </div>
-                    <div className="flex-1">
+                  <div className="hidden md:flex items-center gap-3">
+                    <div className="w-[240px]">
                       <Select
                         value={level}
                         onChange={(e) => updateLevel(e.target.value)}
@@ -244,12 +269,12 @@ function CoursesClientPage() {
                       <div className="p-4 pb-6 space-y-5 overflow-y-auto">
                         {hasActiveFilters && (
                           <div className="flex flex-wrap gap-1.5 p-3 rounded-xl bg-neutral-50 border border-neutral-100">
-                            {category !== "All" && (
+                            {categoryGroup !== "All" && (
                               <Badge variant="outline" className="gap-1.5 text-xs">
-                                {category}
+                                {activeCategoryGroupLabel}
                                 <button
-                                  onClick={() => updateCategory("All")}
-                                  aria-label={`Remove ${category} filter`}
+                                  onClick={() => updateCategoryGroup("All")}
+                                  aria-label={`Remove ${activeCategoryGroupLabel} filter`}
                                   className="ml-0.5 hover:text-destructive"
                                 >
                                   <X className="size-3" />
@@ -285,11 +310,20 @@ function CoursesClientPage() {
                         )}
                         <div className="space-y-2">
                           <label className="text-sm font-semibold text-neutral-900">Category</label>
-                          <Select
-                            value={category}
-                            onChange={(e) => updateCategory(e.target.value)}
-                            options={allCategories.map((c) => ({ value: c, label: c }))}
-                          />
+                          <div className="flex flex-wrap gap-2">
+                            {allCategoryGroups.map((g) => (
+                              <Button
+                                key={g.id}
+                                type="button"
+                                variant={categoryGroup === g.id ? "default" : "outline"}
+                                size="sm"
+                                className="h-10 rounded-full px-4"
+                                onClick={() => updateCategoryGroup(g.id)}
+                              >
+                                {g.label}
+                              </Button>
+                            ))}
+                          </div>
                         </div>
                         <div className="space-y-2">
                           <label className="text-sm font-semibold text-neutral-900">Level</label>
@@ -328,6 +362,21 @@ function CoursesClientPage() {
             </div>
           </div>
 
+          <div className="mt-3 flex flex-wrap items-center gap-2 overflow-x-auto pb-1">
+            {allCategoryGroups.map((g) => (
+              <Button
+                key={g.id}
+                type="button"
+                variant={categoryGroup === g.id ? "secondary" : "outline"}
+                size="sm"
+                className="h-9 rounded-full px-4"
+                onClick={() => updateCategoryGroup(g.id)}
+              >
+                {g.label}
+              </Button>
+            ))}
+          </div>
+
           <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
             <p className="text-sm text-neutral-600">
               Showing{" "}
@@ -336,12 +385,12 @@ function CoursesClientPage() {
             </p>
             {hasActiveFilters && (
               <div className="flex flex-wrap items-center gap-1.5">
-                {category !== "All" && (
+                {categoryGroup !== "All" && (
                   <Badge variant="outline" className="gap-1.5">
-                    {category}
+                    {activeCategoryGroupLabel}
                     <button
-                      onClick={() => updateCategory("All")}
-                      aria-label={`Remove ${category} filter`}
+                      onClick={() => updateCategoryGroup("All")}
+                      aria-label={`Remove ${activeCategoryGroupLabel} filter`}
                       className="ml-1 hover:text-destructive"
                     >
                       <X className="size-3" />

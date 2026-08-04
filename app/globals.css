@@ -147,11 +147,11 @@
     --input: #e4e4e7;
     --ring: #15678E;
     --radius: 0.5rem;
-    --header-h: 57px;
+    --header-h: 65px;
   }
   @media (min-width: 640px) {
     :root {
-      --header-h: 65px;
+      --header-h: 81px;
     }
   }
 

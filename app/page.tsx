@@ -2,7 +2,6 @@ import { Hero } from "@/components/sections/Hero";
 import { CourseGrid } from "@/components/sections/CourseGrid";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { TestimonialCarousel } from "@/components/sections/TestimonialCarousel";
-import { CTABanner } from "@/components/sections/CTABanner";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
 import { getFeaturedCourses } from "@/content/courses";
 import { buildMetadata } from "@/lib/seo";
@@ -45,7 +44,6 @@ export default function HomePage() {
 
       <TestimonialCarousel />
       <FAQAccordion compact />
-      <CTABanner />
     </>
   );
 }

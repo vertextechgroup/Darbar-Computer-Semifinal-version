@@ -3,7 +3,6 @@ import { Container } from "@/components/common/Container";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
-import { CTABanner } from "@/components/sections/CTABanner";
 import { Button } from "@/components/ui/button";
 import { buildMetadata, faqJsonLd } from "@/lib/seo";
 import { MessageSquare } from "lucide-react";
@@ -79,7 +78,6 @@ export default function FAQPage() {
           </div>
         </Container>
       </section>
-      <CTABanner />
     </>
   );
 }

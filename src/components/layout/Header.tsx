@@ -2,9 +2,10 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Phone, MessageCircle, LogIn, UserPlus } from "lucide-react";
+import { Menu, Phone, MessageCircle, LogIn, UserPlus, CircleUserRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { HEADER_NAV_LINKS, SITE_CONFIG } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { DarbarTechLogo } from "@/components/common/DarbarTechLogo";
@@ -27,6 +28,8 @@ export function Header() {
 
   const closeSheet = () => setOpen(false);
 
+  const accountActive = isActive("/student/login") || isActive("/student/register");
+
   const rawWhatsApp = instituteInfo.contact.whatsapp.replace(/[^0-9+]/g, "");
   const waNumber = rawWhatsApp.replace(/^\+/, "");
   const waMessage = encodeURIComponent(
@@ -43,13 +46,13 @@ export function Header() {
       role="banner"
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-14 sm:h-16 items-center justify-between gap-2 sm:gap-3">
+        <div className="flex h-16 sm:h-20 items-center justify-between gap-2 sm:gap-3">
           <Link
             href="/"
             className="flex items-center gap-2 shrink-0 group min-h-[44px] items-center py-1"
             aria-label={`${SITE_CONFIG.name} - Go to home page`}
           >
-            <DarbarTechLogo size="md" />
+            <DarbarTechLogo size="md" priority />
           </Link>
 
           <nav
@@ -137,18 +140,25 @@ export function Header() {
                     </Link>
                   ))}
                   <div className="mt-5 pt-5 border-t border-neutral-200 space-y-2.5">
-                    <Link href="/student/login" onClick={closeSheet} className="w-full flex">
-                      <Button variant="outline" className="w-full h-12">
-                        <LogIn className="size-5" aria-hidden="true" />
-                        Student Login
-                      </Button>
-                    </Link>
-                    <Link href="/student/register" onClick={closeSheet} className="w-full flex">
-                      <Button className="w-full h-12">
-                        <UserPlus className="size-5" aria-hidden="true" />
-                        Student Register
-                      </Button>
-                    </Link>
+                    <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-3">
+                      <div className="text-[11px] font-semibold uppercase tracking-widest text-neutral-500 mb-2">
+                        Your Account
+                      </div>
+                      <div className="space-y-2">
+                        <Link href="/student/login" onClick={closeSheet} className="w-full flex">
+                          <Button variant="outline" className="w-full h-11 justify-start">
+                            <LogIn className="size-5" aria-hidden="true" />
+                            Log In
+                          </Button>
+                        </Link>
+                        <Link href="/student/register" onClick={closeSheet} className="w-full flex">
+                          <Button variant="outline" className="w-full h-11 justify-start">
+                            <UserPlus className="size-5" aria-hidden="true" />
+                            Sign Up
+                          </Button>
+                        </Link>
+                      </div>
+                    </div>
                     <a
                       href={waLink}
                       target="_blank"
@@ -171,24 +181,35 @@ export function Header() {
                 </nav>
               </SheetContent>
             </Sheet>
-            <Link href="/student/login" className="hidden sm:inline-flex" aria-label="Student Login">
-              <Button
-                variant="outline"
-                size="icon"
-                className={cn(isActive("/student/login") && "border-primary text-primary bg-primary/5")}
-              >
-                <LogIn className="size-5" aria-hidden="true" />
-              </Button>
-            </Link>
-            <Link href="/student/register" className="hidden sm:inline-flex" aria-label="Student Register">
-              <Button
-                variant="outline"
-                size="icon"
-                className={cn(isActive("/student/register") && "border-primary text-primary bg-primary/5")}
-              >
-                <UserPlus className="size-5" aria-hidden="true" />
-              </Button>
-            </Link>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className={cn(
+                    "hidden sm:inline-flex",
+                    accountActive && "border-primary text-primary bg-primary/5"
+                  )}
+                  aria-label="Student account"
+                >
+                  <CircleUserRound className="size-5" aria-hidden="true" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48">
+                <DropdownMenuItem asChild>
+                  <Link href="/student/login" aria-label="Student Log In">
+                    <LogIn className="size-4" aria-hidden="true" />
+                    Log In
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/student/register" aria-label="Student Sign Up">
+                    <UserPlus className="size-4" aria-hidden="true" />
+                    Sign Up
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </div>

@@ -1,29 +1,87 @@
-// [PLACEHOLDER CONTENT - feeNPR values are estimates, replace with real Darbar Computer pricing before launch]
-// [Industry Certification values are illustrative pathway names per source notes — confirm real partnerships before publishing claims]
-// 37 courses across 15 categories, transcribed from darbar-computer-course-catalog-2026.md v2.0
-
 import type { Course } from "@/types/course";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function img(cat: string, _index: number) {
-  const categoryMap: Record<string, string> = {
-    basic: "https://images.pexels.com/photos/574069/pexels-photo-574069.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    office: "https://images.pexels.com/photos/7551442/pexels-photo-7551442.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    programming: "https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    web: "https://images.pexels.com/photos/92905/pexels-photo-92905.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    ai: "https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    data: "https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    cloud: "https://images.pexels.com/photos/4551578/pexels-photo-4551578.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    design: "https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    video: "https://images.pexels.com/photos/12228979/pexels-photo-12228979.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    business: "https://images.pexels.com/photos/8296990/pexels-photo-8296990.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    network: "https://images.pexels.com/photos/442154/pexels-photo-442154.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    cyber: "https://images.pexels.com/photos/1054397/pexels-photo-1054397.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    marketing: "https://images.pexels.com/photos/10628411/pexels-photo-10628411.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    career: "https://images.pexels.com/photos/5940839/pexels-photo-5940839.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    diploma: "https://images.pexels.com/photos/17258012/pexels-photo-17258012.jpeg?auto=compress&cs=tinysrgb&w=1000",
-  };
-  return categoryMap[cat] ?? categoryMap.programming;
+const COURSE_IMAGE_URLS: Record<string, string> = {
+  "digital-literacy-essentials":
+    "https://images.pexels.com/photos/10638075/pexels-photo-10638075.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "speed-typing-mastery":
+    "https://images.pexels.com/photos/5474294/pexels-photo-5474294.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "professional-computer-operator":
+    "https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "microsoft-office-professional":
+    "https://images.pexels.com/photos/7551442/pexels-photo-7551442.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "advanced-excel-for-professionals":
+    "https://images.pexels.com/photos/34639577/pexels-photo-34639577.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "ai-office-administration":
+    "https://images.pexels.com/photos/16629368/pexels-photo-16629368.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "software-development-foundation":
+    "https://images.pexels.com/photos/3888151/pexels-photo-3888151.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "dsa-competitive-programming":
+    "https://images.pexels.com/photos/1102797/pexels-photo-1102797.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "python-for-ai-engineering":
+    "https://images.pexels.com/photos/6424590/pexels-photo-6424590.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "modern-frontend-engineering":
+    "https://images.pexels.com/photos/29445974/pexels-photo-29445974.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "backend-engineering-with-node-laravel":
+    "https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "mern-full-stack-engineering":
+    "https://images.pexels.com/photos/36706460/pexels-photo-36706460.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "nextjs-wordpress-development":
+    "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "mobile-app-development":
+    "https://images.pexels.com/photos/31450274/pexels-photo-31450274.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "prompt-engineering-masterclass":
+    "https://images.pexels.com/photos/15940009/pexels-photo-15940009.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "agentic-ai-automation":
+    "https://images.pexels.com/photos/8294608/pexels-photo-8294608.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "llm-rag-systems-development":
+    "https://images.pexels.com/photos/17483908/pexels-photo-17483908.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "advanced-ai-software-engineering-diploma":
+    "https://images.pexels.com/photos/6804071/pexels-photo-6804071.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "machine-learning-deep-learning":
+    "https://images.pexels.com/photos/17483871/pexels-photo-17483871.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "data-analytics-with-power-bi":
+    "https://images.pexels.com/photos/12969403/pexels-photo-12969403.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "data-engineering-with-sql-big-data":
+    "https://images.pexels.com/photos/5480781/pexels-photo-5480781.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "cloud-devops-engineering":
+    "https://images.pexels.com/photos/4597280/pexels-photo-4597280.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "creative-graphic-design-masterclass":
+    "https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "brand-identity-packaging-design":
+    "https://images.pexels.com/photos/3760615/pexels-photo-3760615.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "ui-ux-design-pro":
+    "https://images.pexels.com/photos/5594347/pexels-photo-5594347.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "video-editing-motion-graphics":
+    "https://images.pexels.com/photos/29505140/pexels-photo-29505140.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "professional-accounting-package":
+    "https://images.pexels.com/photos/6694866/pexels-photo-6694866.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "network-engineering-with-ccna":
+    "https://images.pexels.com/photos/442150/pexels-photo-442150.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "ethical-hacking-cyber-security":
+    "https://images.pexels.com/photos/5952645/pexels-photo-5952645.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "cyber-security-professional-ceh-soc-track":
+    "https://images.pexels.com/photos/11783119/pexels-photo-11783119.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "digital-marketing-pro":
+    "https://images.pexels.com/photos/10628411/pexels-photo-10628411.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "advanced-growth-marketing-automation":
+    "https://images.pexels.com/photos/97080/pexels-photo-97080.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "freelancing-online-earning":
+    "https://images.pexels.com/photos/12662813/pexels-photo-12662813.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "autocad-design-professional":
+    "https://images.pexels.com/photos/7504746/pexels-photo-7504746.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "kids-coding-robotics":
+    "https://images.pexels.com/photos/7750751/pexels-photo-7750751.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "career-track-ai-automation-specialist":
+    "https://images.pexels.com/photos/32778341/pexels-photo-32778341.jpeg?auto=compress&cs=tinysrgb&w=1400",
+  "professional-computer-diploma":
+    "https://images.pexels.com/photos/8283954/pexels-photo-8283954.jpeg?auto=compress&cs=tinysrgb&w=1400",
+};
+
+const DEFAULT_COURSE_IMAGE =
+  "https://images.pexels.com/photos/10638075/pexels-photo-10638075.jpeg?auto=compress&cs=tinysrgb&w=1400";
+
+function getCourseImage(slug: string) {
+  return COURSE_IMAGE_URLS[slug] ?? DEFAULT_COURSE_IMAGE;
 }
 
 export const courses: Course[] = [
@@ -45,7 +103,7 @@ export const courses: Course[] = [
     softwareTools: ["Windows", "Google Workspace", "ChatGPT"],
     portfolioProjects: ["Personal Email Setup", "Basic Document Pack"],
     careerOpportunities: ["Office Assistant", "Data Entry Clerk"],
-    image: img("basic", 1),
+    image: getCourseImage("digital-literacy-essentials"),
     feeNPR: 3000,
     seoTitle: "Digital Literacy Course for Beginners in Nepal | DarbarTech",
     seoDescription: "Learn everyday computer, internet, and AI skills in 4 weeks — built for absolute beginners.",
@@ -70,7 +128,7 @@ export const courses: Course[] = [
     softwareTools: ["Typing Master", "RapidTyping"],
     portfolioProjects: ["Certified Speed Test Report"],
     careerOpportunities: ["Data Entry Operator", "Office Assistant"],
-    image: img("basic", 2),
+    image: getCourseImage("speed-typing-mastery"),
     feeNPR: 3000,
     seoTitle: "Speed Typing Course in Kathmandu (English & Nepali) | DarbarTech",
     seoDescription: "Type faster and more accurately with certified speed tests — job and exam ready in 4 weeks.",
@@ -95,7 +153,7 @@ export const courses: Course[] = [
     softwareTools: ["MS Word", "Excel", "PowerPoint", "Google Workspace"],
     portfolioProjects: ["Office Records System", "Data Entry Portfolio"],
     careerOpportunities: ["Computer Operator", "Office Assistant", "Data Entry Officer"],
-    image: img("basic", 3),
+    image: getCourseImage("professional-computer-operator"),
     featured: true,
     feeNPR: 9000,
     feeNote: "Installments available",
@@ -129,7 +187,7 @@ export const courses: Course[] = [
     softwareTools: ["MS Word", "Excel", "PowerPoint", "Outlook", "Copilot"],
     portfolioProjects: ["Business Report", "Sales Presentation", "Budget Sheet"],
     careerOpportunities: ["Office Assistant", "Admin Executive", "Data Entry Officer"],
-    image: img("office", 1),
+    image: getCourseImage("microsoft-office-professional"),
     feeNPR: 7000,
     feeNote: "Installments available",
     seoTitle: "MS Office Course in Nepal (Word, Excel, PowerPoint) | DarbarTech",
@@ -155,7 +213,7 @@ export const courses: Course[] = [
     softwareTools: ["MS Excel", "Power Query", "Power BI"],
     portfolioProjects: ["Sales Dashboard", "Automated Report Template"],
     careerOpportunities: ["Data Analyst", "Finance Executive", "Business Analyst"],
-    image: img("office", 2),
+    image: getCourseImage("advanced-excel-for-professionals"),
     feeNPR: 6500,
   },
   {
@@ -178,7 +236,7 @@ export const courses: Course[] = [
     softwareTools: ["MS Office", "Outlook", "ChatGPT", "Notion"],
     portfolioProjects: ["Office Workflow System", "AI Email Templates"],
     careerOpportunities: ["Office Administrator", "Executive Assistant", "HR Coordinator"],
-    image: img("office", 3),
+    image: getCourseImage("ai-office-administration"),
     feeNPR: 9000,
     feeNote: "Installments available",
     seats: "Limited seats",
@@ -203,7 +261,7 @@ export const courses: Course[] = [
     softwareTools: ["VS Code", "Git", "GitHub", "Python", "C++"],
     portfolioProjects: ["Console Calculator", "Student Management System"],
     careerOpportunities: ["Junior Programmer", "Trainee Developer"],
-    image: img("programming", 1),
+    image: getCourseImage("software-development-foundation"),
     feeNPR: 13000,
     seoTitle: "Beginner Programming Course (C, Python, Java) in Nepal | DarbarTech",
     seoDescription: "Build real coding logic in C, Python, and Java — the foundation every developer starts with.",
@@ -227,7 +285,7 @@ export const courses: Course[] = [
     softwareTools: ["VS Code", "Git", "LeetCode", "Codeforces"],
     portfolioProjects: ["Algorithm Visualizer", "Coding Contest Portfolio"],
     careerOpportunities: ["Software Engineer", "SDE Intern", "Backend Developer"],
-    image: img("programming", 2),
+    image: getCourseImage("dsa-competitive-programming"),
     feeNPR: 14000,
     seats: "Limited seats",
     seoTitle: "Data Structures & Algorithms Course in Kathmandu | DarbarTech",
@@ -254,7 +312,7 @@ export const courses: Course[] = [
     softwareTools: ["Python", "VS Code", "OpenAI API", "Git"],
     portfolioProjects: ["AI Chatbot", "Resume Generator", "AI Content Tool"],
     careerOpportunities: ["AI Developer", "Python Developer", "Automation Engineer"],
-    image: img("programming", 3),
+    image: getCourseImage("python-for-ai-engineering"),
     feeNPR: 18000,
     feeNote: "3-part installment plan available",
     seats: "Limited seats",
@@ -283,7 +341,7 @@ export const courses: Course[] = [
     softwareTools: ["VS Code", "React", "Next.js", "Tailwind CSS", "GitHub Copilot"],
     portfolioProjects: ["Restaurant Website", "Ecommerce Frontend", "School Website"],
     careerOpportunities: ["Frontend Developer", "React Developer", "UI Engineer"],
-    image: img("web", 1),
+    image: getCourseImage("modern-frontend-engineering"),
     featured: true,
     feeNPR: 28000,
     feeNote: "3-part installment plan available",
@@ -315,7 +373,7 @@ export const courses: Course[] = [
     softwareTools: ["Node.js", "Express", "Laravel", "MySQL", "Postman"],
     portfolioProjects: ["Booking API", "Inventory System", "Auth Service"],
     careerOpportunities: ["Backend Developer", "API Engineer", "PHP/Node Developer"],
-    image: img("web", 2),
+    image: getCourseImage("backend-engineering-with-node-laravel"),
     feeNPR: 28000,
     feeNote: "3-part installment plan available",
     seats: "Limited seats",
@@ -342,7 +400,7 @@ export const courses: Course[] = [
     softwareTools: ["React", "Node.js", "MongoDB", "Express", "Docker", "GitHub"],
     portfolioProjects: ["Ecommerce Platform", "Job Portal", "Social Media App"],
     careerOpportunities: ["Full Stack Developer", "MERN Developer", "Software Engineer"],
-    image: img("web", 3),
+    image: getCourseImage("mern-full-stack-engineering"),
     featured: true,
     feeNPR: 45000,
     feeNote: "4-part installment plan available",
@@ -373,7 +431,7 @@ export const courses: Course[] = [
     softwareTools: ["Next.js", "WordPress", "Elementor", "Vercel", "cPanel"],
     portfolioProjects: ["Business Landing Page", "WordPress Business Site"],
     careerOpportunities: ["Web Developer", "WordPress Developer", "Freelancer"],
-    image: img("web", 4),
+    image: getCourseImage("nextjs-wordpress-development"),
     feeNPR: 14000,
     seoTitle: "Next.js & WordPress Course in Kathmandu | DarbarTech",
     seoDescription: "Build fast marketing sites and client websites, ready to deploy and sell, in 8 weeks.",
@@ -399,7 +457,7 @@ export const courses: Course[] = [
     softwareTools: ["Flutter", "React Native", "Firebase", "Android Studio"],
     portfolioProjects: ["Food Delivery App", "Chat App", "Expense Tracker App"],
     careerOpportunities: ["Mobile App Developer", "Flutter Developer", "App Freelancer"],
-    image: img("web", 5),
+    image: getCourseImage("mobile-app-development"),
     feeNPR: 30000,
     feeNote: "3-part installment plan available",
     seats: "Limited seats",
@@ -426,7 +484,7 @@ export const courses: Course[] = [
     softwareTools: ["ChatGPT", "Claude", "Gemini", "Cursor AI"],
     portfolioProjects: ["AI Content Playbook", "Automated Prompt Library"],
     careerOpportunities: ["AI Consultant", "Content Strategist", "Freelancer"],
-    image: img("ai", 1),
+    image: getCourseImage("prompt-engineering-masterclass"),
     featured: true,
     feeNPR: 4500,
     seoTitle: "Prompt Engineering Course in Nepal (ChatGPT, Claude, Gemini) | DarbarTech",
@@ -456,7 +514,7 @@ export const courses: Course[] = [
     softwareTools: ["OpenAI API", "LangChain", "Zapier/n8n", "Pinecone"],
     portfolioProjects: ["AI Support Agent", "Automated Workflow Bot"],
     careerOpportunities: ["AI Automation Engineer", "Workflow Consultant"],
-    image: img("ai", 2),
+    image: getCourseImage("agentic-ai-automation"),
     feeNPR: 16000,
     feeNote: "Installments available",
     seoTitle: "AI Automation Course in Nepal (LLM Agents) | DarbarTech",
@@ -482,7 +540,7 @@ export const courses: Course[] = [
     softwareTools: ["Python", "LangChain", "Pinecone/Chroma", "Claude API", "MCP"],
     portfolioProjects: ["RAG Knowledge Assistant", "MCP-Connected Tool", "LLM-Powered App"],
     careerOpportunities: ["LLM Developer", "AI Engineer", "Applied AI Researcher"],
-    image: img("ai", 3),
+    image: getCourseImage("llm-rag-systems-development"),
     feeNPR: 22000,
     feeNote: "3-part installment plan available",
     seats: "Limited seats",
@@ -509,7 +567,7 @@ export const courses: Course[] = [
     softwareTools: ["React", "Node.js", "Python", "AWS", "Docker", "GitHub"],
     portfolioProjects: ["Capstone AI Product", "Full Stack SaaS App"],
     careerOpportunities: ["AI Software Engineer", "Full Stack Developer", "Product Engineer"],
-    image: img("ai", 4),
+    image: getCourseImage("advanced-ai-software-engineering-diploma"),
     featured: true,
     feeNPR: 75000,
     feeNote: "6-part installment plan available",
@@ -544,7 +602,7 @@ export const courses: Course[] = [
     softwareTools: ["Python", "PyTorch", "TensorFlow", "Jupyter"],
     portfolioProjects: ["Price Prediction Model", "Image Classifier", "Recommendation Engine"],
     careerOpportunities: ["Machine Learning Engineer", "Data Scientist", "AI Researcher"],
-    image: img("data", 1),
+    image: getCourseImage("machine-learning-deep-learning"),
     feeNPR: 32000,
     feeNote: "3-part installment plan available",
     seats: "Limited seats",
@@ -572,7 +630,7 @@ export const courses: Course[] = [
     softwareTools: ["SQL", "Power BI", "Excel", "Python"],
     portfolioProjects: ["Sales Analytics Dashboard", "KPI Report"],
     careerOpportunities: ["Data Analyst", "Business Intelligence Analyst"],
-    image: img("data", 2),
+    image: getCourseImage("data-analytics-with-power-bi"),
     feeNPR: 14000,
     seats: "Limited seats",
     seoTitle: "Power BI & Data Analytics Course in Kathmandu | DarbarTech",
@@ -599,7 +657,7 @@ export const courses: Course[] = [
     softwareTools: ["SQL Server", "Apache Spark", "Airflow", "AWS/Azure"],
     portfolioProjects: ["ETL Pipeline", "Data Warehouse Model", "Streaming Data Dashboard"],
     careerOpportunities: ["Data Engineer", "ETL Developer", "Cloud Data Analyst"],
-    image: img("data", 3),
+    image: getCourseImage("data-engineering-with-sql-big-data"),
     feeNPR: 25000,
     feeNote: "3-part installment plan available",
     seats: "Limited seats",
@@ -629,7 +687,7 @@ export const courses: Course[] = [
     softwareTools: ["AWS", "Azure", "Docker", "Kubernetes", "Jenkins", "Linux"],
     portfolioProjects: ["Containerized App Deployment", "CI/CD Pipeline", "Cloud Infrastructure Setup"],
     careerOpportunities: ["DevOps Engineer", "Cloud Engineer", "Site Reliability Engineer"],
-    image: img("cloud", 1),
+    image: getCourseImage("cloud-devops-engineering"),
     feeNPR: 28000,
     feeNote: "3-part installment plan available",
     seats: "Limited seats",
@@ -658,7 +716,7 @@ export const courses: Course[] = [
     softwareTools: ["Photoshop", "Illustrator", "Canva", "Figma"],
     portfolioProjects: ["Logo Design", "Business Card", "Brochure", "Social Media Campaign"],
     careerOpportunities: ["Graphic Designer", "Social Media Designer", "Branding Designer", "Freelancer"],
-    image: img("design", 1),
+    image: getCourseImage("creative-graphic-design-masterclass"),
     featured: true,
     feeNPR: 16000,
     feeNote: "Installments available",
@@ -690,7 +748,7 @@ export const courses: Course[] = [
     softwareTools: ["Illustrator", "Photoshop", "InDesign", "After Effects"],
     portfolioProjects: ["Brand Identity Kit", "Product Packaging", "Motion Logo"],
     careerOpportunities: ["Brand Designer", "Packaging Designer", "Motion Graphics Artist"],
-    image: img("design", 2),
+    image: getCourseImage("brand-identity-packaging-design"),
     feeNPR: 15000,
   },
   {
@@ -713,7 +771,7 @@ export const courses: Course[] = [
     softwareTools: ["Figma", "Adobe XD", "Miro"],
     portfolioProjects: ["Mobile App Prototype", "Design System", "Usability Test Report"],
     careerOpportunities: ["UI/UX Designer", "Product Designer", "Freelancer"],
-    image: img("design", 3),
+    image: getCourseImage("ui-ux-design-pro"),
     feeNPR: 18000,
     feeNote: "Installments available",
     seats: "Limited seats",
@@ -743,7 +801,7 @@ export const courses: Course[] = [
     softwareTools: ["Premiere Pro", "After Effects", "DaVinci Resolve"],
     portfolioProjects: ["YouTube Video Edit", "Reels Campaign", "Motion Graphics Intro"],
     careerOpportunities: ["Video Editor", "Motion Graphics Artist", "Content Creator"],
-    image: img("video", 1),
+    image: getCourseImage("video-editing-motion-graphics"),
     feeNPR: 15000,
     seats: "Limited seats",
     seoTitle: "Video Editing Course in Nepal (Premiere Pro, After Effects) | DarbarTech",
@@ -770,7 +828,7 @@ export const courses: Course[] = [
     softwareTools: ["Tally Prime", "Excel"],
     portfolioProjects: ["Company Books Setup", "GST Filing Practice"],
     careerOpportunities: ["Accountant", "Billing Executive", "Inventory Officer"],
-    image: img("business", 1),
+    image: getCourseImage("professional-accounting-package"),
     feeNPR: 8000,
     seoTitle: "Tally & Accounting Course in Kathmandu | DarbarTech",
     seoDescription: "Manage bookkeeping, billing, and GST-ready accounts with Tally Prime and Excel.",
@@ -798,7 +856,7 @@ export const courses: Course[] = [
     softwareTools: ["Cisco Packet Tracer", "MikroTik", "VMware"],
     portfolioProjects: ["Office Network Design", "Router Configuration Lab"],
     careerOpportunities: ["Network Engineer", "IT Support Engineer", "ISP Technician"],
-    image: img("network", 1),
+    image: getCourseImage("network-engineering-with-ccna"),
     feeNPR: 20000,
     feeNote: "Installments available",
     seats: "Limited seats (lab capacity)",
@@ -828,7 +886,7 @@ export const courses: Course[] = [
     softwareTools: ["Kali Linux", "Wireshark", "Metasploit", "Burp Suite"],
     portfolioProjects: ["Penetration Test Report", "Vulnerability Assessment"],
     careerOpportunities: ["Ethical Hacker", "Cyber Security Analyst", "Security Auditor"],
-    image: img("cyber", 1),
+    image: getCourseImage("ethical-hacking-cyber-security"),
     feeNPR: 25000,
     feeNote: "Installments available",
     seats: "Limited seats (lab capacity)",
@@ -856,7 +914,7 @@ export const courses: Course[] = [
     softwareTools: ["Kali Linux", "Splunk", "AWS Security Hub", "Shodan"],
     portfolioProjects: ["SOC Incident Report", "Bug Bounty Write-up", "Cloud Security Audit"],
     careerOpportunities: ["SOC Analyst", "CEH-Track Security Engineer", "Bug Bounty Hunter"],
-    image: img("cyber", 2),
+    image: getCourseImage("cyber-security-professional-ceh-soc-track"),
     feeNPR: 30000,
     feeNote: "3-part installment plan available",
     seats: "Limited seats (lab capacity)",
@@ -885,7 +943,7 @@ export const courses: Course[] = [
     softwareTools: ["Google Ads", "Meta Ads Manager", "Google Analytics", "Canva"],
     portfolioProjects: ["SEO Audit", "Ad Campaign Launch", "Social Media Content Calendar"],
     careerOpportunities: ["Digital Marketer", "SEO Specialist", "Social Media Manager"],
-    image: img("marketing", 1),
+    image: getCourseImage("digital-marketing-pro"),
     featured: true,
     feeNPR: 14000,
     feeNote: "Installments available",
@@ -917,7 +975,7 @@ export const courses: Course[] = [
     softwareTools: ["Google Analytics", "TikTok Ads Manager", "Mailchimp", "HubSpot"],
     portfolioProjects: ["Multi-Channel Campaign", "Email Automation Flow", "YouTube SEO Report"],
     careerOpportunities: ["Growth Marketer", "Performance Marketing Specialist", "Marketing Automation Manager"],
-    image: img("marketing", 2),
+    image: getCourseImage("advanced-growth-marketing-automation"),
     feeNPR: 18000,
     seoTitle: "Growth Marketing Course in Kathmandu | DarbarTech",
     seoDescription: "Master multi-channel ads, analytics, and marketing automation beyond the basics.",
@@ -943,7 +1001,7 @@ export const courses: Course[] = [
     softwareTools: ["Fiverr", "Upwork", "Canva", "Google Workspace"],
     portfolioProjects: ["Freelance Portfolio", "Winning Proposal Samples"],
     careerOpportunities: ["Freelancer", "Virtual Assistant", "Independent Consultant"],
-    image: img("career", 1),
+    image: getCourseImage("freelancing-online-earning"),
     feeNPR: 5000,
     seoTitle: "Freelancing Course in Nepal (Fiverr & Upwork) | DarbarTech",
     seoDescription: "Learn to find clients, build a portfolio, and win freelance projects with confidence.",
@@ -968,7 +1026,7 @@ export const courses: Course[] = [
     softwareTools: ["AutoCAD", "SketchUp"],
     portfolioProjects: ["Building Floor Plan", "3D Structure Model"],
     careerOpportunities: ["CAD Draftsman", "Civil/Architecture Assistant", "Design Engineer"],
-    image: img("career", 2),
+    image: getCourseImage("autocad-design-professional"),
     feeNPR: 12000,
     seoTitle: "AutoCAD Course in Kathmandu | DarbarTech",
     seoDescription: "Learn professional 2D and 3D drafting used across civil and architecture projects.",
@@ -992,7 +1050,7 @@ export const courses: Course[] = [
     softwareTools: ["Scratch", "Arduino", "ChatGPT (guided)"],
     portfolioProjects: ["Scratch Game", "Simple Robot Build"],
     careerOpportunities: ["Foundation for Future STEM Careers"],
-    image: img("career", 3),
+    image: getCourseImage("kids-coding-robotics"),
     feeNPR: 6000,
     seoTitle: "Kids Coding & Robotics Course in Nepal | DarbarTech",
     seoDescription: "A fun, guided introduction to coding, robotics, and safe AI use for ages 8–15.",
@@ -1017,7 +1075,7 @@ export const courses: Course[] = [
     softwareTools: ["LangChain", "Zapier/n8n", "OpenAI API", "Notion"],
     portfolioProjects: ["Business Automation Suite", "AI Agent Portfolio"],
     careerOpportunities: ["AI Automation Specialist", "Workflow Consultant", "Freelancer"],
-    image: img("career", 4),
+    image: getCourseImage("career-track-ai-automation-specialist"),
     feeNPR: 32000,
     feeNote: "3-part installment plan available",
     seats: "Limited seats, cohort-based intake",
@@ -1046,7 +1104,7 @@ export const courses: Course[] = [
     softwareTools: ["MS Office", "Windows", "Internet tools"],
     portfolioProjects: ["Office Skills Portfolio", "IT Support Case Studies"],
     careerOpportunities: ["Computer Operator", "IT Support Assistant", "Office Executive"],
-    image: img("diploma", 1),
+    image: getCourseImage("professional-computer-diploma"),
     featured: true,
     feeNPR: 18000,
     feeNote: "4-part installment plan available",

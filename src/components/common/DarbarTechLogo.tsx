@@ -6,13 +6,20 @@ interface DarbarTechLogoProps {
   size?: "sm" | "md" | "lg";
   showText?: boolean;
   variant?: "light" | "dark";
+  priority?: boolean;
 }
 
-export function DarbarTechLogo({ className = "", size = "md", showText = true, variant = "light" }: DarbarTechLogoProps) {
+export function DarbarTechLogo({
+  className = "",
+  size = "md",
+  showText: _showText = true,
+  variant: _variant = "light",
+  priority = false,
+}: DarbarTechLogoProps) {
   const sizeMap: Record<NonNullable<DarbarTechLogoProps["size"]>, number> = {
-    sm: 32,
-    md: 36,
-    lg: 44,
+    sm: 40,
+    md: 48,
+    lg: 60,
   };
   const heightPx = sizeMap[size];
 
@@ -27,6 +34,7 @@ export function DarbarTechLogo({ className = "", size = "md", showText = true, v
       height={heightPx}
       alt={lockupAlt}
       className={props?.className}
+      priority={priority}
     />
   );
 

@@ -7,7 +7,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/common/Badge";
 import { AdmissionInquiryForm } from "@/components/forms/AdmissionInquiryForm";
 import { Separator } from "@/components/ui/separator";
-import { CTABanner } from "@/components/sections/CTABanner";
 import {
   PhoneCall,
   Mail,
@@ -158,7 +157,6 @@ export default function AdmissionInquiryPage() {
         </Container>
       </section>
 
-      <CTABanner />
     </>
   );
 }

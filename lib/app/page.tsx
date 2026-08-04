@@ -6,7 +6,6 @@ import { CourseGrid } from "@/components/sections/CourseGrid";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { TestimonialCarousel } from "@/components/sections/TestimonialCarousel";
-import { CTABanner } from "@/components/sections/CTABanner";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
 import { Container } from "@/components/common/Container";
 import { SectionHeading } from "@/components/common/SectionHeading";
@@ -140,7 +139,6 @@ export default function HomePage() {
 
       <TestimonialCarousel />
       <FAQAccordion compact />
-      <CTABanner />
     </>
   );
 }

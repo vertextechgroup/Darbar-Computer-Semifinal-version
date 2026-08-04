@@ -120,17 +120,17 @@ export function CourseCard({ course }: { course: Course }) {
         </div>
       </CardContent>
 
-      <CardFooter className="pt-2 pb-5 flex items-center justify-between gap-3 border-t border-neutral-100 mt-2">
-        <div className="flex flex-col min-w-0 mr-2">
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-neutral-400 mb-0.5">
+      <CardFooter className="pt-3 pb-5 flex items-end justify-between gap-3 border-t border-neutral-100 mt-2">
+        <div className="flex flex-col min-w-0 flex-1 gap-0.5">
+          <span className="text-[11px] font-semibold uppercase tracking-wider text-neutral-400">
             Next Batch
           </span>
-          <span className="text-sm font-semibold text-neutral-900 line-clamp-1">
+          <span className="text-sm font-semibold text-neutral-900 truncate">
             {course.newBatch}
           </span>
         </div>
         <Link href={`/courses/${course.slug}`} className="shrink-0 group/btn">
-          <Button size="sm" className="w-full">
+          <Button size="sm" className="whitespace-nowrap">
             {course.cta ?? "View Details"}
             <ArrowUpRight className="size-3.5 transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" aria-hidden="true" />
           </Button>
